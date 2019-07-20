@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>概览</title>
+    <link rel="stylesheet" href="../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/overview.css">
+
+</head>
+<body class="layui-layout-body" style="background-color: #f2f2f2">
+
+<div class="layui-card admin-header">
+    <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
+        <a href="#">主页</a>
+        <span lay-separator="-"></span>
+        <a href="#">概览</a>
+    </div>
+</div>
+<!--头部信息显示卡片-->
+<div class="layui-row layui-col-space15" style="margin-top: 10px">
+
+
+    <div class="layui-col-sm6 layui-col-md4">
+        <div class="layui-card">
+            <div class="layui-card-header">
+                订单量
+                <span class="layui-badge layui-bg-blue layuiadmin-badge">天</span>
+            </div>
+            <div class="layui-card-body layuiadmin-card-list">
+                <p class="layuiadmin-big-font">9,999,666</p>
+                <p>
+                    总计订单量
+                    <span class="layuiadmin-span-color">88万 <i class="layui-icon"></i></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-sm6 layui-col-md4">
+        <div class="layui-card">
+            <div class="layui-card-header">
+                新增用户
+                <span class="layui-badge layui-bg-blue layuiadmin-badge">天</span>
+            </div>
+            <div class="layui-card-body layuiadmin-card-list">
+                <p class="layuiadmin-big-font">9,999,666</p>
+                <p>
+                    总计用户
+                    <span class="layuiadmin-span-color">88万 <i class="layui-icon"></i></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-sm6 layui-col-md4">
+        <div class="layui-card">
+            <div class="layui-card-header">
+                食品订单量
+                <span class="layui-badge layui-bg-blue layuiadmin-badge">天</span>
+            </div>
+            <div class="layui-card-body layuiadmin-card-list">
+                <p class="layuiadmin-big-font">9,999,666</p>
+                <p>
+                    总计订单量
+                    <span class="layuiadmin-span-color">88万 <i class="layui-icon"></i></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--数据可视化部分-->
+<div  class="layui-card layuiadmin-datashow">
+    <div class="layui-card-header">数据可视化</div>
+    <div class="layui-card-body layui-row layui-col-space15">
+        <div id="main" style="width: 800px;height:430px;" class="layui-col-lg8 layui-col-lg-offset2"></div>
+    </div>
+</div>
+
+
+
+<script src="../lib/layui/layui.js"></script>
+<script src="../lib/echarts/echarts.min.js"></script>
+
+<script>
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+
+
+    option = {
+
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data:['酒店订单','新增用户','食品订单']
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : ['周一','周二','周三','周四','周五','周六','周日']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'酒店订单',
+                type:'line',
+                stack: '总量',
+                areaStyle: {},
+                data:[120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name:'新增用户',
+                type:'line',
+                stack: '总量',
+                areaStyle: {},
+                data:[220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name:'食品订单',
+                type:'line',
+                stack: '总量',
+                areaStyle: {},
+                data:[150, 232, 201, 154, 190, 330, 410]
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+
+</body>
+</html>
