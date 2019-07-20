@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息</title>
+    <link rel="stylesheet" href="../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+
+<div class="layui-layout-body" style="background-color: #f2f2f2">
+
+    <div class="layui-card admin-header">
+        <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
+            <a href="#">&nbsp;主页</a>
+            <span lay-separator="-"></span>
+            <a href="#">我的资料</a>
+        </div>
+    </div>
+
+        <div class="layui-fluid" style="margin-top:10px">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">我的资料</div>
+                        <div class="layui-card-body" pad15="">
+
+                            <div class="layui-form" lay-filter="">
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">账号</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="username" value="账号" readonly="" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用户名</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="nickname" value="用户名" lay-verify="nickname" autocomplete="off" placeholder="请输入昵称" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">性别</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="sex" value="男" title="男"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>男</div></div>
+                                        <input type="radio" name="sex" value="女" title="女" checked=""><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>女</div></div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">我的角色</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" readonly value="超级管理员">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">不可修改</div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit="" lay-filter="setmyinfo">确认修改</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重新填写</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+
+<script src="../lib/layui/layui.js"></script>
+
+<script>
+    layui.use(['element','form'], function(){
+        var element = layui.element;
+        var form=layui.form;
+
+    });
+</script>
+</body>
+</html>
