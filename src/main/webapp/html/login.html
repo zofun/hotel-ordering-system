@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录HOTEL</title>
+    <link rel="stylesheet" href="/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/css/sign.css">
+    <script>(window.top === window.self) || (window.top.location.href = window.self.location.href);</script>
+</head>
+<body class="layui-unselect lau-sign-body">
+
+<div class="layui-form layui-form-pane lau-sign-form">
+    <h1 class="lau-sign-title">SIGN IN HOTEL</h1>
+    <p class="lau-sign-subtitle">登陆界面</p>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i> 账　号</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i> 密　码</label>
+        <div class="layui-input-block">
+            <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i> 验证码</label>
+        <div class="layui-input-block lau-sign-code">
+            <input type="text" name="captcha" placeholder="请输入图形验证码" autocomplete="off" class="layui-input">
+            <img src="https://www.oschina.net/action/user/captcha" alt="图形验证码" class="lau-sign-captcha">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
+        <a class="lau-sign-forgot lau-sign-link" href="/html/forgot.html">忘记密码？</a>
+    </div>
+    <div class="layui-form-item">
+        <button type="button" class="layui-btn layui-btn-fluid" lay-submit lay-filter="login">登 陆</button>
+    </div>
+    <div class="layui-form-item lau-sign-other">
+
+        <a href="/html/register.html" class="lau-sign-reg lau-sign-link">还没有账号？立即注册</a>
+    </div>
+</div>
+
+
+</body>
+<script src="/lib/layui/layui.js"></script>
+<script>
+    layui.config({base: '/js/'}).use('login');
+</script>
+</html></html>
