@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>后台管理</title>
-    <link rel="stylesheet" href="../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/lib/layui/css/layui.css">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
                     贤心
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="javascript:;" onclick="changeIframeUrl('/html/admin/userInfo.html')">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
@@ -30,7 +30,7 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed" onclick="changeIframeUrl('/admin/overview.html')">
+                <li class="layui-nav-item layui-nav-itemed" onclick="changeIframeUrl('/html/admin/overview.html')">
                     <a class="" href="javascript:;">系统概览</a>
                 </li>
                 <li class="layui-nav-item">
