@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+</head>
+<body>
+
+  <div class="site-nav-bg">
+    <div class="site-nav w1200">
+      <p class="sn-back-home">
+        <i class="layui-icon layui-icon-home"></i>
+        <a href="../html/FirstPage.html">首页</a>
+      </p>
+      <div class="sn-quick-menu">
+        <div class="login"><a href="login.html">登录</a></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="header">
+    <div class="headerLayout w1200">
+      <div class="headerCon">
+        <h1 class="mallLogo">
+          <a href="#" title="酒店预订">
+            <img src="../images/logo.png" width="50" height="50">
+          </a>
+        </h1>
+        <div class="mallSearch">
+          <form action="" class="layui-form" novalidate>
+            <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入理想的条件">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">
+                <i class="layui-icon layui-icon-search"></i>
+            </button>
+            <input type="hidden" name="" value="">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="content content-nav-base ShowPage-content">
+    <div id="list-cont">
+
+        <div class="banner">
+          <ul class="texts">
+            <p>有些地方住过一次，就会是一辈子的记忆。</p>
+            <p>Some places once lived, will be a lifetime memory. </p>
+          </ul>
+        </div>
+      <div class="product-list-box">
+        <div class="product-list w1200">  
+          <div class="tab-title">
+            <a href="javascript:;" class="active tuang" data-content="tuangou">房源展示</a>
+          </div>
+
+          <div class="list-cont" cont = 'tuangou'>
+            <div class="item-box layui-clear">
+
+
+              <div class="item">
+                <div class="text-box">
+                  <p class="title">MituHome</p>
+                  <p class="plic">
+                    <img src="../images/house1.jpg" alt="" style="float:left" width="300" height="300">位于春熙路商圈,出门即是成都远洋太古里,快捷却不拥堵喧闹,能让您闲庭信步,步行至春熙路地铁站仅需2分钟,周边齐全的公交车站,方便的交通路线让您尽享成都旅游特色｡
+                    <br><span class="Ori-pic">￥365.00</span>
+                    <br><span class="discount">8折</span>
+                  </p>
+                </div>
+              </div>
+
+
+              <div class="item">
+                <div class="text-box">
+                  <p class="title">火烈鸟双人房</p>
+                  <p class="plic">
+                    <img src="../images/house2.jpg" alt="" style="float:left" width="300" height="300">房屋紧靠太古里春熙路,步行到太古里2分钟,步行到春熙路9分种,随时享受春熙路太古里的风情､美食､购物等;小区东边紧靠成都的母亲河府河,河边可以散步喝茶感受休闲成都;步行十来分钟到达成都年轻人最喜欢的水津街和九眼桥的酒吧一条街,体验夜成都和成都的音乐及休闲文化。
+                    <br><span class="discount">9折</span>
+                    <br><span class="Ori-pic">￥277.00</span>
+                  </p>
+                </div>
+              </div>
+
+
+              <div class="item">
+                <div class="text-box">
+                  <p class="title">性价比之王</p>
+                  <p class="plic">
+                    <img src="../images/house3.jpg" alt="" style="float:left" width="300" height="300">私人影享，私人影院投影仪，可以做饭；交通便利，近地铁口，3个站到春熙路太古里。
+                    <br><span class="Ori-pic">￥208.00</span>
+                    <br><span class="discount">5折</span>
+                  </p>
+                </div>
+              </div>
+
+
+              <div class="item">
+                <div class="text-box">
+                  <p class="title">特色名宿</p>
+                  <p class="plic">
+                    <img src="../images/house4.jpg" alt="" style="float:left" width="300" height="300">楼下就是成都最繁华的太古里,步行几分钟可到地铁站｡这里是你探寻成都顶级餐厅与本地美食的理想起点｡顶级餐厅,高档川菜,火锅串串,网红美食店,均距离你几步之遥，和食物相关的幸福感不过几分钟的距离｡
+                    <br><span class="Ori-pic">￥169.00</span>
+                    <br><span class="discount">7折</span>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+            <div id="demo0" style="text-align: center;"></div>
+          </div>
+        </div>  
+      </div>
+      <div class="footer-wrap">
+        <div class="footer w1200">
+          <div class="title">
+            <h3></h3>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+  layui.config({
+    base: '../res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
+  }).use(['mm','laypage','jquery'],function(){
+      var laypage = layui.laypage,$ = layui.$;
+     mm = layui.mm;
+      laypage.render({
+        elem: 'demo0'
+        ,count: 100 //数据总数
+      });
+
+
+      $('body').on('click','*[data-content]',function(){
+        $(this).addClass('active').siblings().removeClass('active')
+        var dataConte = $(this).attr('data-content');
+        $('*[cont]').each(function(i,item){
+          var itemCont = $(item).attr('cont');
+          console.log(item)
+          if(dataConte === itemCont){
+            $(item).removeClass('layui-hide');
+          }else{
+            $(item).addClass('layui-hide');
+          }
+        })
+      })
+});
+</script>
+
+
+</body>
+</html>
