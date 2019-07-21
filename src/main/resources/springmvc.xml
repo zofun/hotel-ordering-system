@@ -15,8 +15,31 @@
 
 	<!-- 配置注解驱动 -->
 	<mvc:annotation-driven />
+    <!-- 解决shiro注解失效的问题 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"></bean>
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true" />
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    <!--shiro无权限跳转-->
+    <bean
+            class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.apache.shiro.authz.UnauthorizedException">
+                    error
+                </prop>
+                <prop key="org.apache.shiro.authz.UnauthenticatedException">
+                    error
+                </prop>
+            </props>
+        </property>
+    </bean>
 
-	<!--定义不被拦截的静态资源-->
+    <!--定义不被拦截的静态资源-->
 	<mvc:resources location="/" mapping="/**/*.html"/>
 	<mvc:resources location="/" mapping="/**/*.js"/>
 	<mvc:resources location="/" mapping="/**/*.css"/>

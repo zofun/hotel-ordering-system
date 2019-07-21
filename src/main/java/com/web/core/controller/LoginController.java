@@ -2,10 +2,13 @@ package com.web.core.controller;
 
 
 import com.web.core.pojo.User;
+import com.web.core.service.TestService;
 import org.apache.shiro.*;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,13 +19,15 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user")
 public class LoginController {
 
+    @Autowired
+    private TestService testService;
+
     @RequestMapping(value = "/login")
     public String Login(String username, String password, HttpSession session, Model model){
         if(username==null){
             model.addAttribute("message", "账号不为空");
             return "login";
         }
-
 
         //主体,当前状态为没有认证的状态“未认证”
         Subject subject = SecurityUtils.getSubject();
@@ -76,5 +81,13 @@ public class LoginController {
     @RequestMapping("/nopermission")
     public String noPermission(){
         return "error";
+    }
+
+
+    @RequiresPermissions("/readData")
+    @RequestMapping("test01")
+    public void test(){
+        System.out.println("shiro进入");
+        testService.test();
     }
 }
