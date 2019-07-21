@@ -18,7 +18,8 @@
 			"numOfPeo": "1",
 			"price": "120",
 			"mes": "其它信息",
-			"recommend": "false"
+			"recommend": "false",
+			"bran": "一分店"
 		},
 		{
 			"id": 3,
@@ -27,7 +28,8 @@
 			"numOfPeo": "1",
 			"price": "120",
 			"mes": "其它信息",
-			"recommend": "true"
+			"recommend": "true",
+			"bran": "一分店"
 		},
 		{
 			"id": 4,
@@ -36,7 +38,8 @@
 			"numOfPeo": "1",
 			"price": "120",
 			"mes": "其它信息",
-			"recommend": "false"
+			"recommend": "false",
+			"bran": "一分店"
 
 		},
 		{
@@ -46,7 +49,8 @@
 			"numOfPeo": "1",
 			"price": "120",
 			"mes": "其它信息",
-            "recommend": "true"
+			"recommend": "true",
+			"bran": "二分店"
 
 		}
 	]

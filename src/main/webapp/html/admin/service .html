@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>客房管理</title>
+    <title>顶大管理</title>
     <link rel="stylesheet" href="../../lib/layui/css/layui.css">
     <link rel="stylesheet" href="../../css/admin.css">
 </head>
@@ -13,10 +13,9 @@
     <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
         <a href="#">主页</a>
         <span lay-separator="-"></span>
-        <a href="#">客房管理</a>
+        <a href="#">订单管理</a>
     </div>
 </div>
-
 <div class="layui-fluid" style="margin-top:10px">
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12">
@@ -32,31 +31,8 @@
         </div>
     </div>
 </div>
-
 </body>
-<script type="text/html" id="toolbarDemo">
-    <div>
-        新建客房：
-        <div class="layui-inline">
-            <input class="layui-input"  id="roomId" autocomplete="off" placeholder="房间编号">
-        </div>
-        <div class="layui-inline">
 
-            <select name="roomType" lay-verify=""  lay-search>
-                <option value="">请选择房间类型</option>
-                <option value="010">普通单人间</option>
-                <option value="021">豪华双人间</option>
-                <option value="0571">豪华单人间</option>
-            </select>
-        </div>
-        <button class="layui-btn">创建</button>
-
-    </div>
-</script>
-<script type="text/html" id="checkboxTpl">
-
-    <input type="checkbox" name="lock" value="{{d.id}}" title="关闭" lay-filter="lockDemo" {{ d.closeStatus == 'true' ? 'checked' : '' }} }}>
-</script>
 <script src="../../lib/layui/layui.js"></script>
 <script src="../../js/common.js"></script>
 <script>
@@ -71,24 +47,21 @@
             , toolbar: '#toolbarDemo'
             , title: '客房表'
             , cols: [[
-                {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'roomId', title: '房间号', width: 140,sort: true}
+                {type:'checkbox'}
+                ,{field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                , {field: 'roomId ', title: '房间号', width: 140,sort: true}
+                , {field: 'buildName', title: '楼',edit: 'text', width: 160,sort: true}
                 , {field: 'roomType', title: '房间类型', width: 140, sort: true}
                 , {field: 'status', title: '房间状态', width: 120, sort: true}
-                ,{field:'recommend', title:'是否关闭', width:110, templet: '#checkboxTpl', unresize: true}
 
             ]]
             , page: true
             ,id:'dataTable'
             ,height:700
         });
-        //处理推荐关闭房间
-        form.on('checkbox(lockDemo)', function(obj){
-            layer.msg(this.value+':'+obj.elem.checked);
-        });
+
 
     });
-
 </script>
 
 </body>
