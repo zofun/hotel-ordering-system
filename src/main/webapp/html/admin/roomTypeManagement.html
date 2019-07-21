@@ -23,7 +23,7 @@
                 <div class="layui-card-header ">客房类型管理</div>
 
                 <div class="layui-card-body">
-                    <div class="layui-col-lg10 layui-col-lg-offset1">
+                    <div class="layui-col-lg12 ">
                         <table class="layui-hide" id="table" lay-filter="test"></table>
                     </div>
                 </div>
@@ -50,11 +50,19 @@
             <input class="layui-input"  id="price" autocomplete="off" style="width: 80px" placeholder="价格">
         </div>
         <div class="layui-inline">
-            <input class="layui-input"  id="mes" autocomplete="off" placeholder="其它信息">
+            <textarea name="desc" placeholder="描述信息" class="layui-textarea" style="width: 220px" id="mes" ></textarea>
+
         </div>
+        <button type="button" class="layui-btn" id="uploader">
+            <i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
         <button class="layui-btn"  >新建</button>
 
     </div>
+</script>
+<script type="text/html" id="checkboxTpl">
+
+    <input type="checkbox" name="lock" value="{{d.id}}" title="推荐" lay-filter="lockDemo" {{ d.recommend == 'true' ? 'checked' : '' }} }}>
 </script>
 
 <script src="../../lib/layui/layui.js"></script>
@@ -63,8 +71,10 @@
 
 <script>
 
-    layui.use(['element','table'], function(){
+    layui.use(['element','table','upload'], function(){
         var element = layui.element;
+        var form=layui.form;
+        var upload = layui.upload;
 
         table = layui.table;
         table.render({
@@ -77,8 +87,9 @@
                 , {field: 'roomType', title: '房间类型', width: 140}
                 , {field: 'sum', title: '数量', width: 120, sort: true,edit: 'text'}
                 , {field: 'numOfPeo', title: '可容纳人数', width: 120, sort: true}
-                , {field: 'price', title: '价格',edit: 'text', width: 140}
-                , {field: 'mes', title: '其它信息', width: 400,edit: 'text'}
+                , {field: 'price', title: '价格',edit: 'text', width: 80}
+                , {field: 'mes', title: '描述信息', width: 400,edit: 'text'}
+                ,{field:'recommend', title:'是否推荐', width:110, templet: '#checkboxTpl', unresize: true}
 
             ]]
             , page: true
@@ -93,6 +104,24 @@
                 ,field = obj.field; //得到字段
             layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value+'全部'+JSON.stringify(data));
         });
+        //处理推荐点击事件
+        form.on('checkbox(lockDemo)', function(obj){
+            layer.msg(this.value+':'+obj.elem.checked);
+        });
+
+        var uploadInst = upload.render({
+            elem: '#uploader' //绑定元素
+            ,url: base_url+'/upload/' //上传接口
+            ,size: 1024*5 //限定大小
+            ,accept:'images'
+            ,done: function(res){
+                layer.msg('上传成功')
+            }
+            ,error: function(){
+                //请求异常回调
+                layer.msg('上传失败')
+            }
+        })
     });
 </script>
 </body>

@@ -8,7 +8,8 @@
 			"sum": "120",
 			"numOfPeo": "1",
 			"price": "120",
-			"mes": "其它信息"
+			"mes": "其它信息",
+			"recommend": "true"
 		},
 		{
 			"id": 2,
@@ -16,7 +17,8 @@
 			"sum": "120",
 			"numOfPeo": "1",
 			"price": "120",
-			"mes": "其它信息"
+			"mes": "其它信息",
+			"recommend": "false"
 		},
 		{
 			"id": 3,
@@ -24,7 +26,8 @@
 			"sum": "120",
 			"numOfPeo": "1",
 			"price": "120",
-			"mes": "其它信息"
+			"mes": "其它信息",
+			"recommend": "true"
 		},
 		{
 			"id": 4,
@@ -32,7 +35,9 @@
 			"sum": "120",
 			"numOfPeo": "1",
 			"price": "120",
-			"mes": "其它信息"
+			"mes": "其它信息",
+			"recommend": "false"
+
 		},
 		{
 			"id": 5,
@@ -40,7 +45,9 @@
 			"sum": "120",
 			"numOfPeo": "1",
 			"price": "120",
-			"mes": "其它信息"
+			"mes": "其它信息",
+            "recommend": "true"
+
 		}
 	]
 }
