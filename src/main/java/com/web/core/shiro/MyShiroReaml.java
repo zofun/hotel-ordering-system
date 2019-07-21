@@ -31,10 +31,10 @@ public class MyShiroReaml extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         //获取permission
         if(user!=null) {
+            //info.addRole("admin"); 可以添加角色
             List<Permission> permissionsByUser = shiroService.getPermissionsByUser(user);
             if (permissionsByUser.size()!=0) {
                 for (Permission p: permissionsByUser) {
-
                     info.addStringPermission(p.getUrl());
                 }
                 return info;
