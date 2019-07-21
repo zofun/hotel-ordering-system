@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客房管理</title>
+    <link rel="stylesheet" href="../../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+<body class="layui-layout-body" style="background-color: #f2f2f2">
+
+<div class="layui-card admin-header">
+    <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
+        <a href="#">主页</a>
+        <span lay-separator="-"></span>
+        <a href="#">客房管理</a>
+    </div>
+</div>
+
+<div class="layui-fluid" style="margin-top:10px">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header ">客房管理</div>
+
+                <div class="layui-card-body">
+                    <div class="layui-col-lg10 layui-col-lg-offset1">
+                        <table class="layui-hide" id="table" lay-filter="test"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/html" id="toolbarDemo">
+    <div>
+        新建客房：
+        <div class="layui-inline">
+            <input class="layui-input"  id="roomId" autocomplete="off" placeholder="房间编号">
+        </div>
+        <div class="layui-inline">
+            <select name="buildName" lay-verify=""  lay-search>
+                <option value="">请选择楼号</option>
+                <option value="010">15栋</option>
+                <option value="021">16栋</option>
+                <option value="0571">17栋</option>
+            </select>
+        </div>
+        <div class="layui-inline">
+
+            <select name="roomType" lay-verify=""  lay-search>
+                <option value="">请选择房间类型</option>
+                <option value="010">普通单人间</option>
+                <option value="021">豪华双人间</option>
+                <option value="0571">豪华单人间</option>
+            </select>
+        </div>
+        <button class="layui-btn">创建</button>
+
+    </div>
+</script>
+<script src="../../lib/layui/layui.js"></script>
+<script src="../../js/common.js"></script>
+<script>
+    layui.use(['element','table'], function(){
+        var element = layui.element;
+        var form=layui.form;
+
+        table = layui.table;
+        table.render({
+            elem: '#table'
+            , url: base_url + '/testJson/roomData.json'
+            , toolbar: '#toolbarDemo'
+            , title: '客房表'
+            , cols: [[
+                {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                , {field: 'roomId', title: '房间号', width: 140,sort: true}
+                , {field: 'buildName', title: '楼',edit: 'text', width: 160,sort: true}
+                , {field: 'roomType', title: '房间类型', width: 140, sort: true}
+                , {field: 'status', title: '房间状态', width: 120, sort: true}
+
+            ]]
+            , page: true
+            ,id:'dataTable'
+            ,height:700
+        });
+
+
+    });
+
+</script>
+
+</body>
+</html>
