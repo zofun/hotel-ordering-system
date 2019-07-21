@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>入住管理</title>
+    <link rel="stylesheet" href="../../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/common.css">
+</head>
+<body>
+<div class="layui-layout-body" style="background-color: #f2f2f2">
+    <div class="layui-card admin-header">
+        <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
+            <a href="#">前台管理</a>
+            <span lay-separator="-"></span>
+            <a href="#">入住管理</a>
+        </div>
+    </div>
+
+    <div class="layui-fluid" style="margin-top:10px">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header">入住管理</div>
+
+                <div class="layui-card-body">
+                    <div class="layui-col-lg10 layui-col-lg-offset1">
+                        <table class="layui-hide" id="table" lay-filter="test"></table>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/html" id="toolbarDemo">
+    <div class="demoTable">
+        搜索姓名：
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="searchKey" autocomplete="off">
+        </div>
+        <button class="layui-btn" data-type="reload"  onclick="search()" >搜索</button>
+    </div>
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="checkIn">入住</a>
+    <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="putOff">延期</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="checkOut">退房</a>
+</script>
+
+<script src="../../lib/layui/layui.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
+<script src="../../js/common.js"></script>
+<script>
+    var table;
+    layui.use('table', function() {
+         table = layui.table;
+        var $=layui.$;
+  
+
+        
+        table.render({
+            elem: '#table'
+            , url: base_url + '/testJson/checkInTableData.json'
+            , toolbar: '#toolbarDemo'
+            , title: '旅客表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                , {field: 'user', title: '姓名', width: 120}
+                , {field: 'username', title: '用户名', width: 140}
+                , {field: 'roomNo', title: '房间号', width: 120, sort: true}
+                , {field: 'roomType', title: '房间类型', width: 120, sort: true}
+                , {field: 'status', title: '状态', width: 120, sort: true}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 170}
+            ]]
+            , page: true
+            ,id:'reloadTable'
+        });
+
+        table.on('tool(test)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === 'checkIn'){
+                layer.msg('入住')
+            } else if(obj.event === 'putOff'){
+                layer.msg('延期')
+            }else {
+                layer.msg('退房')
+            }
+        });
+
+    });
+
+    /**
+     * 按名字搜索功能，会携带page,limit,user参数查询后端然后渲染
+     */
+    function search(){
+        console.log('点击');
+        table.reload('reloadTable',{
+            where: { //设定异步数据接口的额外参数，任意设
+                'user':$('#searchKey').val()
+            }
+            ,page: {
+                curr: 1
+            }
+        })
+    }
+
+</script>
+</body>
+</html>

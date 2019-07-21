@@ -1,0 +1,41 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 5,
+	"data": [{
+		"id": 1,
+		"user": "李华",
+		"username": "123466",
+		"roomNo": "15-8",
+		"roomType": "普通单间",
+		"status": "未入住"
+	}, {
+		"id": 2,
+		"user": "佩奇",
+		"username": "123466",
+		"roomNo": "15-8",
+		"roomType": "豪华单间",
+		"status": "已入住"
+	}, {
+		"id": 3,
+		"user": "李华",
+		"username": "123466",
+		"roomNo": "15-8",
+		"roomType": "普通单间",
+		"status": "已入住"
+	}, {
+		"id": 4,
+		"user": "李华",
+		"username": "123466",
+		"roomNo": "15-8",
+		"roomType": "普通单间",
+		"status": "已入住"
+	}, {
+		"id": 5,
+		"user": "李华",
+		"username": "123466",
+		"roomNo": "15-8",
+		"roomType": "普通单间",
+		"status": "已入住"
+	}]
+}

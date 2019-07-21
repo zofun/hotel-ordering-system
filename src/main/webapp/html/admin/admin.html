@@ -36,7 +36,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">前台管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">入住管理</a></dd>
+                        <dd onclick="changeIframeUrl('/html/admin/checkIn.html')"><a href="javascript:;">入住管理</a></dd>
                         <dd><a href="javascript:;">客人信息管理</a></dd>
                     </dl>
                 </li>
@@ -78,7 +78,6 @@
     layui.use(['element','layer'], function(){
         var element = layui.element;
         layer=layui.layer;
-
     });
 
     /**
