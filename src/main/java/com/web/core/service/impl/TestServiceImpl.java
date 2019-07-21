@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.web.core.mapper.UserMapper;
 import com.web.core.pojo.User;
 import com.web.core.service.TestService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,13 @@ public class TestServiceImpl  implements TestService {
 
     @Autowired
     UserMapper userMapper;
+
+
+    @Override
+    public void test() {
+        System.out.println("方法执行");
+    }
+
     @Override
     public String getDate(int page, int limit) {
         int start=(page-1)*limit;

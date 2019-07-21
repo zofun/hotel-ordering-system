@@ -8,6 +8,8 @@
 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 				 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+
+
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" /> <!--加载管理器-->
         <property name="loginUrl" value="/user/login" />    <!--没有登录的时候，跳转到这个页面-->
