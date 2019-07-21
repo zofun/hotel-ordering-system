@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客房类型管理</title>
+    <link rel="stylesheet" href="../../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+<body class="layui-layout-body" style="background-color: #f2f2f2">
+
+<div class="layui-card admin-header">
+    <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
+        <a href="#">主页</a>
+        <span lay-separator="-"></span>
+        <a href="#">客房类型管理</a>
+    </div>
+</div>
+<div class="layui-fluid" style="margin-top:10px">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header ">客房类型管理</div>
+
+                <div class="layui-card-body">
+                    <div class="layui-col-lg10 layui-col-lg-offset1">
+                        <table class="layui-hide" id="table" lay-filter="test"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script type="text/html" id="toolbarDemo">
+    <div>
+        新建类型：
+        <div class="layui-inline">
+            <input class="layui-input"  id="roomType" autocomplete="off" placeholder="房间类型">
+        </div>
+        <div class="layui-inline">
+            <input class="layui-input"  id="sum" autocomplete="off" style="width: 80px" placeholder="房间总数">
+        </div>
+        <div class="layui-inline">
+            <input class="layui-input"  id="numOfPeo" autocomplete="off"  style="width: 80px" placeholder="房间人数">
+        </div>
+        <div class="layui-inline">
+            <input class="layui-input"  id="price" autocomplete="off" style="width: 80px" placeholder="价格">
+        </div>
+        <div class="layui-inline">
+            <input class="layui-input"  id="mes" autocomplete="off" placeholder="其它信息">
+        </div>
+        <button class="layui-btn"  >新建</button>
+
+    </div>
+</script>
+
+<script src="../../lib/layui/layui.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
+
+<script>
+
+    layui.use(['element','table'], function(){
+        var element = layui.element;
+
+        table = layui.table;
+        table.render({
+            elem: '#table'
+            , url: base_url + '/testJson/roomTypeData.json'
+            , toolbar: '#toolbarDemo'
+            , title: '客房类型表'
+            , cols: [[
+                 {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                , {field: 'roomType', title: '房间类型', width: 140}
+                , {field: 'sum', title: '数量', width: 120, sort: true,edit: 'text'}
+                , {field: 'numOfPeo', title: '可容纳人数', width: 120, sort: true}
+                , {field: 'price', title: '价格',edit: 'text', width: 140}
+                , {field: 'mes', title: '其它信息', width: 400,edit: 'text'}
+
+            ]]
+            , page: true
+            ,id:'dataTable'
+            ,height:700
+        });
+
+        //监听单元格编辑
+        table.on('edit(test)', function(obj){
+            var value = obj.value //得到修改后的值
+                ,data = obj.data //得到所在行所有键值
+                ,field = obj.field; //得到字段
+            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value+'全部'+JSON.stringify(data));
+        });
+    });
+</script>
+</body>
+</html>

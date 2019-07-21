@@ -1,0 +1,46 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 5,
+	"data": [{
+			"id": 1,
+			"roomType": "普通单人间",
+			"sum": "120",
+			"numOfPeo": "1",
+			"price": "120",
+			"mes": "其它信息"
+		},
+		{
+			"id": 2,
+			"roomType": "普通双人间",
+			"sum": "120",
+			"numOfPeo": "1",
+			"price": "120",
+			"mes": "其它信息"
+		},
+		{
+			"id": 3,
+			"roomType": "豪华单人间",
+			"sum": "120",
+			"numOfPeo": "1",
+			"price": "120",
+			"mes": "其它信息"
+		},
+		{
+			"id": 4,
+			"roomType": "豪华双人间",
+			"sum": "120",
+			"numOfPeo": "1",
+			"price": "120",
+			"mes": "其它信息"
+		},
+		{
+			"id": 5,
+			"roomType": "亲子间",
+			"sum": "120",
+			"numOfPeo": "1",
+			"price": "120",
+			"mes": "其它信息"
+		}
+	]
+}
