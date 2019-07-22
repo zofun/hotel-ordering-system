@@ -68,7 +68,7 @@
 
 <script type="text/html" id="toolbarDemo">
     <div class="demoTable">
-        <button class="layui-btn" data-type="reload"  lay-filter="addRole">新建角色</button>
+        <button class="layui-btn" data-type="reload"  onclick="creatRole()">新建角色</button>
     </div>
 </script>
 
@@ -121,8 +121,10 @@
     
     function creatRole() {
         layer.open({
-            type: 1,
-            content: $('#createRole').html()
+            title:'新建角色',
+            type: 2,
+            area: ['500px', '600px'],
+            content: base_url+'/html/admin/addRole.html'
         });
     }
 </script>
