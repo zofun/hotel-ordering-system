@@ -77,14 +77,13 @@
             ]]
             , page: true
             ,id:'reloadTable'
-            ,height:700
         });
 
         table.on('tool(test)', function(obj){
             var data = obj.data;
             //console.log(obj)
             if(obj.event === 'checkIn'){
-                layer.msg('入住')
+                layer.msg(obj.data.id+'入住')
             } else if(obj.event === 'putOff'){
                 layer.msg('延期')
             }else {

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>角色管理</title>
+    <link rel="stylesheet" href="../../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+
+<body class="layui-layout-body" style="background-color: #f2f2f2">
+
+<div class="layui-card admin-header">
+    <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
+        <a href="#">主页</a>
+        <span lay-separator="-"></span>
+        <a href="#">角色管理</a>
+    </div>
+</div>
+<div class="layui-fluid" style="margin-top:10px">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header ">角色管理</div>
+
+                <div class="layui-card-body">
+                    <div class="layui-col-lg12">
+                        <table class="layui-hide" id="table" lay-filter="test"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!--复选框组件-->
+<script type="text/html" id="readRoomTypeCheckbox">
+    <input type="checkbox" name="readRoomType" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.readRoomType == 'true' ? 'checked' : '' }} }}>
+</script>
+<script type="text/html" id="manRoomTypeCheckbox">
+    <input type="checkbox" name="manRoomType" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.manRoomType == 'true' ? 'checked' : '' }} }}>
+</script>
+<script type="text/html" id="readRoomCheckbox">
+    <input type="checkbox" name="readRoom" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.readRoom == 'true' ? 'checked' : '' }} }}>
+</script>
+<script type="text/html" id="manRoomCheckbox">
+    <input type="checkbox" name="manRoom" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.manRoom == 'true' ? 'checked' : '' }} }}>
+</script>
+<script type="text/html" id="readSignInCheckbox">
+    <input type="checkbox" name="readSignIn" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.readSignIn == 'true' ? 'checked' : '' }} }}>
+</script>
+<script type="text/html" id="manSignInCheckbox">
+    <input type="checkbox" name="manSignIn" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.manSignIn == 'true' ? 'checked' : '' }} }}>
+</script>
+<script type="text/html" id="manRoleCheckbox">
+    <input type="checkbox" name="manRole" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.manRole == 'true' ? 'checked' : '' }} }}>
+</script>
+<script type="text/html" id="roleAlloCheckbox">
+    <input type="checkbox" name="roleAllo" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.roleAllo == 'true' ? 'checked' : '' }} }}>
+</script>
+<script type="text/html" id="readServiceCheckbox">
+    <input type="checkbox" name="readService" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.readService == 'true' ? 'checked' : '' }} }}>
+</script>
+<script type="text/html" id="manServiceCheckbox">
+    <input type="checkbox" name="manService" value="{{d.id}}" title="授权" lay-filter="lockDemo" {{ d.manService == 'true' ? 'checked' : '' }} }}>
+</script>
+
+<!--弹出层添加角色-->
+<script type="text/html" id="createRole">
+    <div class="layui-form" lay-filter="">
+        <div class="layui-form-item">
+        <label class="layui-form-label">账号</label>
+        <div class="layui-input-inline">
+        <input type="text" name="username" value="账号" readonly="" class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-inline">
+        <input type="text" name="nickname" value="用户名" lay-verify="nickname" autocomplete="off" placeholder="请输入昵称" class="layui-input">
+        </div>
+        </div>
+        <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+        <input type="radio" name="sex" value="男" title="男"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>男</div></div>
+    <input type="radio" name="sex" value="女" title="女" checked=""><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>女</div></div>
+    </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">我的角色</label>
+        <div class="layui-input-inline">
+        <input type="text" class="layui-input" readonly value="超级管理员">
+        </div>
+        <div class="layui-form-mid layui-word-aux">不可修改</div>
+        </div>
+
+        <div class="layui-form-item">
+        <div class="layui-input-block">
+        <button class="layui-btn" lay-submit="" lay-filter="setmyinfo">确认修改</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重新填写</button>
+        </div>
+        </div>
+        </div>
+</script>
+
+<script type="text/html" id="toolbarDemo">
+    <div class="demoTable">
+        <button class="layui-btn" data-type="reload"  lay-filter="addRole">新建角色</button>
+    </div>
+</script>
+
+<script src="../../lib/layui/layui.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
+<script>
+    layui.use(['element','table','form'], function(){
+        var element = layui.element;
+        var form=layui.form;
+
+
+        table = layui.table;
+        table.render({
+            elem: '#table'
+            , url: base_url + '/testJson/roleData.json'
+            , toolbar: '#toolbarDemo'
+            , title: '角色表'
+            , cols: [[
+                {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true,fixed: 'left'}
+                , {field: 'name', title: '角色名', width: 120}
+                , {field: 'readRoomType', title: '查看房型', width: 110,sort: true, templet: '#readRoomTypeCheckbox'}
+                , {field: 'manRoomType', title: '管理房型', width: 110,sort: true ,templet: '#manRoomTypeCheckbox'}
+                , {field: 'readRoom', title: '查看客房', width: 110,sort: true,templet: '#readRoomCheckbox'}
+                , {field: 'manRoom', title: '管理客房', width: 110,sort: true,templet: '#manRoomCheckbox'}
+                , {field: 'readSignIn', title: '查看入住', width: 110,sort: true,templet: '#readSignInCheckbox'}
+                , {field: 'manSignIn', title: '入住管理', width: 110,sort: true,templet: '#manSignInCheckbox'}
+                , {field: 'manRole', title: '角色管理', width: 110,sort: true,templet: '#manRoleCheckbox'}
+                , {field: 'roleAllo', title: '角色分配', width: 110,sort: true,templet: '#roleAlloCheckbox'}
+                , {field: 'readService', title: '查看服务', width: 110,sort: true,templet: '#readServiceCheckbox'}
+                , {field: 'manService', title: '服务管理', width: 110,sort: true,templet: '#manServiceCheckbox'}
+                , {field: 'roleMsg', title: '角色说明', width: 110,fixed: 'right'}
+
+
+            ]]
+            ,page: true
+            ,id:'dataTable'
+            ,initSort: {field:'id', type:'desc'}
+        });
+
+
+        form.on('checkbox(lockDemo)', function(obj){
+
+            layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+        });
+
+        form.on('click(addRole)',function () {
+            layer.open({
+                type: 1,
+                content: $('#createRole').html()
+            });
+        })
+
+
+    });
+    
+    function creatRole() {
+        layer.open({
+            type: 1,
+            content: $('#createRole').html()
+        });
+    }
+</script>
+
+</html>
