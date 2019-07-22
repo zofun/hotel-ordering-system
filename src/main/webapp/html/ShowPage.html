@@ -6,31 +6,36 @@
   <link rel="stylesheet" type="text/css" href="../css/main.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <link rel="stylesheet" href="E:\hotel-ordering-system\src\main\webapp\lib\layui\css\layui.css"  media="all">
 </head>
 <body>
-
-  <div class="site-nav-bg">
-    <div class="site-nav w1200">
-      <p class="sn-back-home">
-        <i class="layui-icon layui-icon-home"></i>
-        <a href="../html/FirstPage.html">首页</a>
-      </p>
-      <div class="sn-quick-menu">
-        <div class="login"><a href="login.html">登录</a></div>
-      </div>
+<div class="site-nav-bg">
+  <div class="site-nav w1200">
+    <div class="sn-quick-menu">
+      <div class="login"><a href="login.html">登录</a></div>
+      <div class="login"><a href="register.html">注册</a></div>
     </div>
   </div>
-
+</div>
+<div>
+  <ul class="layui-nav style=" text-align="">
+    <img src="../images/logo.png" width="50" height="50">
+    <li class="layui-nav-item">
+      <a href="FirstPage.html">首页</a>
+    </li>
+    <li class="layui-nav-item">
+      <a href="ShowPage.html">选房详情</a>
+    </li>
+    <li class="layui-nav-item">
+      <a href="#">附近</a>
+    </li>
+  </ul>
+</div>
 
 
   <div class="header">
     <div class="headerLayout w1200">
       <div class="headerCon">
-        <h1 class="mallLogo">
-          <a href="#" title="酒店预订">
-            <img src="../images/logo.png" width="50" height="50">
-          </a>
-        </h1>
         <div class="mallSearch">
           <form action="" class="layui-form" novalidate>
             <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入理想的条件">
@@ -112,51 +117,45 @@
               </div>
 
             </div>
-            <div id="demo0" style="text-align: center;"></div>
           </div>
-        </div>  
-      </div>
-      <div class="footer-wrap">
-        <div class="footer w1200">
-          <div class="title">
-            <h3></h3>
-          </div>
-
-          </div>
+        </div>
         </div>
       </div>
     </div>
-  </div>
 
-<script>
 
-  layui.config({
-    base: '../res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
-  }).use(['mm','laypage','jquery'],function(){
-      var laypage = layui.laypage,$ = layui.$;
-     mm = layui.mm;
+
+
+
+
+
+
+
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+    <legend>自定义首页、尾页、上一页、下一页文本</legend>
+  </fieldset>
+
+  <div id="demo3"></div>
+  <script src="..\lib\layui\layui.js" charset="utf-8"></script>
+  <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+  <script>
+        layui.use(['laypage', 'layer'], function() {
+          var laypage = layui.laypage
+                  , layer = layui.layer;
+        }
+          //自定义首页、尾页、上一页、下一页文本
       laypage.render({
-        elem: 'demo0'
-        ,count: 100 //数据总数
+      elem: 'demo3'
+      ,count: 100
+      ,first: '首页'
+      ,last: '尾页'
+      ,prev: '<em>←</em>'
+      ,next: '<em>→</em>'
       });
+  </script>
 
 
-      $('body').on('click','*[data-content]',function(){
-        $(this).addClass('active').siblings().removeClass('active')
-        var dataConte = $(this).attr('data-content');
-        $('*[cont]').each(function(i,item){
-          var itemCont = $(item).attr('cont');
-          console.log(item)
-          if(dataConte === itemCont){
-            $(item).removeClass('layui-hide');
-          }else{
-            $(item).addClass('layui-hide');
-          }
-        })
-      })
-});
-</script>
 
-
+   
 </body>
 </html>
