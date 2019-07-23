@@ -22,7 +22,7 @@ public class EncryptUtils {
         //生成的密文
         String ciphertext = new Md5Hash(password, salt, 3).toString();
 
-        String[] strings = new String[]{salt, ciphertext};
+        String[] strings = new String[]{ciphertext,salt};
 
         return strings;
     }

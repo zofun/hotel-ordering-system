@@ -148,8 +148,8 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL COMMENT '姓名',
   `username` varchar(50) NOT NULL COMMENT '用于登录的账号',
-  `password` varchar(100) NOT NULL COMMENT '密码',
-  `salt` varchar(50) NOT NULL COMMENT '用于加盐hash加密',
+  `password` varchar(255) NOT NULL COMMENT '密码',
+  `salt` varchar(255) NOT NULL COMMENT '用于加盐hash加密',
   `hotel` int(11) DEFAULT NULL COMMENT '所属酒店，一般客人该字段为空，工作人员才有',
   `isadmin` varchar(10) DEFAULT NULL COMMENT '是否是管理者的标记 1 是管理者；2是普通用户',
   PRIMARY KEY (`id`)
