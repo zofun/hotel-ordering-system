@@ -6,58 +6,56 @@
   <link rel="stylesheet" type="text/css" href="../css/main.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="renderer" content="webkit">
   <link rel="stylesheet" href="../lib/layui/css/layui.css"  media="all">
 </head>
 <body>
-<div class="site-nav-bg">
-  <div class="site-nav w1200">
-    <div class="sn-quick-menu">
-      <div class="login"><a href="login.html">登录</a></div>
-      <div class="login"><a href="register.html">注册</a></div>
-    </div>
-  </div>
-</div>
+
 <div>
-  <ul class="layui-nav style=" text-align="">
-    <img src="../images/logo.png" width="50" height="50">
+  <ul class="layui-nav" lay-filter="">
+    <img src="../images/mark.jpg" width="50" height="50">
+    <li class="layui-nav-item"><a href="FirstPage.html">首页</a></li>
+    <li class="layui-nav-item layui-this"><a href="ShowPage.html">选房详情</a></li>
+    <li class="layui-nav-item"><a href="">附近</a></li>
     <li class="layui-nav-item">
-      <a href="FirstPage.html">首页</a>
+      <a href="javascript:;">解决方案</a>
+      <dl class="layui-nav-child"> <!-- 二级菜单 -->
+        <dd><a href="">移动模块</a></dd>
+        <dd><a href="">后台模版</a></dd>
+        <dd><a href="">电商平台</a></dd>
+      </dl>
     </li>
-    <li class="layui-nav-item">
-      <a href="ShowPage.html">选房详情</a>
+    <li class="layui-nav-item"><a href="">社区</a></li>
+    <li style="float: right;padding-top: 20px;">
+      <div style="float: right">
+        <span class="login"><a href="login.html" style="color: rgba(255,255,255,.7);">登录</a></span>
+        <span class="login"><a href="register.html" style="color:rgba(255,255,255,.7);">注册</a></span>
+      </div>
     </li>
-    <li class="layui-nav-item">
-      <a href="#">附近</a>
-    </li>
+
   </ul>
 </div>
 
-
-  <div class="header">
-    <div class="headerLayout w1200">
-      <div class="headerCon">
-        <div class="mallSearch">
-          <form action="" class="layui-form" novalidate>
-            <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入理想的条件">
-            <button class="layui-btn" lay-submit lay-filter="formDemo">
-                <i class="layui-icon layui-icon-search"></i>
-            </button>
-            <input type="hidden" name="" value="">
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="content content-nav-base ShowPage-content">
+  <div class="content content-nav-base ShowPage-content" style="padding-bottom:40px; ">
     <div id="list-cont">
 
         <div class="banner">
-          <ul class="texts">
+          <div class="layui-form-item" style="float: right;padding: 20px 10px;margin-right: 150px;">
+            <div class="layui-inline layui-form" style="width:300px;margin-right: 0;">
+              <select name="modules" lay-verify="required" lay-search="" id="test_user"  lay-filter="test_user" >
+                <option value="">输入理想的条件</option>
+              </select>
+            </div>
+          </div>
+          <ul class="texts" style="font-size: 18px;color: rebeccapurple;font-family: 楷体">
             <p>有些地方住过一次，就会是一辈子的记忆。</p>
             <p>Some places once lived, will be a lifetime memory. </p>
           </ul>
+          <ul class="texts" style="font-size: 18px;color: darkslategrey;padding-left: 350px;font-family: 楷体">
+            <p>最好的生活是用心甘情愿的态度，过一种随遇而安的生活。</p>
+            <p>The best life is use of willing attitude, a happy-go-lucky life.</p>
+          </ul>
+
         </div>
       <div class="product-list-box">
         <div class="product-list w1200">  
@@ -73,7 +71,7 @@
                 <div class="text-box">
                   <p class="title">MituHome</p>
                   <p class="plic">
-                    <img src="../images/house1.jpg" alt="" style="float:left" width="300" height="300">位于春熙路商圈,出门即是成都远洋太古里,快捷却不拥堵喧闹,能让您闲庭信步,步行至春熙路地铁站仅需2分钟,周边齐全的公交车站,方便的交通路线让您尽享成都旅游特色｡
+                    <img src="../images/house1.jpg" alt="" style="float:left" width="280" height="300">位于春熙路商圈,出门即是成都远洋太古里,快捷却不拥堵喧闹,能让您闲庭信步,步行至春熙路地铁站仅需2分钟,周边齐全的公交车站,方便的交通路线让您尽享成都旅游特色｡
                     <br><span class="Ori-pic">￥365.00</span>
                     <br><span class="discount">8折</span>
                   </p>
@@ -85,9 +83,10 @@
                 <div class="text-box">
                   <p class="title">火烈鸟双人房</p>
                   <p class="plic">
-                    <img src="../images/house2.jpg" alt="" style="float:left" width="300" height="300">房屋紧靠太古里春熙路,步行到太古里2分钟,步行到春熙路9分种,随时享受春熙路太古里的风情､美食､购物等;小区东边紧靠成都的母亲河府河,河边可以散步喝茶感受休闲成都;步行十来分钟到达成都年轻人最喜欢的水津街和九眼桥的酒吧一条街,体验夜成都和成都的音乐及休闲文化。
-                    <br><span class="discount">9折</span>
+                    <img src="../images/house2.jpg" alt="" style="float:left" width="280" height="300">房屋紧靠太古里春熙路,步行到太古里2分钟,步行到春熙路9分种,随时享受春熙路太古里的风情､美食､购物等;小区东边紧靠成都的母亲河府河,河边可以散步喝茶感受休闲成都;步行十来分钟到达成都年轻人最喜欢的水津街和九眼桥的酒吧一条街,体验夜成都和成都的音乐及休闲文化。
                     <br><span class="Ori-pic">￥277.00</span>
+                    <br><span class="discount">9折</span>
+
                   </p>
                 </div>
               </div>
@@ -97,7 +96,7 @@
                 <div class="text-box">
                   <p class="title">性价比之王</p>
                   <p class="plic">
-                    <img src="../images/house3.jpg" alt="" style="float:left" width="300" height="300">私人影享，私人影院投影仪，可以做饭；交通便利，近地铁口，3个站到春熙路太古里。
+                    <img src="../images/house3.jpg" alt="" style="float:left" width="280" height="300">私人影享，私人影院投影仪，可以做饭；交通便利，近地铁口，3个站到春熙路太古里。
                     <br><span class="Ori-pic">￥208.00</span>
                     <br><span class="discount">5折</span>
                   </p>
@@ -109,7 +108,7 @@
                 <div class="text-box">
                   <p class="title">特色名宿</p>
                   <p class="plic">
-                    <img src="../images/house4.jpg" alt="" style="float:left" width="300" height="300">楼下就是成都最繁华的太古里,步行几分钟可到地铁站｡这里是你探寻成都顶级餐厅与本地美食的理想起点｡顶级餐厅,高档川菜,火锅串串,网红美食店,均距离你几步之遥，和食物相关的幸福感不过几分钟的距离｡
+                    <img src="../images/house4.jpg" alt="" style="float:left" width="280" height="300">楼下就是成都最繁华的太古里,步行几分钟可到地铁站｡这里是你探寻成都顶级餐厅与本地美食的理想起点｡顶级餐厅,高档川菜,火锅串串,网红美食店,均距离你几步之遥，和食物相关的幸福感不过几分钟的距离｡
                     <br><span class="Ori-pic">￥169.00</span>
                     <br><span class="discount">7折</span>
                   </p>
@@ -121,41 +120,52 @@
         </div>
         </div>
       </div>
-    </div>
+  </div>
 
 
 
 
 
 
-
-
-
-  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-    <legend>自定义首页、尾页、上一页、下一页文本</legend>
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+<!--    <legend>翻页</legend>-->
   </fieldset>
-
-  <div id="demo3"></div>
-  <script src="../lib/layui/layui.js" charset="utf-8"></script>
-  <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="..\lib\layui\layui.js" charset="utf-8"></script>
+  <div id="demo3" style="padding-left: 350px;"></div>
   <script>
         layui.use(['laypage', 'layer'], function() {
           var laypage = layui.laypage
                   , layer = layui.layer;
-        }
           //自定义首页、尾页、上一页、下一页文本
-      laypage.render({
-      elem: 'demo3'
-      ,count: 100
-      ,first: '首页'
-      ,last: '尾页'
-      ,prev: '<em>←</em>'
-      ,next: '<em>→</em>'
-      });
+          laypage.render({
+            elem: 'demo3'
+            , count: 100
+            , first: '首页'
+            , last: '尾页'
+            , prev: '<em>←</em>'
+            , next: '<em>→</em>'
+          });
+        });
   </script>
 
+  <script>
+    //Demo
+    layui.use('form', function(){
+      var form = layui.form;
 
+      //监听提交
+      form.on('submit(formDemo)', function(data){
+        layer.msg(JSON.stringify(data.field));
+        return false;
+      });
+    });
 
-   
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+      var element = layui.element;
+
+      //…
+    });
+  </script>
 </body>
 </html>
