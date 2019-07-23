@@ -1,69 +1,33 @@
 package com.web.core.pojo;
 
-
-/**
- * Created by Administrator on 2017/10/10.
- */
-
-
 public class Permission {
-    private int id;
-    private String token;
-    /**资源url**/
-    private String url;
-    /**权限说明**/
-    private String description;
-    /**所属角色编号**/
-    private int roleId;
+    private Integer id;
 
-    public int getId() {
+    private String potence;
+
+    private Integer roleId;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getToken() {
-        return token;
+    public String getPotence() {
+        return potence;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setPotence(String potence) {
+        this.potence = potence == null ? null : potence.trim();
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
-    }
-
-    @Override
-    public String toString() {
-        return "PermissionPojo{" +
-                "id=" + id +
-                ", token='" + token + '\'' +
-                ", url='" + url + '\'' +
-                ", description='" + description + '\'' +
-                ", roleId=" + roleId +
-                '}';
     }
 }

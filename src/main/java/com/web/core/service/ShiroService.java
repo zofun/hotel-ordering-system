@@ -7,11 +7,12 @@ import java.util.List;
 
 public interface ShiroService {
     /**
-     * 根据账号获取账号密码
+     * 根据账号获取用户
      * @param username
      * @return UserPojo
      */
     User getUserByUserName(String username);
+
 
     /**
      * 根据账号获取该账号的权限
