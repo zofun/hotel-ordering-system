@@ -1,5 +1,9 @@
 package com.web.core.pojo;
 
+
+/**
+ * @author TCW
+ */
 public class Role {
     private Integer id;
 
@@ -39,5 +43,16 @@ public class Role {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleName='" + roleName + '\'' +
+                ", roleMsg='" + roleMsg + '\'' +
+                ", userId=" + userId +
+                '}';
     }
 }

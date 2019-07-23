@@ -1,5 +1,8 @@
 package com.web.core.pojo;
 
+/**
+ * @author TCW
+ */
 public class Permission {
     private Integer id;
 
@@ -29,5 +32,14 @@ public class Permission {
 
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
+    }
+
+    @Override
+    public String toString() {
+        return "Permission{" +
+                "id=" + id +
+                ", potence='" + potence + '\'' +
+                ", roleId=" + roleId +
+                '}';
     }
 }

@@ -2,6 +2,10 @@ package com.web.core.pojo;
 
 import java.util.Date;
 
+
+/**
+ * @author TCW
+ */
 public class Order {
     private Integer id;
 
@@ -81,5 +85,19 @@ public class Order {
 
     public void setCheckInTime(Date checkInTime) {
         this.checkInTime = checkInTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", status='" + status + '\'' +
+                ", checkOutTime=" + checkOutTime +
+                ", orderTime=" + orderTime +
+                ", time=" + time +
+                ", roomId=" + roomId +
+                ", checkInTime=" + checkInTime +
+                '}';
     }
 }

@@ -1,3 +1,4 @@
+import com.web.core.mapper.ShiroMapper;
 import com.web.core.mapper.UserMapper;
 import com.web.core.pojo.User;
 import org.junit.Test;
@@ -17,11 +18,20 @@ public class daoTest {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private ShiroMapper shiroMapper;
+
     @Test
     public void testDao(){
         List<User> users = userMapper.queryAll(0, 5);
         for (User u:users){
             System.out.println("--->"+u.toString());
         }
+    }
+
+
+    public void testShiroDao(){
+        User user = shiroMapper.getUserByUserName("123456");
+        System.out.println(user.toString());
     }
 }

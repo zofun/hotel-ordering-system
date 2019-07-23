@@ -52,4 +52,15 @@ public class Statistics {
     public void setNewUserNum(Integer newUserNum) {
         this.newUserNum = newUserNum;
     }
+
+    @Override
+    public String toString() {
+        return "Statistics{" +
+                "id=" + id +
+                ", day=" + day +
+                ", orderNum=" + orderNum +
+                ", serviceNum=" + serviceNum +
+                ", newUserNum=" + newUserNum +
+                '}';
+    }
 }

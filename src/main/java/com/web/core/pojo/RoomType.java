@@ -1,5 +1,9 @@
 package com.web.core.pojo;
 
+
+/**
+ * @author TCW
+ */
 public class RoomType {
     private Integer id;
 
@@ -89,5 +93,21 @@ public class RoomType {
 
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
+    }
+
+
+    @Override
+    public String toString() {
+        return "RoomType{" +
+                "id=" + id +
+                ", roomType='" + roomType + '\'' +
+                ", price='" + price + '\'' +
+                ", num=" + num +
+                ", hotelId=" + hotelId +
+                ", desc='" + desc + '\'' +
+                ", descUrl='" + descUrl + '\'' +
+                ", isrecommend='" + isrecommend + '\'' +
+                ", capacity=" + capacity +
+                '}';
     }
 }

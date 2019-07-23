@@ -2,6 +2,10 @@ package com.web.core.pojo;
 
 import java.util.Date;
 
+
+/**
+ * @author TCW
+ */
 public class Service {
     private Integer id;
 
@@ -61,5 +65,17 @@ public class Service {
 
     public void setRoomId(Integer roomId) {
         this.roomId = roomId;
+    }
+
+    @Override
+    public String toString() {
+        return "Service{" +
+                "id=" + id +
+                ", serviceMsg='" + serviceMsg + '\'' +
+                ", time=" + time +
+                ", userId=" + userId +
+                ", status='" + status + '\'' +
+                ", roomId=" + roomId +
+                '}';
     }
 }

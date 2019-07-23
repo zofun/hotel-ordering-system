@@ -1,5 +1,9 @@
 package com.web.core.pojo;
 
+
+/**
+ * @author TCW
+ */
 public class Room {
     private Integer id;
 
@@ -39,5 +43,16 @@ public class Room {
 
     public void setRoomTypeId(Integer roomTypeId) {
         this.roomTypeId = roomTypeId;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id=" + id +
+                ", roomNo='" + roomNo + '\'' +
+                ", status='" + status + '\'' +
+                ", roomTypeId=" + roomTypeId +
+                '}';
     }
 }

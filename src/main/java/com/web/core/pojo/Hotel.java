@@ -1,5 +1,8 @@
 package com.web.core.pojo;
 
+/**
+ * @author TCW
+ */
 public class Hotel {
     private Integer id;
 
@@ -39,5 +42,15 @@ public class Hotel {
 
     public void setStarLevel(String starLevel) {
         this.starLevel = starLevel == null ? null : starLevel.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "id=" + id +
+                ", hotelName='" + hotelName + '\'' +
+                ", subbranch='" + subbranch + '\'' +
+                ", starLevel='" + starLevel + '\'' +
+                '}';
     }
 }

@@ -1,5 +1,9 @@
 package com.web.core.pojo;
 
+
+/**
+ * @author TCW
+ */
 public class User {
     private Integer id;
 
@@ -69,5 +73,18 @@ public class User {
 
     public void setIsadmin(String isadmin) {
         this.isadmin = isadmin == null ? null : isadmin.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", hotel=" + hotel +
+                ", isadmin='" + isadmin + '\'' +
+                '}';
     }
 }
