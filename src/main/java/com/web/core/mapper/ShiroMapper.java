@@ -1,13 +1,17 @@
 package com.web.core.mapper;
 
 import com.web.core.pojo.Permission;
+import com.web.core.pojo.Role;
 import com.web.core.pojo.User;
 
 import java.util.List;
 
+/**
+ * @author TCW
+ */
 public interface ShiroMapper {
     /**
-     * 根据账号获取账号密码
+     * 根据账号获取用户
      * @param username
      * @return UserPojo
      */
@@ -21,9 +25,9 @@ public interface ShiroMapper {
     List<Permission> getPermissionsByRoleId(int roleId);
 
     /**
-     * 根据userId获取角色id
+     * 根据userId获取角色
      * @param id
-     * @return LIST
+     * @return Role
      */
-    List<Integer> getUserRoleByUserId(int id);
+    Role getUserRoleByUserId(int id);
 }

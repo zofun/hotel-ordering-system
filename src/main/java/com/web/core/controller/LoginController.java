@@ -2,7 +2,7 @@ package com.web.core.controller;
 
 
 import com.web.core.pojo.User;
-import com.web.core.service.TestService;
+
 import org.apache.shiro.*;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -18,9 +18,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/user")
 public class LoginController {
-
-    @Autowired
-    private TestService testService;
 
     @RequestMapping(value = "/login")
     public String Login(String username, String password, HttpSession session, Model model){
@@ -84,10 +81,10 @@ public class LoginController {
     }
 
 
-    @RequiresPermissions("/readData")
+   /* @RequiresPermissions("/readData")
     @RequestMapping("test01")
     public void test(){
         System.out.println("shiro进入");
         testService.test();
-    }
+    }*/
 }
