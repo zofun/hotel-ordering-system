@@ -1,0 +1,62 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 7,
+  "data": [{
+    "id": 1,
+    "subbranch": "一级分店",
+    "roomNo": "15-8",
+    "roomType": "普通单间",
+    "status": "未入住",
+    "orderTime":"2019年7月5日",
+    "check-out":"true"
+  }, {
+    "id": 2,
+    "subbranch": "二级分店",
+    "roomNo": "15-8",
+    "roomType": "豪华单间",
+    "status": "已入住",
+    "orderTime":"2019年7月5日",
+    "check-out":"false"
+  }, {
+    "id": 3,
+    "subbranch": "一级分店",
+    "roomNo": "15-8",
+    "roomType": "普通单间",
+    "status": "已入住",
+    "orderTime":"2019年7月5日",
+    "check-out":"false"
+  }, {
+    "id": 4,
+    "subbranch": "二级分店",
+    "roomNo": "15-8",
+    "roomType": "普通单间",
+    "status": "未入住",
+    "orderTime":"2019年7月5日",
+    "check-out":"false"
+  }, {
+    "id": 5,
+    "subbranch": "三级分店",
+    "roomNo": "15-8",
+    "roomType": "普通单间",
+    "status": "已入住",
+    "orderTime":"2019年7月5日",
+    "check-out":"false"
+  }, {
+    "id": 6,
+    "subbranch": "二级分店",
+    "roomNo": "15-8",
+    "roomType": "普通单间",
+    "status": "已入住",
+    "orderTime":"2019年7月5日",
+    "check-out":"false"
+  }, {
+    "id": 7,
+    "subbranch": "二级分店",
+    "roomNo": "15-8",
+    "roomType": "普通单间",
+    "status": "已入住",
+    "orderTime":"2019年7月5日",
+    "check-out":"false"
+  }]
+}

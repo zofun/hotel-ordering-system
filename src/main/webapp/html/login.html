@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/lib/layui/css/layui.css">
     <link rel="stylesheet" href="/css/sign.css">
     <script>(window.top === window.self) || (window.top.location.href = window.self.location.href);</script>
+    <script type = "text/javascript" src = "../js/checkvcCode.js"></script>
 </head>
 <body class="layui-unselect lau-sign-body">
 
@@ -29,16 +30,19 @@
     <div class="layui-form-item">
         <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i> 验证码</label>
         <div class="layui-input-block lau-sign-code">
-            <input type="text" name="captcha" placeholder="请输入图形验证码" autocomplete="off" class="layui-input">
-            <img src="https://www.oschina.net/action/user/captcha" alt="图形验证码" class="lau-sign-captcha">
+            <input type="text" name="captcha" id="input" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            <input type="button"  id="code" onclick="createCode()" placeholder="请输入图形验证码" autocomplete="off"  class="lau-sign-captcha">
+
+            <input type="button" value="验证"  onclick = "validate()" autocomplete="off" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
         <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
-        <a class="lau-sign-forgot lau-sign-link" href="/html/forgot.html">忘记密码？</a>
+        <!--<a class="lau-sign-forgot lau-sign-link" href="/html/user/forgot.html">忘记密码？</a>-->
     </div>
     <div class="layui-form-item">
-        <button type="button" class="layui-btn layui-btn-fluid" lay-submit lay-filter="login">登 陆</button>
+        <button type="button" href="#" class="layui-btn layui-btn-fluid" lay-submit lay-filter="login">登 陆</button>
     </div>
     <div class="layui-form-item lau-sign-other">
 
