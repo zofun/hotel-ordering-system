@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更改角色</title>
+    <link rel="stylesheet" href="../../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+
+<div class="layui-layout-body" style="background-color: #f2f2f2;height: 500px">
+
+    <div class="layui-card layui-col-lg8 layui-col-lg-offset2">
+        <div class="layui-card-header"></div>
+        <div class="layui-card-body">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">选择角色</label>
+                    <div class="layui-input-block">
+                        <select name="role" lay-verify="required">
+                            <option value=""></option>
+                            <option value="0">超级管理员</option>
+                            <option value="1">普通管理员</option>
+                            <option value="2">普通店员</option>
+                            <option value="3">店长</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit="" lay-filter="setmyinfo">确认修改</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
+<script src="../../lib/layui/layui.js"></script>
+<script src="../../js/common.js"></script>
+<script>
+    layui.use(['element', 'form'], function () {
+        var element = layui.element;
+        var form = layui.form;
+
+    });
+</script>
+
+</body>
+</html>

@@ -36,12 +36,7 @@
 </div>
 
 <script type="text/html" id="barDemo">
-    <select name="city" lay-verify="">
-        <option value="010">请选择</option>
-        <option value="010">普通员工</option>
-        <option value="021">超级管理员</option>
-        <option value="0571">分店长</option>
-    </select>
+    <button class="layui-btn layui-btn-sm" lay-event="changeRole">更改角色</button>
 </script>
 <script src="../../lib/layui/layui.js"></script>
 <script src="../../js/common.js"></script>
@@ -52,23 +47,38 @@
         var form = layui.form;
         var upload = layui.upload;
 
-        table = layui.table;
+        var table = layui.table;
         table.render({
             elem: '#table'
-            , url: base_url + '/testJson/roomTypeData.json'
+            , url: base_url + '/testJson/roleManData.json'
             , toolbar: '#toolbarDemo'
-            , title: '客房类型表'
+            , title: '角色分配表'
             , cols: [[
                 {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'name', title: '姓名', width: 100}
-                , {field: 'username', title: '用户名', width: 120, sort: true}
-                , {field: 'subbranch ', title: '所属分店', width: 140}
-                , {field: 'role', title: '当前角色', width: 110, unresize: true}
+                , {field: 'name', title: '姓名', width: 130}
+                , {field: 'username', title: '用户名', width: 180, sort: true}
+                , {field: 'subbranch', title: '所属分店', width: 180}
+                , {field: 'role', title: '当前角色', width: 140, unresize: true}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 170}
 
             ]]
             , page: true
             , id: 'dataTable'
+
+        });
+
+
+        table.on('tool(test)', function(obj){
+
+            var data = obj.data;
+            layer.msg(obj.data.id+'更改角色');
+
+            layer.open({
+                title:'更改角色',
+                type: 2,
+                area: ['500px', '500px'],
+                content: base_url+'/html/admin/changeRole.html'
+            });
 
         });
     });

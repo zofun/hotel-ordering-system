@@ -1,0 +1,42 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [{
+    "id": 1,
+    "name": "瓜皮队友",
+    "username": "201731062416",
+    "subbranch": "二分店",
+    "role": "超级管理员"
+  }, {
+    "id": 2,
+    "name": "瓜皮队友",
+    "username": "201731062416",
+    "subbranch": "二分店",
+    "role": "超级管理员"
+  },{
+    "id": 3,
+    "name": "瓜皮队友",
+    "username": "201731062416",
+    "subbranch": "二分店",
+    "role": "超级管理员"
+  },{
+    "id": 4,
+    "name": "瓜皮队友",
+    "username": "201731062416",
+    "subbranch": "二分店",
+    "role": "超级管理员"
+  },{
+    "id": 5,
+    "name": "瓜皮队友",
+    "username": "201731062416",
+    "subbranch": "二分店",
+    "role": "超级管理员"
+  },{
+    "id": 6,
+    "name": "瓜皮队友",
+    "username": "201731062416",
+    "subbranch": "二分店",
+    "role": "超级管理员"
+  }]
+}
