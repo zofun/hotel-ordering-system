@@ -19,8 +19,6 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user")
 public class LoginController {
 
-
-
     @RequestMapping(value = "/login")
     public String Login(String username, String password, HttpSession session, Model model){
         if(username==null){
