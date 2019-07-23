@@ -1,5 +1,7 @@
 import com.web.core.mapper.ShiroMapper;
 import com.web.core.mapper.UserMapper;
+import com.web.core.pojo.Permission;
+import com.web.core.pojo.Role;
 import com.web.core.pojo.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,8 +32,18 @@ public class daoTest {
     }
 
 
+    @Test
     public void testShiroDao(){
+
         User user = shiroMapper.getUserByUserName("123456");
         System.out.println(user.toString());
+
+        Role role = shiroMapper.getUserRoleByUserId(user.getId());
+        System.out.println(role.toString());
+
+        List<Permission> permissions = shiroMapper.getPermissionsByRoleId(role.getId());
+        for (Permission p: permissions){
+            System.out.println(p.toString());
+        }
     }
 }
