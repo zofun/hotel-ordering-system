@@ -24,7 +24,6 @@ public class daoTest {
 
     @Autowired
     private ShiroMapper shiroMapper;
-    
 
 
     @Test
@@ -65,8 +64,10 @@ public class daoTest {
         System.out.println("查询到的盐值"+salt);
 
         String pwd = EncryptUtils.getInputPasswordCiph(password,salt);
-
         System.out.println("重新计算得到的密文"+pwd);
         System.out.println(pwd.equals(result[0]));
+
+
+
     }
 }

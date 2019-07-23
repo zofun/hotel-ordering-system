@@ -26,4 +26,12 @@ public interface UserMapper {
      * @return
      */
     String selectSaltByUsername(String username);
+
+
+    /**
+     * 判断username是否可用
+     * @param username 用户名
+     * @return
+     */
+    int selectCountByUsername(String username);
 }
