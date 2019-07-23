@@ -33,7 +33,7 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
 
         var that = $(this);
         that.attr('disabled', true).addClass('layui-btn-disabled');
-        $.post('/json/sms.json', {phone: phone, captcha: captcha}, function (json) {
+        $.post('../testJson/sms.json', {phone: phone, captcha: captcha}, function (json) {
             if (json.errcode == 0) {
                 tips.success(json.errmsg);
                 var expire = json.data.expire;
@@ -78,7 +78,7 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
         $.post('/json/forgot.json', data.field, function (json) {
             if (json.errcode == 0) {
                 tips.success(json.errmsg, function () {
-                    location.href = '/html/login.html';
+                    location.href = '../html/login.html';
                 });
             } else {
                 tips.error(json.errmsg);

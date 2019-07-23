@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <link rel="stylesheet" href="../../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+<div class="layui-layout-body" style="background-color: #f2f2f2">
+    <div class="layui-card admin-header">
+        <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
+            <a href="#">主页</a>
+            <span lay-separator="-"></span>
+            <a href="#">全部订单</a>
+        </div>
+    </div>
+
+    <div class="layui-fluid" style="margin-top:10px">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-header ">全部订单</div>
+
+                    <div class="layui-card-body">
+                        <div class="layui-col-lg10 layui-col-lg-offset1">
+                            <table class="layui-hide" id="table" lay-filter="test"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/html" id="toolbarDemo">
+    <div class="demoTable">
+        搜索：
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="searchKey" autocomplete="off">
+        </div>
+        <button class="layui-btn" data-type="reload"  onclick="search()" >搜索</button>
+    </div>
+</script>
+
+
+<script type="text/html" id="checkboxTpl">
+    <input type="checkbox" name="lock" value="{{d.id}}" title="退房" lay-filter="lockDemo" {{ d.recommend == 'true' ? 'checked' : '' }} }}>
+</script>
+<script src="../../lib/layui/layui.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
+<script src="../../js/common.js"></script>
+
+<script>
+    var table;
+    layui.use('table', function() {
+        table = layui.table;
+        var $=layui.$;
+        var form=layui.form;
+
+
+        table.render({
+            elem: '#table'
+            , url: base_url + '/testJson/orderData.json'
+            , toolbar: '#toolbarDemo'
+            , title: '订单表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                , {field: 'subbranch', title: '分店类型', width: 120}
+                , {field: 'roomNo', title: '房间号', width: 120, sort: true}
+                , {field: 'roomType', title: '房间类型', width: 120, sort: true}
+                , {field: 'status', title: '状态', width: 120, sort: true}
+                , {field: 'orderTime', title: '下单时间', width: 120, sort: true}
+                , {field: 'check-out', title:'退房', width:110, templet: '#checkboxTpl', unresize: true}
+            ]]
+            , page: true
+            ,id:'orderTable'
+        });
+
+        //监听单元格编辑
+        table.on('edit(test)', function(obj){
+            var value = obj.value //得到修改后的值
+                ,data = obj.data //得到所在行所有键值
+                ,field = obj.field; //得到字段
+            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value+'全部'+JSON.stringify(data));
+        });
+        //处理点击事件
+        form.on('checkbox(lockDemo)', function(obj){
+            layer.msg(this.value+':'+obj.elem.checked);
+        });
+
+
+    });
+
+    /**
+     * 按名字搜索功能，会携带page,limit,user参数查询后端然后渲染
+     */
+    function search(){
+        console.log('点击');
+        table.reload('orderTable',{
+            where: { //设定异步数据接口的额外参数，任意设
+                'user':$('#searchKey').val()
+            }
+            ,page: {
+                curr: 1
+            }
+        })
+    }
+
+</script>
+
+</body>
+</html>
