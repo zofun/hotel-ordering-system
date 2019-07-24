@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user")
 public class LoginController {
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/login01")
     public String Login(String username, String password, HttpSession session, Model model){
         if(username==null){
             model.addAttribute("message", "账号不为空");
@@ -52,7 +52,7 @@ public class LoginController {
         return "test";
     }
 
-    @RequestMapping("/check")
+    @RequestMapping("/check01")
     public String check(HttpSession session){
 
         Subject subject=(Subject)session.getAttribute("user");
