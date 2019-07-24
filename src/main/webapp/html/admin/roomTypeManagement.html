@@ -115,6 +115,19 @@
                 ,data = obj.data //得到所在行所有键值
                 ,field = obj.field; //得到字段
             layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value+'全部'+JSON.stringify(data));
+
+            $.ajax({
+                type:"post",
+                contentType:"application/json",
+                dataType:"json",
+                url:base_url+'/roomType/changeRoomTypeInfo',
+                data:JSON.stringify(data),
+                success:function (d) {
+
+                    console.log(d)
+
+                }
+            })
         });
         //处理推荐点击事件
         form.on('checkbox(lockDemo)', function(obj){

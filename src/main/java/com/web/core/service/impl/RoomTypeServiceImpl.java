@@ -51,4 +51,9 @@ public class RoomTypeServiceImpl implements RoomTypeService {
         }
 
     }
+
+    @Override
+    public void updateRoomTypeInfo(RoomTypeInfo info) {
+        roomTypeMapper.updateRoomTypeInfo(info);
+    }
 }
