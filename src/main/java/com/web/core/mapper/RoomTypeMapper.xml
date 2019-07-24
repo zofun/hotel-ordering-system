@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.core.mapper.RoomTypeMapper">
+   <select id="queryRoomTypeList" resultType="roomTypeInfo">
+     select r.id,r.price, r.desc_url, r.desc, r.capacity, r.num, r.isrecommend, r.room_type
+,h.subbranch
+from room_type as r inner join hotel as h where r.hotel_id=h.id ORDER BY  r.id  limit #{0},#{1}
+   </select>
+
+    <select id="queryRoomTypeCount" resultType="int">
+        select count(*) from room_type
+    </select>
+
+
+</mapper>

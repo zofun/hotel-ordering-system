@@ -1,10 +1,8 @@
 import com.web.core.mapper.HotelMapper;
+import com.web.core.mapper.RoomTypeMapper;
 import com.web.core.mapper.ShiroMapper;
 import com.web.core.mapper.UserMapper;
-import com.web.core.pojo.Hotel;
-import com.web.core.pojo.Permission;
-import com.web.core.pojo.Role;
-import com.web.core.pojo.User;
+import com.web.core.pojo.*;
 import com.web.utils.EncryptUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +27,10 @@ public class daoTest {
 
     @Autowired
     private HotelMapper hotelMapper;
+
+
+    @Autowired
+    private RoomTypeMapper roomTypeMapper;
 
     @Test
     public void testShiroDao(){
@@ -84,4 +86,14 @@ public class daoTest {
         }
 
     }
+
+    @Test
+    public void roomTypeDao(){
+        List<RoomTypeInfo> infos = roomTypeMapper.queryRoomTypeList(1,10);
+        for (RoomTypeInfo info:infos){
+            System.out.println(info);
+        }
+    }
+
+
 }

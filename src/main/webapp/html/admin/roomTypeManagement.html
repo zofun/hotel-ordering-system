@@ -70,7 +70,7 @@
 
 </script>
 <script type="text/html" id="checkboxTpl">
-    <input type="checkbox" name="lock" value="{{d.id}}" title="推荐" lay-filter="lockDemo" {{ d.recommend == 'true' ? 'checked' : '' }} }}>
+    <input type="checkbox" name="lock" value="{{d.id}}" title="推荐" lay-filter="lockDemo" {{ d.isrecommend == '1' ? 'checked' : '' }} }}>
 </script>
 
 <script src="../../lib/layui/layui.js"></script>
@@ -89,22 +89,23 @@
         table = layui.table;
         table.render({
             elem: '#table'
-            , url: base_url + '/testJson/roomTypeData.json'
+            , url: base_url + '/roomType/gerRoomTypeList'
             , title: '客房类型表'
             ,toolbar:true
             , cols: [[
                  {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'bran', title: '所属分店', width: 100}
+                , {field: 'subbranch', title: '所属分店', width: 100}
                 , {field: 'roomType', title: '房间类型', width: 140}
-                , {field: 'sum', title: '数量', width: 120, sort: true}
-                , {field: 'numOfPeo', title: '可容纳人数', width: 120, sort: true,edit: 'text'}
+                , {field: 'num', title: '数量', width: 120, sort: true}
+                , {field: 'capacity', title: '可容纳人数', width: 120, sort: true,edit: 'text'}
                 , {field: 'price', title: '价格',edit: 'text', width: 80}
-                , {field: 'mes', title: '描述信息', width: 300,edit: 'text'}
-                ,{field:'recommend', title:'是否推荐', width:110, templet: '#checkboxTpl', unresize: true}
+                , {field: 'desc', title: '描述信息', width: 300,edit: 'text'}
+                ,{field:'isrecommend', title:'是否推荐', width:110, templet: '#checkboxTpl', unresize: true}
 
             ]]
             , page: true
             ,id:'dataTable'
+            ,height: 500
 
         });
 
