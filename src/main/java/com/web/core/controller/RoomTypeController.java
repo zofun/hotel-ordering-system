@@ -34,4 +34,13 @@ public class RoomTypeController {
        return "1";
     }
 
+
+    @RequestMapping(value = "changeRecommendStatus",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String changeRecommendStatus(int id,String status){
+
+        roomTypeService.changeRecommendStatus(id,status);
+        return "1";
+    }
+
 }

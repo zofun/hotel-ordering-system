@@ -23,4 +23,12 @@ public interface RoomTypeService {
      */
     void updateRoomTypeInfo(RoomTypeInfo info);
 
+
+    /**
+     * 修改指定的房型的推荐状态
+     * @param id
+     * @param value
+     */
+    void changeRecommendStatus(int id,String value);
+
 }

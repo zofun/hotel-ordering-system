@@ -17,5 +17,9 @@ from room_type as r inner join hotel as h where r.hotel_id=h.id ORDER BY  r.id  
         update room_type set capacity=#{homeTypeInfo.capacity} ,price= #{homeTypeInfo.price} , `desc`=#{homeTypeInfo.desc} where id=#{homeTypeInfo.id}
     </update>
 
+    <update id="updateRecommend">
+        update room_type set isrecommend = #{1} where id=#{0}
+    </update>
+
 
 </mapper>

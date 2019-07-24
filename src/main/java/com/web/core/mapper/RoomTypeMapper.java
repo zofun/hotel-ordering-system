@@ -23,9 +23,17 @@ public interface RoomTypeMapper {
 
     /**
      * 更改room_type信息
-     * @param info
+     * @param homeTypeInfo
      */
     void updateRoomTypeInfo(@Param("homeTypeInfo") RoomTypeInfo homeTypeInfo);
+
+
+    /**
+     * 更新指定id的isrecommend的值
+     * @param id
+     * @param value
+     */
+    void updateRecommend(int id,String value);
 
 
 }

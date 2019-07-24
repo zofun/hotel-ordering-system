@@ -56,4 +56,13 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     public void updateRoomTypeInfo(RoomTypeInfo info) {
         roomTypeMapper.updateRoomTypeInfo(info);
     }
+
+    @Override
+    public void changeRecommendStatus(int id, String value) {
+        if ("true".equals(value)){
+            roomTypeMapper.updateRecommend(id,"1");
+        }else {
+            roomTypeMapper.updateRecommend(id,"0");
+        }
+    }
 }

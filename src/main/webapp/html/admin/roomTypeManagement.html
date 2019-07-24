@@ -111,10 +111,9 @@
 
         //监听单元格编辑
         table.on('edit(test)', function(obj){
-            var value = obj.value //得到修改后的值
-                ,data = obj.data //得到所在行所有键值
-                ,field = obj.field; //得到字段
-            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value+'全部'+JSON.stringify(data));
+
+            var data = obj.data //得到所在行所有键值
+
 
             $.ajax({
                 type:"post",
@@ -124,14 +123,33 @@
                 data:JSON.stringify(data),
                 success:function (d) {
 
-                    console.log(d)
+                    if(d===1){
+                        layer.msg('修改成功')
+                    }
 
                 }
             })
         });
         //处理推荐点击事件
         form.on('checkbox(lockDemo)', function(obj){
-            layer.msg(this.value+':'+obj.elem.checked);
+
+            var id=this.value;
+            var status=obj.elem.checked;
+            $.ajax({
+                type:"post",
+
+                url:base_url+'/roomType/changeRecommendStatus',
+                data:{
+                    'id':id,
+                    'status':status
+                },
+                success:function (d) {
+                    if(d===1){
+                        layer.msg('修改成功')
+                    }
+
+                }
+            })
         });
 
         var uploadInst = upload.render({
