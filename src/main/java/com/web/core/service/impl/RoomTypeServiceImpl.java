@@ -2,6 +2,7 @@ package com.web.core.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.web.core.mapper.RoomTypeMapper;
+import com.web.core.pojo.RoomType;
 import com.web.core.pojo.RoomTypeInfo;
 import com.web.core.service.RoomTypeService;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -64,5 +65,11 @@ public class RoomTypeServiceImpl implements RoomTypeService {
         }else {
             roomTypeMapper.updateRecommend(id,"0");
         }
+    }
+
+    @Override
+    public void addRoomType(RoomType roomType) {
+
+        roomTypeMapper.insertRoomType(roomType);
     }
 }

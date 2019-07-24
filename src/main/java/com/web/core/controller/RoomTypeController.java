@@ -1,6 +1,7 @@
 package com.web.core.controller;
 
 
+import com.web.core.pojo.RoomType;
 import com.web.core.pojo.RoomTypeInfo;
 import com.web.core.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,15 @@ public class RoomTypeController {
     public String changeRecommendStatus(int id,String status){
 
         roomTypeService.changeRecommendStatus(id,status);
+        return "1";
+    }
+
+
+
+    @ResponseBody
+    @RequestMapping("addRoomType")
+    public String addRoomType(RoomType roomType){
+        roomTypeService.addRoomType(roomType);
         return "1";
     }
 

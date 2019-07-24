@@ -1,5 +1,6 @@
 package com.web.core.service;
 
+import com.web.core.pojo.RoomType;
 import com.web.core.pojo.RoomTypeInfo;
 
 import java.io.IOException;
@@ -30,5 +31,12 @@ public interface RoomTypeService {
      * @param value
      */
     void changeRecommendStatus(int id,String value);
+
+
+    /**
+     * 创建新的房间类型
+     * @param roomType
+     */
+    void addRoomType(RoomType roomType);
 
 }

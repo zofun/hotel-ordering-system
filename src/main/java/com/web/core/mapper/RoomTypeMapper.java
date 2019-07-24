@@ -1,5 +1,6 @@
 package com.web.core.mapper;
 
+import com.web.core.pojo.RoomType;
 import com.web.core.pojo.RoomTypeInfo;
 import org.apache.ibatis.annotations.Param;
 
@@ -34,6 +35,13 @@ public interface RoomTypeMapper {
      * @param value
      */
     void updateRecommend(int id,String value);
+
+
+    /**
+     * 插入
+     * @param roomType
+     */
+    void insertRoomType(RoomType roomType);
 
 
 }

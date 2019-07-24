@@ -40,13 +40,13 @@
                             <input class="layui-input"  id="price" autocomplete="off" style="width: 80px" placeholder="价格">
                         </div>
                         <div class="layui-inline">
-                            <textarea name="desc" placeholder="描述信息" class="layui-textarea" style="width: 220px" id="mes" ></textarea>
+                            <textarea name="desc" placeholder="描述信息" id="desc" class="layui-textarea" style="width: 220px" id="mes" ></textarea>
 
                         </div>
                         <button type="button" class="layui-btn" id="uploader">
                             <i class="layui-icon">&#xe67c;</i>上传图片
                         </button>
-                        <button class="layui-btn"  >新建</button>
+                        <button class="layui-btn" onclick="createRoomType()">新建</button>
                     </div>
                     <div class="layui-col-lg12 ">
                         <table class="layui-hide" id="table" lay-filter="test"></table>
@@ -80,6 +80,9 @@
 
 <!--表格处理代码-->
 <script>
+
+
+    var url='';
 
     layui.use(['element','table','upload'], function(){
         var element = layui.element;
@@ -154,11 +157,18 @@
 
         var uploadInst = upload.render({
             elem: '#uploader' //绑定元素
-            ,url: base_url+'/upload/' //上传接口
+            ,url: base_url+'/uploader' //上传接口
             ,size: 1024*5 //限定大小
             ,accept:'images'
             ,done: function(res){
-                layer.msg('上传成功')
+
+                if(res.code==="1"){
+                    url=res.url;
+                    layer.msg('上传成功');
+                }else {
+                    layer.msg(res.msg)
+                }
+
             }
             ,error: function(){
                 //请求异常回调
@@ -204,6 +214,45 @@
         });
 
     });
+
+
+    function  createRoomType() {
+        var roomType=$('#roomType').val();
+       var subbranch=$('#selectBox').val();
+       var capacity=$('#numOfPeo').val();
+       var price=$('#price').val();
+       var desc=$('#desc').val();
+
+       if (url===''){
+           layer.msg('请上传图片');
+       } else if(roomType===''||subbranch===''||capacity===''||price===''||desc===''){
+           layer.msg('请确保表单的完整性');
+       }else {
+           $.ajax({
+               type:"post",
+
+               url:base_url+'/roomType/addRoomType',
+               data:{
+                   'roomType':roomType,
+                   'price':price,
+                   'desc':desc,
+                   'capacity':capacity,
+                   'descUrl':url,
+                   'hotelId':subbranch
+
+               },
+               success:function (d) {
+                   if(d==="1"){
+                       layer.msg('创建成功')
+                   }
+
+               }
+           })
+       }
+
+
+
+    };
 
 
 </script>

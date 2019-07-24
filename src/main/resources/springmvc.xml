@@ -39,7 +39,16 @@
         </property>
     </bean>
 
-    <!--定义不被拦截的静态资源-->
+
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置上传文件最大尺寸，单位为B -->
+		<property name="maxUploadSize" value="1000000000" />
+	</bean>
+
+
+
+	<!--定义不被拦截的静态资源-->
 	<mvc:resources location="/" mapping="/**/*.html"/>
 	<mvc:resources location="/" mapping="/**/*.js"/>
 	<mvc:resources location="/" mapping="/**/*.css"/>

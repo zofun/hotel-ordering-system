@@ -93,6 +93,15 @@ public class daoTest {
         for (RoomTypeInfo info:infos){
             System.out.println(info);
         }
+
+        RoomType roomType=new RoomType();
+        roomType.setCapacity(1);
+        roomType.setDesc("这是一个介绍哈哈哈");
+        roomType.setDescUrl("/image/jjjj");
+        roomType.setPrice("120");
+        roomType.setHotelId(1);
+        roomType.setRoomType("沙雕专用房子");
+        roomTypeMapper.insertRoomType(roomType);
     }
 
 

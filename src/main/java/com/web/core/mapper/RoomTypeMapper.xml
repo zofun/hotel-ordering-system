@@ -21,5 +21,9 @@ from room_type as r inner join hotel as h where r.hotel_id=h.id ORDER BY  r.id  
         update room_type set isrecommend = #{1} where id=#{0}
     </update>
 
+    <insert id="insertRoomType" parameterType="roomType">
+        insert into room_type (room_type, price, num, hotel_id, `desc`, desc_url, isrecommend, capacity)
+        values (#{roomType},#{price},0,#{hotelId},#{desc},#{descUrl},0,#{capacity})
+    </insert>
 
 </mapper>
