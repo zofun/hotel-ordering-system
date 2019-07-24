@@ -5,6 +5,7 @@
     <title>客房管理</title>
     <link rel="stylesheet" href="../../lib/layui/css/layui.css">
     <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.css">
 </head>
 <body>
 <body class="layui-layout-body" style="background-color: #f2f2f2">
@@ -23,6 +24,20 @@
             <div class="layui-card">
                 <div class="layui-card-header ">客房管理</div>
 
+                <div style="margin-left: 20px">
+                    新建客房：
+                    <div class="layui-inline">
+                        <input class="layui-input"  id="roomId" autocomplete="off" placeholder="房间编号">
+                    </div>
+                    <div class="layui-inline">
+
+                        <select class="form-control"  style="width: 200px" id="selectBox">
+                        <option>请选择</option>
+                        </select>
+                    </div>
+                    <button class="layui-btn">创建</button>
+
+                </div>
                 <div class="layui-card-body">
                     <div class="layui-col-lg10 layui-col-lg-offset1">
                         <table class="layui-hide" id="table" lay-filter="test"></table>
@@ -34,61 +49,107 @@
 </div>
 
 </body>
-<script type="text/html" id="toolbarDemo">
-    <div>
-        新建客房：
-        <div class="layui-inline">
-            <input class="layui-input"  id="roomId" autocomplete="off" placeholder="房间编号">
-        </div>
-        <div class="layui-inline">
 
-            <select name="roomType" lay-verify=""  lay-search>
-                <option value="">请选择房间类型</option>
-                <option value="010">普通单人间</option>
-                <option value="021">豪华双人间</option>
-                <option value="0571">豪华单人间</option>
-            </select>
-        </div>
-        <button class="layui-btn">创建</button>
 
-    </div>
+
+<!--复选框模板-->
+<script type="text/html" id="hotelSelectTpl">
+
+    {{#  layui.each(d.hotelList, function(index, item){ }}
+    <option value="{{item.id}}">{{item.subbranch}}</option>
+    {{#  });
+    }}
+
 </script>
 <script type="text/html" id="checkboxTpl">
 
-    <input type="checkbox" name="lock" value="{{d.id}}" title="关闭" lay-filter="lockDemo" {{ d.closeStatus == 'true' ? 'checked' : '' }} }}>
+    <input type="checkbox" name="lock" value="{{d.id}}" title="关闭" lay-filter="lockDemo" {{ d.status == '关闭' ? 'checked' : '' }} }}>
 </script>
 <script src="../../lib/layui/layui.js"></script>
 <script src="../../js/common.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
+<script src="../../lib/bootstrap/js/bootstrap.js"></script>
 <script>
     layui.use(['element','table'], function(){
         var element = layui.element;
         var form=layui.form;
 
         table = layui.table;
-        table.render({
-            elem: '#table'
-            , url: base_url + '/testJson/roomData.json'
-            , toolbar: '#toolbarDemo'
-            , title: '客房表'
-            , cols: [[
-                {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'roomId', title: '房间号', width: 140,sort: true}
-                , {field: 'roomType', title: '房间类型', width: 140, sort: true}
-                , {field: 'status', title: '房间状态', width: 120, sort: true}
-                ,{field:'recommend', title:'是否关闭', width:110, templet: '#checkboxTpl', unresize: true}
 
-            ]]
-            , page: true
-            ,id:'dataTable'
-
-        });
         //处理推荐关闭房间
         form.on('checkbox(lockDemo)', function(obj){
             layer.msg(this.value+':'+obj.elem.checked);
         });
 
+
+        $.ajax({
+            type:'get',
+            url:base_url+'/user/getUserInfo',
+
+            success:function (data) {
+                var subbranchId= data.hotel;
+                console.log(subbranchId);
+                table.render({
+                    elem: '#table'
+                    , url: base_url + '/room/getRoomList'
+                    , toolbar: true
+                    , title: '客房表'
+                    , cols: [[
+                        {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                        , {field: 'roomNo', title: '房间号', width: 140,sort: true}
+                        , {field: 'roomType', title: '房间类型', width: 140, sort: true}
+                        , {field: 'status', title: '房间状态', width: 120, sort: true}
+                        ,{field:'status', title:'是否关闭', width:110, templet: '#checkboxTpl', unresize: true}
+
+                    ]]
+                    , page: true
+                    ,id:'dataTable'
+                    , where:{
+                        subbranchId:subbranchId
+                    }
+
+                });
+            }
+        })
+
     });
 
+
+
+</script>
+<!--模板引擎代码-->
+<script>
+    layui.use(['laytpl','form'],function () {
+
+        var form=layui.form;
+        laytpl=layui.laytpl;
+
+        var data;
+
+        $.ajax({
+            type:"post",
+            processData:false,
+            contentType:false,
+            url:base_url+'/hotel/queryAllHotel',
+            dataType:"json",
+            success:function (d) {
+
+
+                var getTpl=hotelSelectTpl.innerHTML;
+                var view = document.getElementById('selectBox');
+                laytpl(getTpl).render(d, function(html){
+                    console.log('模板');
+                    console.log(html);
+                    view.innerHTML = html;
+
+                });
+
+
+
+            }
+        });
+
+    });
 </script>
 
 </body>

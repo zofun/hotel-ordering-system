@@ -1,7 +1,4 @@
-import com.web.core.mapper.HotelMapper;
-import com.web.core.mapper.RoomTypeMapper;
-import com.web.core.mapper.ShiroMapper;
-import com.web.core.mapper.UserMapper;
+import com.web.core.mapper.*;
 import com.web.core.pojo.*;
 import com.web.utils.EncryptUtils;
 import org.junit.Test;
@@ -31,6 +28,10 @@ public class daoTest {
 
     @Autowired
     private RoomTypeMapper roomTypeMapper;
+
+
+    @Autowired
+    private RoomMapper roomMapper;
 
     @Test
     public void testShiroDao(){
@@ -102,6 +103,20 @@ public class daoTest {
         roomType.setHotelId(1);
         roomType.setRoomType("沙雕专用房子");
         roomTypeMapper.insertRoomType(roomType);
+    }
+
+
+    @Test
+    public void roomDao(){
+
+        List<RoomInfo> infos = roomMapper.queryRoomList(0, 10, 1);
+
+        for (RoomInfo r:infos){
+            System.out.println(r.toString());
+        }
+
+        int count = roomMapper.queryRoomNumOfSubBranch(1);
+        System.out.println(count);
     }
 
 

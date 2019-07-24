@@ -2,29 +2,21 @@ package com.web.core.controller;
 
 
 import com.web.core.service.HotelService;
-import com.web.core.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * @author TCW
- */
-@RequestMapping("room")
+@RequestMapping("hotel")
 @Controller
-public class RoomController {
-
-
+public class HotelContorller {
     @Autowired
-    private RoomService roomService;
+    private HotelService hotelService;
 
-    @RequestMapping("getRoomList")
+    @RequestMapping(value = "queryAllHotel",produces = "application/json;charset=utf-8")
     @ResponseBody
-    public String getRoomList(int page,int limit,int subbranchId){
-
-        String json = roomService.getRoomList(page, limit, subbranchId);
-        System.out.println(json);
+    public String queryAllHotel(){
+        String json=hotelService.getHotelList();
         return json;
     }
 }
