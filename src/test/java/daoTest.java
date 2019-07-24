@@ -1,5 +1,7 @@
+import com.web.core.mapper.HotelMapper;
 import com.web.core.mapper.ShiroMapper;
 import com.web.core.mapper.UserMapper;
+import com.web.core.pojo.Hotel;
 import com.web.core.pojo.Permission;
 import com.web.core.pojo.Role;
 import com.web.core.pojo.User;
@@ -25,6 +27,8 @@ public class daoTest {
     @Autowired
     private ShiroMapper shiroMapper;
 
+    @Autowired
+    private HotelMapper hotelMapper;
 
     @Test
     public void testShiroDao(){
@@ -68,6 +72,16 @@ public class daoTest {
         System.out.println(pwd.equals(result[0]));
 
 
+
+    }
+
+    @Test
+    public void testHotelDao(){
+
+        List<Hotel> hotels = hotelMapper.queryAll();
+        for (Hotel h:hotels){
+            System.out.println(h.toString());
+        }
 
     }
 }

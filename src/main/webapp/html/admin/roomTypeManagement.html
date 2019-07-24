@@ -5,10 +5,10 @@
     <title>客房类型管理</title>
     <link rel="stylesheet" href="../../lib/layui/css/layui.css">
     <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.css">
 </head>
-<body>
-<body class="layui-layout-body" style="background-color: #f2f2f2">
 
+<body class="layui-layout-body" style="background-color: #f2f2f2">
 <div class="layui-card admin-header">
     <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
         <a href="#">主页</a>
@@ -23,6 +23,31 @@
                 <div class="layui-card-header ">客房类型管理</div>
 
                 <div class="layui-card-body">
+                    <div>
+                        新建类型：
+                        <div class="layui-inline">
+                            <input class="layui-input"  id="roomType" autocomplete="off" style="width: 140px" placeholder="房间类型">
+                        </div>
+                        <div class="layui-inline">
+                            <select name="bran"   style="width: 160px" id="selectBox"  class="form-control">
+                                <option value="0">请选择</option>
+                            </select>
+                        </div>
+                        <div class="layui-inline">
+                            <input class="layui-input"  id="numOfPeo" autocomplete="off"  style="width: 80px" placeholder="房间人数">
+                        </div>
+                        <div class="layui-inline">
+                            <input class="layui-input"  id="price" autocomplete="off" style="width: 80px" placeholder="价格">
+                        </div>
+                        <div class="layui-inline">
+                            <textarea name="desc" placeholder="描述信息" class="layui-textarea" style="width: 220px" id="mes" ></textarea>
+
+                        </div>
+                        <button type="button" class="layui-btn" id="uploader">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                        <button class="layui-btn"  >新建</button>
+                    </div>
                     <div class="layui-col-lg12 ">
                         <table class="layui-hide" id="table" lay-filter="test"></table>
                     </div>
@@ -33,47 +58,27 @@
 </div>
 
 
-</body>
-<script type="text/html" id="toolbarDemo">
-    <div>
-        新建类型：
-        <div class="layui-inline">
-            <input class="layui-input"  id="roomType" autocomplete="off" style="width: 140px"placeholder="房间类型">
-        </div>
-        <div class="layui-inline">
-            <select name="bran" lay-verify=""  style="width: 160px" lay-search>
-                <option value="">请选择所属分店</option>
-                <option value="010">一分店</option>
-                <option value="021">二分店</option>
-                <option value="0571">三分店</option>
-            </select>
-        </div>
-        <div class="layui-inline">
-            <input class="layui-input"  id="numOfPeo" autocomplete="off"  style="width: 80px" placeholder="房间人数">
-        </div>
-        <div class="layui-inline">
-            <input class="layui-input"  id="price" autocomplete="off" style="width: 80px" placeholder="价格">
-        </div>
-        <div class="layui-inline">
-            <textarea name="desc" placeholder="描述信息" class="layui-textarea" style="width: 220px" id="mes" ></textarea>
 
-        </div>
-        <button type="button" class="layui-btn" id="uploader">
-            <i class="layui-icon">&#xe67c;</i>上传图片
-        </button>
-        <button class="layui-btn"  >新建</button>
 
-    </div>
+<!--复选框模板-->
+<script type="text/html" id="hotelSelectTpl">
+
+    {{#  layui.each(d.hotelList, function(index, item){ }}
+    <option value="{{item.id}}">{{item.subbranch}}</option>
+    {{#  });
+    }}
+
 </script>
 <script type="text/html" id="checkboxTpl">
-
     <input type="checkbox" name="lock" value="{{d.id}}" title="推荐" lay-filter="lockDemo" {{ d.recommend == 'true' ? 'checked' : '' }} }}>
 </script>
 
 <script src="../../lib/layui/layui.js"></script>
 <script src="../../js/common.js"></script>
 <script src="../../lib/jquery/jquery.js"></script>
+<script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
 
+<!--表格处理代码-->
 <script>
 
     layui.use(['element','table','upload'], function(){
@@ -85,8 +90,8 @@
         table.render({
             elem: '#table'
             , url: base_url + '/testJson/roomTypeData.json'
-            , toolbar: '#toolbarDemo'
             , title: '客房类型表'
+            ,toolbar:true
             , cols: [[
                  {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
                 , {field: 'bran', title: '所属分店', width: 100}
@@ -128,7 +133,47 @@
                 layer.msg('上传失败')
             }
         })
+
+
+
     });
+
+</script>
+<!--模板引擎代码-->
+<script>
+    layui.use(['laytpl','form'],function () {
+
+        var form=layui.form;
+        laytpl=layui.laytpl;
+
+        var data;
+
+        $.ajax({
+            type:"post",
+            processData:false,
+            contentType:false,
+            url:base_url+'/room/queryAllHotel',
+            dataType:"json",
+            success:function (d) {
+
+
+                var getTpl=hotelSelectTpl.innerHTML;
+                var view = document.getElementById('selectBox');
+                laytpl(getTpl).render(d, function(html){
+                    console.log('模板')
+                    console.log(html);
+                    view.innerHTML = html;
+
+                });
+
+
+
+            }
+        });
+
+    });
+
+
 </script>
 </body>
 </html>

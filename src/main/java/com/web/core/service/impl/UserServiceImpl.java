@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
         String salt = userMapper.selectSaltByUsername(user.getUsername());
         //计算加密后的密码
         String ciphertext=EncryptUtils.getInputPasswordCiph(user.getPassword(),salt);
+        //将加密后的密码存入user对象
         user.setPassword(ciphertext);
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
