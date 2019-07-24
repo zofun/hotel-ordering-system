@@ -34,4 +34,11 @@ public interface UserMapper {
      * @return
      */
     int selectCountByUsername(String username);
+
+    /**
+     * 改变密码
+     * @param username
+     * @param passward
+     */
+    void changePwd(String username,String passward);
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.core.mapper.UserOrderMapper">
+    <select id="getAllOrder" parameterType="int" resultType="order">
+        select * from `order` where user_id = #{0}
+    </select>
+
+    <insert id="addUserOrder" parameterType="int">
+        insert * from `order` where user_id = #{0}
+    </insert>
+
+</mapper>

@@ -5,6 +5,7 @@
     <title>修改密码</title>
     <link rel="stylesheet" href="../../lib/layui/css/layui.css">
     <link rel="stylesheet" href="../../css/admin.css">
+    <script type = "text/javascript" src = "../../js/reCode.js"></script>
 </head>
 <body>
 <div class="layui-layout-body" style="background-color: #f2f2f2">
@@ -34,10 +35,13 @@
                                 <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">验证码</label>
-                                <div class="layui-input-inline">
-                                    <input type="password" name="type" placeholder="请输入图形验证码" style="width: 190px"  lay-verify="nickname" autocomplete="off"  class="layui-input">
-                                    <img src="https://www.oschina.net/action/user/captcha" alt="图形验证码" class="lau-sign-captcha">
+                                <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i> 验证码</label>
+                                <div class="layui-input-block lau-sign-code">
+                                    <input type="text" name="captcha" id="input" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                                    <!--<input type="text"  id="captcha" name="captcha"  placeholder="请输入图形验证码" autocomplete="off"  class="lau-sign-captcha">-->
+                                    <img src = "/vccode"  name = "captcha" autocomplete="off"  class="lau-sign-captcha" id="imgVerify"  alt="更换验证码"/><a href="#" onclick="getVerify();" rel ="nofollow">看不清，换一张</a>
+
+                                    <!--<input type="button" value="验证"  onclick = "validate()" autocomplete="off" class="layui-input">-->
                                 </div>
                                 <div class="layui-form-mid layui-word-aux layui-inline" ></div>
                             </div>

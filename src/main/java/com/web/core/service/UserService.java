@@ -21,4 +21,13 @@ public interface UserService{
      */
     boolean login(User user, HttpSession session);
 
+
+    /**
+     * 修改用户密码
+     * @param user
+     * @param session
+     * @return
+     */
+    void changePwd(User user, HttpSession session);
+
 }

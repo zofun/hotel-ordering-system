@@ -65,4 +65,20 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    /**
+     * 实现修改密码，将session中传来的密码利用盐文加密，存入数据库中
+     * @param user
+     * @param session
+     * @return
+     */
+    @Override
+    public void changePwd(User user,HttpSession session) {
+        String salt = userMapper.selectSaltByUsername(session.getAttribute("passward").toString());
+        //计算加密后的密码
+        String ciphertext=EncryptUtils.getInputPasswordCiph(user.getPassword(),salt);
+        user.setPassword(ciphertext);
+        Subject subject = SecurityUtils.getSubject();
+        userMapper.changePwd(user.getUsername(),ciphertext);
+    }
 }

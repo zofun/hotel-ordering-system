@@ -27,13 +27,15 @@ public class UserController {
      */
     @RequestMapping("register")
     @ResponseBody
-    public String register(User user){
-
-
-        if (userService.register(user)){
-            return "1";
+    public String register(User user,HttpSession session){
+        /*从前端得到验证码，并且判断是否与产生的相等*/
+        if(session.getAttribute("captcha")==session.getAttribute("vcode")) {
+            if(userService.login(user,session)){
+                return "1";
+            }else{
+                return "0";
+            }
         }
-
         return "0";
     }
 
@@ -41,8 +43,10 @@ public class UserController {
     @RequestMapping("login")
     @ResponseBody
     public String login(User user, HttpSession session){
-        if(userService.login(user,session)){
-            return "1";
+        if(session.getAttribute("captcha")==session.getAttribute("vcode")) {
+            if (userService.login(user, session)) {
+                return "1";
+            }
         }
         return "0";
     }
