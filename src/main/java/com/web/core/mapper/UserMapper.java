@@ -3,6 +3,7 @@ package com.web.core.mapper;
 import com.web.core.pojo.User;
 
 import javax.management.Query;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface UserMapper {
@@ -37,8 +38,8 @@ public interface UserMapper {
 
     /**
      * 改变密码
-     * @param username
+     * @param user
      * @param passward
      */
-    void changePwd(String username,String passward);
+    void changePwd(User user, String passward);
 }
