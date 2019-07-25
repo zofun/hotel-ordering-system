@@ -25,9 +25,8 @@ public interface UserService{
     /**
      * 修改用户密码
      * @param user
-     * @param session
      * @return
      */
-    void changePwd(User user, HttpSession session);
+    void changePwd(User user,String newpassword);
 
 }

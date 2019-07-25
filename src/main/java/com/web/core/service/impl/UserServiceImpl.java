@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService {
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
         try {
             subject.login(token);
+            System.out.println("登陆成功");
             session.setAttribute("User",subject.getPrincipal());
             return  true;
         }catch (UnknownAccountException e){
@@ -67,18 +68,18 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 实现修改密码，将session中传来的密码利用盐文加密，存入数据库中
+     * 实现修改密码，将s传来的密码利用盐值加密，存入数据库中
      * @param user
-     * @param session
      * @return
      */
     @Override
-    public void changePwd(User user,HttpSession session) {
-        String salt = userMapper.selectSaltByUsername(session.getAttribute("passward").toString());
+    public void changePwd(User user,String newpassword) {
+
         //计算加密后的密码
-        String ciphertext=EncryptUtils.getInputPasswordCiph(user.getPassword(),salt);
-        user.setPassword(ciphertext);
+        String[] ciphertext=EncryptUtils.encryptPassword(newpassword);
+        user.setPassword(ciphertext[0]);
+        user.setSalt(ciphertext[1]);
         Subject subject = SecurityUtils.getSubject();
-        userMapper.changePwd(user.getUsername(),ciphertext);
+        userMapper.changePwd(user,user.getPassword());
     }
 }

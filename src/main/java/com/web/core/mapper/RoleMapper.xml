@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.core.mapper.RoleMapper">
+
+
+    <select id="queryAllRole" resultType="role">
+        select * from role order by id limit #{0},#{1}
+
+    </select>
+
+    <select id="queryRoleCount" resultType="int">
+        select count(*) from role
+    </select>
+
+
+</mapper>

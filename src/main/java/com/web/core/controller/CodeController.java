@@ -32,6 +32,8 @@ public class CodeController {
         HttpSession session = req.getSession();
         session.setAttribute("vcode", codeMap.get("code").toString());
 
+        System.out.println(codeMap.get("code").toString());
+
         // 禁止图像缓存
         resp.setHeader("Pragma", "no-cache");
         resp.setHeader("Cache-Control", "no-cache");

@@ -36,7 +36,7 @@ public class Permission {
 
     @Override
     public String toString() {
-        return "Permission{" +
+        return "PermissionMapper{" +
                 "id=" + id +
                 ", potence='" + potence + '\'' +
                 ", roleId=" + roleId +

@@ -1,5 +1,6 @@
 import com.web.core.mapper.*;
 import com.web.core.pojo.*;
+import com.web.core.service.ShiroService;
 import com.web.utils.EncryptUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,19 +34,19 @@ public class daoTest {
     @Autowired
     private RoomMapper roomMapper;
 
+
+    @Autowired
+    private ServiceMapper serviceMapper;
+
+
+
     @Test
     public void testShiroDao(){
 
-        User user = shiroMapper.getUserByUserName("123456");
+        User user = shiroMapper.getUserByUserName("111");
         System.out.println(user.toString());
 
-        Role role = shiroMapper.getUserRoleByUserId(user.getId());
-        System.out.println(role.toString());
 
-        List<Permission> permissions = shiroMapper.getPermissionsByRoleId(role.getId());
-        for (Permission p: permissions){
-            System.out.println(p.toString());
-        }
     }
 
     @Test
@@ -133,6 +134,15 @@ public class daoTest {
 
         int i = roomMapper.queryByRoomNo("A*66", 2);
         System.out.println(i);
+    }
+
+
+    @Test
+    public void ServiceDao(){
+        List<ServiceInfo> infos = serviceMapper.queryServiceInfoOfSubbranch(0,1,1);
+        for (ServiceInfo info:infos){
+            System.out.println(info.toString());
+        }
     }
 
 

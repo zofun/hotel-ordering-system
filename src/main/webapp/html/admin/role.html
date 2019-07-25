@@ -84,12 +84,12 @@
         table = layui.table;
         table.render({
             elem: '#table'
-            , url: base_url + '/testJson/roleData.json'
+            , url: base_url + '/role/getRoleInfo'
             , toolbar: '#toolbarDemo'
             , title: '角色表'
             , cols: [[
                 {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true,fixed: 'left'}
-                , {field: 'name', title: '角色名', width: 120}
+                , {field: 'roleName', title: '角色名', width: 120}
                 , {field: 'readRoomType', title: '查看房型', width: 110,sort: true, templet: '#readRoomTypeCheckbox'}
                 , {field: 'manRoomType', title: '管理房型', width: 110,sort: true ,templet: '#manRoomTypeCheckbox'}
                 , {field: 'readRoom', title: '查看客房', width: 110,sort: true,templet: '#readRoomCheckbox'}

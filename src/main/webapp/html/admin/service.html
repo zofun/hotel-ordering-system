@@ -23,7 +23,7 @@
                 <div class="layui-card-header ">服务管理</div>
 
                 <div class="layui-card-body">
-                    <div class="layui-col-lg10 layui-col-lg-offset1">
+                    <div class="layui-col-lg12">
                         <table class="layui-hide" id="table" lay-filter="test"></table>
                     </div>
                 </div>
@@ -32,12 +32,15 @@
     </div>
 </div>
 </body>
+
+
 <script type="text/html" id="checkboxTpl">
 
-    <input type="checkbox" name="lock" value="{{d.id}}" title="处理" lay-filter="lockDemo" {{ d.status == 'true' ? 'checked' : '' }} }}>
+    <input type="checkbox" name="lock" value="{{d.id}}" title="处理" lay-filter="lockDemo" {{ d.status == '已处理' ? 'checked' : '' }} }}>
 </script>
 
 <script src="../../lib/layui/layui.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
 <script src="../../js/common.js"></script>
 <script>
     layui.use(['element','table'], function(){
@@ -45,26 +48,80 @@
         var form=layui.form;
 
         table = layui.table;
-        table.render({
-            elem: '#table'
-            , url: base_url + '/testJson/serviceData.json'
-            , title: '服务表'
-            , cols: [[
-                {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'name', title: '客人姓名', width: 140,sort: true}
-                , {field: 'roomNo', title: '房间号', width: 160,sort: true}
-                , {field: 'serviceMsg', title: '服务要求', width: 450}
-                , {field: 'status', title: '状态',  width:110, templet: '#checkboxTpl', unresize: true,sort:true}
 
-            ]]
-            , page: true
-            ,id:'dataTable'
 
+        $.ajax({
+            type:'get',
+            url:base_url+'/user/getUserInfo',
+
+            success:function (data) {
+                var subbranchId= data.hotel;
+                console.log(subbranchId);
+                table.render({
+                    elem: '#table'
+                    , url: base_url + '/service/getServiceInfoList'
+                    , title: '服务表'
+                    , cols: [[
+                        {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                        , {field: 'name', title: '客人姓名', width: 140,sort: true}
+                        , {field: 'roomNo', title: '房间号', width: 160,sort: true}
+                        , {field: 'time', title: '下单时间', width: 160,sort: true}
+                        , {field: 'serviceMsg', title: '服务要求', width: 450}
+                        , {field: 'status', title: '状态',  width:110, templet: '#checkboxTpl', unresize: true,sort:true}
+
+                    ]]
+                    , page: true
+                    ,id:'dataTable'
+                    ,where:{
+                        subbranchId:subbranchId
+                    }
+
+                });
+            }
+        });
+
+        //处理按钮点击事件
+        form.on('checkbox(lockDemo)', function(obj) {
+
+            var id = this.value;
+            var status = obj.elem.checked;
+            $.ajax({
+                type:"post",
+
+                url:base_url+'/service/changeServiceStatus',
+                data:{
+                    'id':id,
+                    'status':status
+                },
+                success:function (d) {
+                    if(d=="1"){
+                        layer.msg('修改成功');
+                    }
+
+                }
+            })
         });
 
 
     });
+
+
+    /**
+     * json格式的data转为标准格式
+     * @param NewDtime
+     * @returns {string}
+     */
+    function formatDate(NewDtime) {
+        var dt = new Date(parseInt(NewDtime.slice(6, 19)));
+        var year = dt.getFullYear();
+        var month = dt.getMonth() + 1;
+        var date = dt.getDate();
+        var hour = dt.getHours();
+        var minute = dt.getMinutes();
+        var second = dt.getSeconds();
+        return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+    }
 </script>
 
-</body>
+
 </html>
