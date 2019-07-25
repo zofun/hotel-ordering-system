@@ -27,10 +27,15 @@ public class UserController {
      */
     @RequestMapping("register")
     @ResponseBody
-    public String register(User user,HttpSession session){
+    public String register(User user,String captcha,HttpSession session){
         /*从前端得到验证码，并且判断是否与产生的相等*/
-        if(session.getAttribute("captcha")==session.getAttribute("vcode")) {
-            if(userService.login(user,session)){
+        String str = session.getAttribute("vcode").toString();
+        System.out.println(str);
+        System.out.println(captcha);
+        if(str.equals(captcha)) {
+            System.out.println("验证码正确！！");
+            if(userService.register(user)){
+                System.out.println("可以进行注册！！！");
                 return "1";
             }else{
                 return "0";
@@ -42,9 +47,14 @@ public class UserController {
 
     @RequestMapping("login")
     @ResponseBody
-    public String login(User user, HttpSession session){
-        if(session.getAttribute("captcha")==session.getAttribute("vcode")) {
+    public String login(User user,String captcha, HttpSession session){
+        String str = session.getAttribute("vcode").toString();
+        System.out.println(str);
+        System.out.println(captcha);
+        if(str.equals(captcha)) {
+
             if (userService.login(user, session)) {
+
                 return "1";
             }
         }

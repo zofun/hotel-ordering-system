@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService {
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
         try {
             subject.login(token);
+            System.out.println("登陆成功");
             session.setAttribute("User",subject.getPrincipal());
             return  true;
         }catch (UnknownAccountException e){

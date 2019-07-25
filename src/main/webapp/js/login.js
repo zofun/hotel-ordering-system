@@ -4,6 +4,7 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
         $ = layui.$,
         tips = layui.tips;
 
+
     //刷新验证码
     var captchaImg = $('.lau-sign-captcha'), captchaSrc = captchaImg.attr('src');
     captchaImg.click(function () {
@@ -20,36 +21,41 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
     });
 
     //登陆
-    form.on('submit(login)', function (data) {
-        if (!/^[a-zA-Z0-9_]{4,16}$/.test(data.field.username)) {
-            tips.warning('用户名必须为5-16位数字/字母/下划线组成');
+    $('#login').click(function () {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        var captcha = $('#captcha').val();
+
+
+        if (!/^[a-zA-Z0-9_]{1,16}$/.test(username)) {
+            tips.warning('用户名必须为1-16位数字/字母/下划线组成');
             return false;
-        } else if (!/^\S{6,16}$/.test(data.field.password)) {
-            tips.warning('密码必须6-12位且不能出现空格');
+        } else if (!/^\S{1,16}$/.test(password)) {
+            tips.warning('密码必须1-12位且不能出现空格');
             return false;
-        } else if (!/^\S{4,}$/.test(data.field.captcha)) {
+        } else if (!/^\S{4,}$/.test(captcha)) {
             tips.warning('验证码格式不正确');
             return false;
-        }
+        } else(
+            $.ajax({
+                type:"post",
 
-        //登陆中
-        tips.loading('登陆中...', 0, -1);
+                url:'/user/login',
+                data:{
+                    'username':username,
+                    'password':password,
+                    'captcha' :captcha,
 
-        //发送登陆表单
-        $.post('/testJson/login.json', data.field, function (json) {
-            if (json.errcode == 0) {
-                tips.success(json.errmsg, function () {
-                    location.href = '/';
-                });
-            } else {
-                tips.error(json.errmsg, function () {
-                    captchaImg.attr('src', captchaSrc + '?_t=' + Math.random());
-                });
-            }
-        }, 'json');
+                },
+                success:function (d) {
+                    if(d==="1"){
+                        layer.msg('创建成功')
+                    }
 
-        return false;
+                }
+            })
+        )
+
     });
 
-    exports('login', {});
 });
