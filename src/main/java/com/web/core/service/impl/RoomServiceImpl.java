@@ -53,4 +53,14 @@ public class RoomServiceImpl implements RoomService {
         roomMapper.insertRoom(room);
         return true;
     }
+
+    @Override
+    public void closeOrOpenRoom(int id, String status) {
+        if("true".equals(status)){
+            roomMapper.updateRoomStatus(id,"关闭");
+        }else{
+            roomMapper.updateRoomStatus(id,"空闲");
+        }
+
+    }
 }

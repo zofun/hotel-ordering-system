@@ -40,4 +40,11 @@ public interface RoomMapper {
      * @param room
      */
     void insertRoom(Room room);
+
+    /**
+     * 更改房间的状态
+     * @param id
+     * @param status
+     */
+    void updateRoomStatus(int id,String status);
 }

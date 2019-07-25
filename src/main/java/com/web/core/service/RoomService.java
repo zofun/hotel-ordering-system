@@ -20,4 +20,12 @@ public interface RoomService {
      * @return
      */
     boolean addRoom(Room room);
+
+    /**
+     * 更改房间的开闭状态
+     * @param id
+     * @param status
+     * @return
+     */
+    void closeOrOpenRoom(int id,String status);
 }

@@ -76,9 +76,28 @@
 
         table = layui.table;
 
-        //处理推荐关闭房间
+        //处理关闭房间
         form.on('checkbox(lockDemo)', function(obj){
-            layer.msg(this.value+':'+obj.elem.checked);
+
+            var id=this.value;
+            var status=obj.elem.checked;
+
+            $.ajax({
+                type:"post",
+
+                url:base_url+'/room/changeRoomStatus',
+                data:{
+                    'id':id,
+                    'status':status
+
+                },
+                success:function (d) {
+                    if(d=="1"){
+                        layer.msg('修改成功');
+                    }
+
+                }
+            })
         });
 
 
