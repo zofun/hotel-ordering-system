@@ -33,6 +33,10 @@ public class daoTest {
     @Autowired
     private RoomMapper roomMapper;
 
+
+    @Autowired
+    private ServiceMapper serviceMapper;
+
     @Test
     public void testShiroDao(){
 
@@ -133,6 +137,15 @@ public class daoTest {
 
         int i = roomMapper.queryByRoomNo("A*66", 2);
         System.out.println(i);
+    }
+
+
+    @Test
+    public void ServiceDao(){
+        List<ServiceInfo> infos = serviceMapper.queryServiceInfoOfSubbranch(0,1,1);
+        for (ServiceInfo info:infos){
+            System.out.println(info.toString());
+        }
     }
 
 

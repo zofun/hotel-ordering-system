@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.core.mapper.ServiceMapper">
+
+    <select id="queryServiceInfoOfSubbranch" resultType="serviceInfo">
+        select s.id,s.service_msg,s.time,s.status,u.name,r.room_no from service as s inner join room as r inner join room_type as t inner join  user as u
+        where s.room_id=r.id and r.room_type_id=t.id and u.id=s.user_id and t.hotel_id=#{2} order by s.id limit #{0},#{1}
+    </select>
+    <select id="queryServiceCountOfSubbranch" resultType="int">
+        select count(*) from service as s inner join room as r inner join room_type as t
+    where s.room_id=r.id and r.room_type_id=t.id and t.hotel_id=#{0}
+    </select>
+    <update id="updateServiceStatus">
+        update service set status=#{1} where id=#{0}
+    </update>
+
+
+</mapper>
