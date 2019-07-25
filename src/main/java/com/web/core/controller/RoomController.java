@@ -1,6 +1,7 @@
 package com.web.core.controller;
 
 
+import com.web.core.pojo.Room;
 import com.web.core.service.HotelService;
 import com.web.core.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +28,21 @@ public class RoomController {
         System.out.println(json);
         return json;
     }
+
+
+    /**
+     * 添加房间
+     * @param room
+     * @return
+     */
+    @RequestMapping(value = "addRoom",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public  String addRoom(Room room){
+
+        if(roomService.addRoom(room)){
+            return "1";
+        }
+        return "0";
+    }
+
 }

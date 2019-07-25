@@ -1,6 +1,7 @@
 package com.web.core.service.impl;
 
 import com.web.core.mapper.RoomMapper;
+import com.web.core.pojo.Room;
 import com.web.core.pojo.RoomInfo;
 import com.web.core.service.RoomService;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -39,5 +40,17 @@ public class RoomServiceImpl implements RoomService {
             return "";
         }
 
+    }
+
+    @Override
+    public boolean addRoom(Room room) {
+
+        //判断门牌号是否重复
+        if(roomMapper.queryByRoomNo(room.getRoomNo(),room.getRoomTypeId())>0){
+            return false;
+        }
+
+        roomMapper.insertRoom(room);
+        return true;
     }
 }

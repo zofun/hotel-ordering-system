@@ -12,4 +12,12 @@
     <select id="queryRoomNumOfSubBranch" resultType="int">
         select count(*) from room as r inner join  room_type as t where r.room_type_id=t.id and t.hotel_id=#{0}
     </select>
+
+    <select id="queryByRoomNo" resultType="int">
+        select count(*) from room where room_no=#{0} and room_type_id=#{1}
+    </select>
+
+    <insert id="insertRoom" parameterType="room">
+        insert into room (room_no, status, room_type_id) values (#{roomNo},'空闲',#{roomTypeId})
+    </insert>
 </mapper>

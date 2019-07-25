@@ -124,6 +124,15 @@ public class daoTest {
 
         int count = roomMapper.queryRoomNumOfSubBranch(1);
         System.out.println(count);
+
+        Room room=new Room();
+        room.setRoomNo("A*66");
+        room.setRoomTypeId(2);
+
+        roomMapper.insertRoom(room);
+
+        int i = roomMapper.queryByRoomNo("A*66", 2);
+        System.out.println(i);
     }
 
 
