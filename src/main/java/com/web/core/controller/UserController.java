@@ -40,8 +40,9 @@ public class UserController {
             }else{
                 return "0";
             }
+        }else{
+            return "0";
         }
-        return "0";
     }
 
 
@@ -56,6 +57,8 @@ public class UserController {
 
                 return "1";
             }
+        }else {
+            return "2";
         }
         return "0";
     }
@@ -77,5 +80,18 @@ public class UserController {
         }
 
         return "error";
+    }
+
+    @RequestMapping(value = "forgot")
+    @ResponseBody
+    public String changePwd(User user,String newpassword,String captcha,HttpSession session){
+        String str = session.getAttribute("vcode").toString();
+        System.out.println(str);
+        System.out.println(captcha);
+        if(str.equals(captcha)) {
+            userService.changePwd(user,newpassword);
+            return "1";
+        }
+        return "0";
     }
 }
