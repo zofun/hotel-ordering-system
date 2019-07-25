@@ -58,4 +58,16 @@ public class RoleServiceImpl implements RoleService {
 
 
     }
+
+
+
+    @Override
+    public void changeRolesPermission(int roleId, String permission, String status) {
+            if ("true".equals(status)){
+                permissionMapper.addPermission(roleId,permission);
+            }else {
+                permissionMapper.delPermission(roleId,permission);
+            }
+
+    }
 }

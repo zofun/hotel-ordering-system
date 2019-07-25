@@ -113,7 +113,30 @@
         form.on('checkbox(lockDemo)', function(obj){
 
             layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+
+            var roleId=this.value;
+            var permission=this.name;
+            var status= obj.elem.checked;
+
+            $.ajax({
+                type:"post",
+
+                url:base_url+'/role/changeRolesPermission',
+                data:{
+                    'roleId':roleId,
+                    'permission':permission,
+                    'status':status
+
+                },
+                success:function (d) {
+                    if(d=="1"){
+                        layer.msg('修改成功');
+                    }
+
+                }
+            })
         });
+
 
 
 

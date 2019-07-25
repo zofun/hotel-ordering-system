@@ -20,4 +20,19 @@ public class RoleController {
         String json=roleService.getRoleList(page,limit);
         return json;
     }
+
+    /**
+     * 修改权限
+     * @param roleId
+     * @param permission
+     * @param status
+     * @return
+     */
+    @RequestMapping("changeRolesPermission")
+    @ResponseBody
+    public String changeRolesPermission(int roleId,String permission,String status){
+
+        roleService.changeRolesPermission(roleId,permission,status);
+        return "1";
+    }
 }

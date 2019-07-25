@@ -18,4 +18,5 @@ public interface RoleMapper {
      * @return
      */
     int queryRoleCount();
+
 }
