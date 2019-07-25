@@ -49,8 +49,7 @@ public class UserController {
     @ResponseBody
     public String login(User user,String captcha, HttpSession session){
         String str = session.getAttribute("vcode").toString();
-        System.out.println(str);
-        System.out.println(captcha);
+
         if(str.equals(captcha)) {
 
             if (userService.login(user, session)) {
