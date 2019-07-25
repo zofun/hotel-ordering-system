@@ -32,7 +32,7 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getUsername() {
@@ -40,7 +40,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getPassword() {
@@ -48,7 +48,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public String getSalt() {
@@ -56,7 +56,7 @@ public class User {
     }
 
     public void setSalt(String salt) {
-        this.salt = salt == null ? null : salt.trim();
+        this.salt = salt;
     }
 
     public Integer getHotel() {
@@ -72,7 +72,7 @@ public class User {
     }
 
     public void setIsadmin(String isadmin) {
-        this.isadmin = isadmin == null ? null : isadmin.trim();
+        this.isadmin = isadmin;
     }
 
     @Override
