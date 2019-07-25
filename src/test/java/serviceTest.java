@@ -1,4 +1,5 @@
 import com.web.core.service.HotelService;
+import com.web.core.service.RoleService;
 import com.web.core.service.RoomTypeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,10 @@ public class serviceTest {
     @Autowired
     private RoomTypeService roomTypeService;
 
+
+    @Autowired
+    private RoleService roleService;
+
     @Test
     public void hotelServiceTest(){
         String hotelList = hotelService.getHotelList();
@@ -26,6 +31,13 @@ public class serviceTest {
     @Test
     public void roomTypeServiceTest() throws IOException {
         String json=roomTypeService.getRoomTypeList(1,10);
+        System.out.println(json);
+    }
+
+
+    @Test
+    public void roleServiceTest(){
+        String json = roleService.getRoleList(1,10);
         System.out.println(json);
     }
 }

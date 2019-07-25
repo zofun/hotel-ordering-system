@@ -10,5 +10,5 @@ public interface RoleService {
      * 获取角色
      * @return
      */
-    List<RoleInfo> getRoleList();
+   String getRoleList(int page,int limit);
 }
