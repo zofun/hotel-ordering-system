@@ -11,5 +11,11 @@ public interface RoleMapper {
      * 查询所有的角色
      * @return
      */
-    List<Role> queryAllRole();
+    List<Role> queryAllRole(int begin,int limit);
+
+    /**
+     * 查询角色恶的数量
+     * @return
+     */
+    int queryRoleCount();
 }

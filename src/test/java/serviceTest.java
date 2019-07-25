@@ -1,5 +1,6 @@
 import com.web.core.pojo.User;
 import com.web.core.service.HotelService;
+import com.web.core.service.RoleService;
 import com.web.core.service.RoomTypeService;
 import com.web.core.service.UserService;
 import com.web.utils.EncryptUtils;
@@ -23,6 +24,10 @@ public class serviceTest {
 
     @Autowired
     private UserService userService;
+
+
+    @Autowired
+    private RoleService roleService;
 
     @Test
     public void hotelServiceTest(){
@@ -49,5 +54,12 @@ public class serviceTest {
         //userService.register(user);
 
         //userService.login(user);
+    }
+
+
+    @Test
+    public void roleServiceTest(){
+        String json = roleService.getRoleList(1,10);
+        System.out.println(json);
     }
 }

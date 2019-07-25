@@ -9,15 +9,16 @@ public class RoleInfo {
     private String roleName;
 
 
-    private String manRoomType=" ";
-    private String readRoom=" ";
-    private String manRoom=" ";
-    private String readSignIn=" ";
-    private String manSignIn=" ";
-    private String manRole=" ";
-    private String roleAllo=" ";
-    private String readService=" ";
-    private String manService=" ";
+    private String readRoomType="false";
+    private String manRoomType="false";
+    private String readRoom="false";
+    private String manRoom="false";
+    private String readSignIn="false";
+    private String manSignIn="false";
+    private String manRole="false";
+    private String roleAllo="false";
+    private String readService="false";
+    private String manService="false";
 
 
     public Integer getId() {
@@ -116,12 +117,21 @@ public class RoleInfo {
         this.manService = manService;
     }
 
+    public String getReadRoomType() {
+        return readRoomType;
+    }
+
+    public void setReadRoomType(String readRoomType) {
+        this.readRoomType = readRoomType;
+    }
+
     @Override
     public String toString() {
         return "RoleInfo{" +
                 "id=" + id +
                 ", roleMsg='" + roleMsg + '\'' +
                 ", roleName='" + roleName + '\'' +
+                ", readRoomType='" + readRoomType + '\'' +
                 ", manRoomType='" + manRoomType + '\'' +
                 ", readRoom='" + readRoom + '\'' +
                 ", manRoom='" + manRoom + '\'' +
