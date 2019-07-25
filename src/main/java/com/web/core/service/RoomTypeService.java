@@ -39,4 +39,12 @@ public interface RoomTypeService {
      */
     void addRoomType(RoomType roomType);
 
+
+    /**
+     * 获取指定分店的房型列表
+     * @param subbranchId
+     * @return
+     */
+    String getRoomTypeOfSubbranch(int subbranchId);
+
 }

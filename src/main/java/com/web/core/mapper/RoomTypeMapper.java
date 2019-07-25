@@ -44,4 +44,12 @@ public interface RoomTypeMapper {
     void insertRoomType(RoomType roomType);
 
 
+    /**
+     * 查询指定的酒店的房型
+     * @param hotelId
+     * @return
+     */
+    List<RoomType> queryByHotelId(int hotelId);
+
+
 }

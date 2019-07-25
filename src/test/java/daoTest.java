@@ -103,6 +103,13 @@ public class daoTest {
         roomType.setHotelId(1);
         roomType.setRoomType("沙雕专用房子");
         roomTypeMapper.insertRoomType(roomType);
+
+
+        List<RoomType> list = roomTypeMapper.queryByHotelId(1);
+
+        for (RoomType l:list){
+            System.out.println(l);
+        }
     }
 
 

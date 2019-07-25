@@ -72,4 +72,22 @@ public class RoomTypeServiceImpl implements RoomTypeService {
 
         roomTypeMapper.insertRoomType(roomType);
     }
+
+    @Override
+    public String getRoomTypeOfSubbranch(int subbranchId) {
+        List<RoomType> types = roomTypeMapper.queryByHotelId(subbranchId);
+        Map<String,List<RoomType>> result=new HashMap<>();
+
+        result.put("hotelTypeList",types);
+        ObjectMapper mapper=new ObjectMapper();
+
+        try {
+           String json= mapper.writeValueAsString(result);
+           return json;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
+
+    }
 }

@@ -55,8 +55,8 @@
 <!--复选框模板-->
 <script type="text/html" id="hotelSelectTpl">
 
-    {{#  layui.each(d.hotelList, function(index, item){ }}
-    <option value="{{item.id}}">{{item.subbranch}}</option>
+    {{#  layui.each(d.hotelTypeList, function(index, item){ }}
+    <option value="{{item.id}}">{{item.roomType}}</option>
     {{#  });
     }}
 
@@ -123,31 +123,37 @@
 
         var form=layui.form;
         laytpl=layui.laytpl;
-
         var data;
 
+
         $.ajax({
-            type:"post",
-            processData:false,
-            contentType:false,
-            url:base_url+'/hotel/queryAllHotel',
-            dataType:"json",
-            success:function (d) {
+            type:'get',
+            url:base_url+'/user/getUserInfo',
+            success:function (data) {
+                var subbranchId= data.hotel;
 
+                $.ajax({
+                    type:"get",
+                    url:base_url+'/roomType/getRoomTypeOfSubbranch',
+                    data:{
+                        subbranchId:subbranchId
+                    },
+                    success:function (d) {
 
-                var getTpl=hotelSelectTpl.innerHTML;
-                var view = document.getElementById('selectBox');
-                laytpl(getTpl).render(d, function(html){
-                    console.log('模板');
-                    console.log(html);
-                    view.innerHTML = html;
+                        var getTpl=hotelSelectTpl.innerHTML;
+                        var view = document.getElementById('selectBox');
+                        laytpl(getTpl).render(d, function(html){
+                            console.log('模板');
+                            console.log(html);
+                            view.innerHTML = html;
 
+                        });
+                    }
                 });
 
-
-
             }
-        });
+        })
+
 
     });
 </script>
