@@ -49,7 +49,7 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
                 },
                 success:function (d) {
                     if(d==="1"){
-                        layer.msg('创建成功')
+                        layer.msg('登陆成功')
                     }
 
                 }

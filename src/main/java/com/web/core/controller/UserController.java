@@ -79,4 +79,17 @@ public class UserController {
 
         return "error";
     }
+
+    @RequestMapping(value = "forgot")
+    @ResponseBody
+    public String changePwd(User user,String captcha,HttpSession session){
+        String str = session.getAttribute("vcode").toString();
+        System.out.println(str);
+        System.out.println(captcha);
+        if(str.equals(captcha)) {
+            userService.changePwd(user,session);
+            return "1";
+        }
+        return "0";
+    }
 }
