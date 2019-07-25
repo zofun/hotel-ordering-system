@@ -16,6 +16,6 @@ public interface UserOrderSerive {
      */
     String getAllOrder(Integer userid);
 
-    Order crete(Integer userid);
+    Order addUserOrder(Integer userid);
 }
 
