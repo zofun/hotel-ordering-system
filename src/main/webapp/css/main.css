@@ -127,7 +127,7 @@ i{font-style: normal;}
 .ShowPage-content .list-cont .item .text-box .plic{font-family: "楷体";line-height: 24px; font-size: 16px; color: #009688; }
 .ShowPage-content .list-cont .item .text-box .plic .ciur-pic{font-family:"楷体" ;font-size: 20px; margin-right: 24px;color: #00FF00}
 .ShowPage-content .list-cont .item .text-box .plic .Ori-pic{color: #00FF00;}
-.ShowPage-content .list-cont .item .text-box .plic .discount{width: 60px; height: 26px; line-height: 26px; font-size: 16px; background: #cfb2f6; display: block; text-align: center; color: #fff; right: 0; top: 0; cursor: pointer;}
+.ShowPage-content .list-cont .item .text-box .plic .discount{width:100px; height: 26px; line-height: 26px; font-size: 16px; background: #cfb2f6; display: block; text-align: center; color: #fff; right: 0; top: 0; cursor: pointer;}
 .ShowPage-content .footer{padding-bottom: 120px;}
 .ShowPage-content .footer-wrap,.ShowPage-content .footer{background: #FFFFFF;}
 .ShowPage-content .footer-wrap,.ShowPage-content .footer .title{font-size: 30px; color: #000000; text-align: center;}
