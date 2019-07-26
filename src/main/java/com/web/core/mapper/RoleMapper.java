@@ -19,4 +19,12 @@ public interface RoleMapper {
      */
     int queryRoleCount();
 
+
+    /**
+     * 插入角色
+     * @param roleName
+     * @param roleMsg
+     */
+    void insertRole(String roleName,String roleMsg);
+
 }

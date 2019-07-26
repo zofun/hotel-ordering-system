@@ -70,4 +70,9 @@ public class RoleServiceImpl implements RoleService {
             }
 
     }
+
+    @Override
+    public void addRole(String roleName, String roleMsg) {
+        roleMapper.insertRole(roleName,roleMsg);
+    }
 }

@@ -35,4 +35,12 @@ public class RoleController {
         roleService.changeRolesPermission(roleId,permission,status);
         return "1";
     }
+
+
+    @RequestMapping(value = "addRole",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String addRole(String roleName,String roleMsg){
+        roleService.addRole(roleName,roleMsg);
+        return "1";
+    }
 }

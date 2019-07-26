@@ -20,4 +20,12 @@ public interface RoleService {
      * @param status
      */
    void changeRolesPermission(int roleId,String permission,String status);
+
+
+    /**
+     * 添加角色，具体权限后续分配
+     * @param roleName
+     * @param roleMsg
+     */
+   void addRole(String roleName,String roleMsg);
 }
