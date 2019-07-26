@@ -5,6 +5,7 @@
     <title>更改角色</title>
     <link rel="stylesheet" href="../../lib/layui/css/layui.css">
     <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.css">
 </head>
 <body>
 
@@ -13,11 +14,11 @@
     <div class="layui-card layui-col-lg8 layui-col-lg-offset2">
         <div class="layui-card-header"></div>
         <div class="layui-card-body">
-            <form class="layui-form" action="">
+
                 <div class="layui-form-item">
                     <label class="layui-form-label">选择角色</label>
                     <div class="layui-input-block">
-                        <select name="role" lay-verify="required">
+                        <select class="form-control"  style="width: 250px" id="selectBox">
                             <option value=""></option>
                             <option value="0">超级管理员</option>
                             <option value="1">普通管理员</option>
@@ -29,24 +30,76 @@
 
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit="" lay-filter="setmyinfo">确认修改</button>
+                        <button class="layui-btn" onclick="changeRole()">确认修改</button>
                     </div>
                 </div>
-            </form>
 
         </div>
     </div>
 
 
 </div>
+<!--复选框模板-->
+<script type="text/html" id="RoleSelectTpl">
+
+    {{#  layui.each(d.roleList, function(index, item){ }}
+    <option value="{{item.id}}">{{item.roleName}}</option>
+    {{#  });
+    }}
+
+</script>
 <script src="../../lib/layui/layui.js"></script>
 <script src="../../js/common.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
+<script src="../../lib/bootstrap/js/bootstrap.js"></script>
 <script>
-    layui.use(['element', 'form'], function () {
+    layui.use(['element', 'form','laytpl'], function () {
         var element = layui.element;
         var form = layui.form;
+        laytpl=layui.laytpl;
 
+        $.ajax({
+            type: "get",
+            url: base_url + '/role/getAllRole',
+            success: function (d) {
+
+                console.log('请求角色列表');
+                var getTpl = RoleSelectTpl.innerHTML;
+                var view = document.getElementById('selectBox');
+                laytpl(getTpl).render(d, function (html) {
+                    console.log('模板');
+                    console.log(html);
+                    view.innerHTML = html;
+
+                });
+            }
+        })
     });
+
+    function changeRole() {
+
+        var id=GetPar('id');
+
+        var roleId=$('#selectBox').val();
+        console.log(id+" --- "+roleId);
+
+        $.ajax({
+            type:"post",
+            url:base_url+'/role/changeRole',
+            data:{
+                'userId':id,
+                'roleId':roleId
+            },
+            success:function (d) {
+                if(d=="1"){
+                    layer.msg('修改成功');
+                }
+
+            }
+        })
+
+    }
+
 </script>
 
 </body>

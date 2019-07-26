@@ -14,5 +14,13 @@
         select count(*) from role
     </select>
 
+    <insert id="insertRole">
+        insert into role (role_name, role_msg) values (#{0},#{1})
+    </insert>
+
+    <select id="queryAll" resultType="role">
+        select * from role
+    </select>
+
 
 </mapper>

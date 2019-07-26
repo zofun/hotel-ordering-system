@@ -9,5 +9,12 @@
         select * from  permission where role_id=#{0}
     </select>
 
+    <insert id="addPermission">
+        insert  into permission (potence, role_id) values (#{1},#{0})
+    </insert>
+    <delete id="delPermission">
+        delete from permission where role_id=#{0} and potence =#{1}
+    </delete>
+
 
 </mapper>

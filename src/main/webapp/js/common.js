@@ -1,4 +1,15 @@
-base_url='http://localhost:8080'
+base_url='http://localhost:8080';
+
+
+function GetPar(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r != null){
+        return decodeURIComponent(r[2]);
+    }
+    return null;
+}
+
 layui.define(['jquery'], function(exports) {
     var $ = layui.$,
         lau = top.layui.lau;

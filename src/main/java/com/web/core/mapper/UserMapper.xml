@@ -24,4 +24,16 @@
     <update id="changePwd" parameterType="user">
         update user set password = #{password} where username = #{username}
     </update>
+
+    <select id="queryUserRoleInfoList" resultType="userRoleInfo">
+        select u.id,u.name,u.username,r.role_name,h.subbranch from user as u inner join role as r inner join hotel as h
+        where u.isadmin=r.id and u.hotel=h.id order by u.id limit #{0},#{1}
+    </select>
+    <select id="queryAdminCount" resultType="int">
+        select count(*) from user where isadmin &lt;&gt; ''
+    </select>
+
+    <update id="updateRole">
+        update user set isadmin=#{1} where id=#{0}
+    </update>
 </mapper>

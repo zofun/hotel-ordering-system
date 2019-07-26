@@ -70,5 +70,7 @@ public class serviceTest {
     public void roleServiceTest(){
         String json = roleService.getRoleList(1,10);
         System.out.println(json);
+
+        roleService.addRole("小垃圾","小垃圾的介绍");
     }
 }

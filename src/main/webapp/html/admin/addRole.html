@@ -13,87 +13,27 @@
     <div class="layui-card layui-col-lg8 layui-col-lg-offset2">
         <div class="layui-card-header"></div>
         <div class="layui-card-body">
-            <form class="layui-form" action="" >
+
                 <div class="layui-form-item">
                     <label class="layui-form-label">角色名</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input"  >
+                        <input type="text" class="layui-input" id="roleName">
                     </div>
                 </div>
 
-                <div class="layui-form-item">
-                    <label class="layui-form-label">查看房型</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">管理房型</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">查看客房</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">管理客房</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">查看入住</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">管理入住</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">角色管理</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">角色分配</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">查看服务</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">管理服务</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                    </div>
-                </div>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">角色描述</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea placeholder="请输入内容" class="layui-textarea" id="roleMsg"></textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit="" lay-filter="setmyinfo">确认修改</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重新填写</button>
+                        <button class="layui-btn" onclick="addRole()">创建角色</button>
+                        <button class="layui-btn layui-btn-primary"  onclick="clearInput()">重新填写</button>
                     </div>
                 </div>
-            </form>
+
 
         </div>
     </div>
@@ -103,6 +43,8 @@
 
 
 <script src="../../lib/layui/layui.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
+<script src="../../js/common.js"></script>
 
 
 <script>
@@ -111,6 +53,44 @@
         var form = layui.form;
 
     });
+
+    /**
+     * 添加角色
+     */
+    function addRole() {
+        var roleName=$('#roleName').val();
+        var roleMsg=$('#roleMsg').val();
+
+        if (roleMsg===''||roleMsg===''){
+            layer.msg('请确保表单的完整性');
+            return;
+        }
+
+        $.ajax({
+            type:"post",
+            url:base_url+'/role/addRole',
+            data:{
+                'roleName':roleName,
+                'roleMsg':roleMsg
+            },
+            success:function (d) {
+                if(d=="1"){
+                    layer.msg('创建成功');
+                }
+
+            }
+        })
+
+
+    }
+
+    function clearInput() {
+        $('#roleName').text('');
+        $('#roleMsg').text('');
+    }
+
+
+
 </script>
 </body>
 </html>
