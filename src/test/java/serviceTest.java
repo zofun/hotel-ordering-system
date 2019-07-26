@@ -30,6 +30,9 @@ public class serviceTest {
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private OrderSerive orderSerive;
+
     @Test
     public void hotelServiceTest(){
         String hotelList = hotelService.getHotelList();
@@ -42,7 +45,7 @@ public class serviceTest {
         System.out.println(json);
     }
 
-    
+
 
     @Test
     public void setUserServiceTest(){
@@ -59,6 +62,13 @@ public class serviceTest {
         //userService.login(user);
     }
 
+    @Test
+    public void orderServiceTest(){
+        orderSerive.getAllOrder();
+        User user = new User();
+        user.setId(789456);
+        orderSerive.getUserOrder(user.getId());
+    }
 
     @Test
     public void roleServiceTest(){

@@ -61,17 +61,20 @@
 
         table.render({
             elem: '#table'
-            , url: base_url + '/testJson/orderData.json'
+            , url: base_url + '/getUserOrder'
             , toolbar: '#toolbarDemo'
             , title: '订单表'
             , cols: [[
+
                 {type: 'checkbox', fixed: 'left'}
                 , {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'subbranch', title: '分店类型', width: 120}
                 , {field: 'roomNo', title: '房间号', width: 120, sort: true}
-                , {field: 'roomType', title: '房间类型', width: 120, sort: true}
-                , {field: 'status', title: '状态', width: 120, sort: true}
+                , {field: 'roomType', title: '分店类型', width: 120, sort: true}
+                , {field: 'status', title: '状态', width: 120}
                 , {field: 'orderTime', title: '下单时间', width: 120, sort: true}
+                , {field: 'time', title: '拟入住时间', width: 120, sort: true}
+                , {field: 'checkInTime', title:'入住时间', width:110,sort:true}
+                , {field: 'checkOutTime', title:'入住时间', width:110,sort:true}
                 , {field: 'check-out', title:'退房', width:110, templet: '#checkboxTpl', unresize: true}
             ]]
             , page: true
