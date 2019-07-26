@@ -1,6 +1,7 @@
 package com.web.core.mapper;
 
 import com.web.core.pojo.User;
+import com.web.core.pojo.UserRoleInfo;
 
 import javax.management.Query;
 import javax.servlet.http.HttpSession;
@@ -42,4 +43,23 @@ public interface UserMapper {
      * @param passward
      */
     void changePwd(User user, String passward);
+
+    /**
+     * 查询UserRoleInfo列表
+     * @param begin
+     * @param limit
+     * @return
+     */
+    List<UserRoleInfo> queryUserRoleInfoList(int begin,int limit);
+
+    /**
+     * 查询用户的数量
+     * @return
+     */
+    int queryAdminCount();
+
+    /**
+     * 更改角色
+     */
+    void updateRole(int usedId,int roleId);
 }

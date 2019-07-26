@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import javax.faces.event.PostPutFlashValueEvent;
 
 @Controller
 @RequestMapping("role")
@@ -41,6 +44,33 @@ public class RoleController {
     @ResponseBody
     public String addRole(String roleName,String roleMsg){
         roleService.addRole(roleName,roleMsg);
+        return "1";
+    }
+
+
+    @RequestMapping(value = "getUserRoleList",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String getUserRoleList(int page,int limit){
+
+        String json = roleService.getUserRoleList(page, limit);
+        return json;
+    }
+
+    /**
+     * 获取所有角色列表
+     * @return
+     */
+    @RequestMapping(value = "getAllRole",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String getAllRole(){
+        return roleService.getAllRole();
+    }
+
+    @RequestMapping(value = "changeRole",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String changeRole(int userId,int roleId){
+
+        roleService.changeRole(userId,roleId);
         return "1";
     }
 }

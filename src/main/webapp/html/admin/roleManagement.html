@@ -50,7 +50,7 @@
         var table = layui.table;
         table.render({
             elem: '#table'
-            , url: base_url + '/testJson/roleManData.json'
+            , url: base_url + '/role/getUserRoleList'
             , toolbar: '#toolbarDemo'
             , title: '角色分配表'
             , cols: [[
@@ -58,7 +58,7 @@
                 , {field: 'name', title: '姓名', width: 130}
                 , {field: 'username', title: '用户名', width: 180, sort: true}
                 , {field: 'subbranch', title: '所属分店', width: 180}
-                , {field: 'role', title: '当前角色', width: 140, unresize: true}
+                , {field: 'roleName', title: '当前角色', width: 140, unresize: true}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 170}
 
             ]]
@@ -77,7 +77,12 @@
                 title:'更改角色',
                 type: 2,
                 area: ['500px', '500px'],
-                content: base_url+'/html/admin/changeRole.html'
+                content: base_url+'/html/admin/changeRole.html?id='+obj.data.id,
+                cancel:function () {
+                    table.reload('dataTable', {
+                        url: base_url + '/role/getUserRoleList'
+                    })
+                }
             });
 
         });

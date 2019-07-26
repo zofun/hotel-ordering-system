@@ -28,4 +28,29 @@ public interface RoleService {
      * @param roleMsg
      */
    void addRole(String roleName,String roleMsg);
+
+
+    /**
+     * 获取用户角色列表
+     * @param page
+     * @param limit
+     * @return
+     */
+   String getUserRoleList(int page,int limit);
+
+
+    /**
+     * 获取所有的角色
+     * @return
+     */
+   String getAllRole();
+
+
+    /**
+     * 更改用户角色
+     * @param userId
+     * @param roleId
+
+     */
+    void changeRole(int userId,int roleId);
 }

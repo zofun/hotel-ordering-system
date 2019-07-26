@@ -145,5 +145,10 @@ public class daoTest {
         }
     }
 
+    @Test
+    public void changeRole(){
+        userMapper.updateRole(5,2);
+    }
+
 
 }
