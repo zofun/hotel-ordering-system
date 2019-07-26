@@ -90,8 +90,8 @@ public class ForegroundServiceImpl implements ForegroundService {
         //修改房间状态
 
         roomMapper.updateRoomStatus(order.getRoomId(),"空闲");
-        //删除订单
-        orderMapper.delOrderByOrderId(orderId);
+        //更改订单状态
+        orderMapper.updateOrderInfoByOrderId(orderId,"已退房");
         return String.valueOf(result);
 
     }

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.web.core.mapper.ForegroundMapper">
    <select id="queryBySubbranchId" resultType="userCheckInInfo">
-      select o.id,u.name,u.username,r.room_no,t.room_type,r.status
+      select o.id,u.name,u.username,r.room_no,t.room_type,o.status
       from user as u inner join room as r inner join room_type as t inner join `order` as o
       where o.user_id=u.id and o.room_id=r.id and r.room_type_id=t.id
       and t.hotel_id=#{0} order by o.id limit #{1},#{2}
