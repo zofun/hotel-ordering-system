@@ -50,4 +50,20 @@ public interface OrderMapper {
     void addUserOrder(Integer userid);
 
     void deleteOrder(Integer userid);
+
+
+    /**
+     * 根据订单的id查询订单
+     * @param id
+     * @return
+     */
+    Order queryOrderByOrderId(int id);
+
+
+    /**
+     * 更新指定id的订单的状态
+     * @param id
+     * @param status
+     */
+    void updateOrderInfoByOrderId(int id,String status);
 }

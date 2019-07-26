@@ -96,7 +96,26 @@
             var data = obj.data;
             //console.log(obj)
             if(obj.event === 'checkIn'){
-                layer.msg(obj.data.id+'入住')
+                $.ajax({
+                    type:"post",
+
+                    url:base_url+'/foreground/checkIn',
+                    data:{
+                        'orderId':obj.data.id
+                    },
+                    success:function (d) {
+                        if(d=="1"){
+                            layer.msg('成功入住');
+                            table.reload('reloadTable', {
+                                url: base_url + '/foreground/getUserCheckInInfoList'
+                            })
+                        }else {
+                            layer.msg('入住失败');
+                        }
+
+                    }
+                })
+
             } else if(obj.event === 'putOff'){
                 layer.msg('延期')
             }else {

@@ -26,4 +26,12 @@ public interface ForegroundService {
      * @return
      */
     String searchUserCheckInInfo(int subbranch,String name,int page,int limit);
+
+
+    /**
+     * 入住
+     * @param orderId
+     * @return
+     */
+    boolean checkIn(int orderId);
 }

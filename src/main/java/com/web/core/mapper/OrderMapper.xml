@@ -32,4 +32,12 @@
     <delete id="deleteOrder" parameterType="Integer">
        delete from `order` where user_id = #{0}
     </delete>
+
+    <select id="queryOrderByOrderId" resultType="order">
+        select * from `order` where id=#{0}
+    </select>
+
+    <update id="updateOrderInfoByOrderId">
+        update `order` set status=#{1} where id=#{0}
+    </update>
 </mapper>

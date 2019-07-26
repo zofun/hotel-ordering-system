@@ -81,7 +81,10 @@ public class serviceTest {
 
     @Test
     public void foregroundService(){
-        String json = foregroundService.getUserCheckInInfo(1,0,10);
+        String json = foregroundService.getUserCheckInInfo(1,1,10);
         System.out.println(json);
+
+        boolean flag=foregroundService.checkIn(1);
+        System.out.println(flag);
     }
 }

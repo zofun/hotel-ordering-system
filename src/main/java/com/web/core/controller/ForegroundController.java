@@ -34,4 +34,14 @@ public class ForegroundController {
         }
 
     }
+
+    @RequestMapping(value = "checkIn",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String checkIn(int orderId){
+        if(foregroundService.checkIn(orderId)){
+            return "1";
+        }
+        return "0";
+
+    }
 }
