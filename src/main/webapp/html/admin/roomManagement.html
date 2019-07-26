@@ -94,6 +94,9 @@
                 success:function (d) {
                     if(d=="1"){
                         layer.msg('修改成功');
+                        table.reload('dataTable', {
+                            url: base_url + '/room/getRoomList'
+                        })
                     }
 
                 }
