@@ -34,4 +34,11 @@ public interface ForegroundService {
      * @return
      */
     boolean checkIn(int orderId);
+
+    /**
+     * 退房
+     * @param orderId
+     * @return
+     */
+    String checkOut(int orderId);
 }

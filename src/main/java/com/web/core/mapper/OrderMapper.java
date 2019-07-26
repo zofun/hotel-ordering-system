@@ -66,4 +66,20 @@ public interface OrderMapper {
      * @param status
      */
     void updateOrderInfoByOrderId(int id,String status);
+
+    /**
+     * 查询订单的单价
+     * @param orderId
+     * @return
+     */
+    String queryOrderPrice(int orderId);
+
+    /**
+     * 删除指定的订单
+     * @param orderId
+     */
+    void delOrderByOrderId(int orderId);
+
+
+
 }

@@ -86,5 +86,9 @@ public class serviceTest {
 
         boolean flag=foregroundService.checkIn(1);
         System.out.println(flag);
+
+        String result = foregroundService.checkOut(3);
+
+        System.out.println(result);
     }
 }

@@ -12,4 +12,5 @@ public interface HotelMapper {
      */
     List<Hotel> queryAll();
 
+
 }

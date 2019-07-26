@@ -40,4 +40,14 @@
     <update id="updateOrderInfoByOrderId">
         update `order` set status=#{1} where id=#{0}
     </update>
+
+    <select id="queryOrderPrice" resultType="string" parameterType="int">
+        select t.price from `order` as o inner join room  as r inner join room_type as t
+        where o.room_id=r.id and r.room_type_id=t.id and o.id=#{0}
+    </select>
+    <delete id="delOrderByOrderId" parameterType="int">
+        delete from `order` where id=#{0}
+    </delete>
+
+
 </mapper>

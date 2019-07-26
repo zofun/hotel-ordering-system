@@ -120,6 +120,25 @@
                 layer.msg('延期')
             }else {
                 layer.msg('退房')
+                $.ajax({
+                    type:"post",
+
+                    url:base_url+'/foreground/checkOut',
+                    data:{
+                        'orderId':obj.data.id
+                    },
+                    success:function (d) {
+                        if(d.status==='-1'){
+                            layer.msg('退房失败');
+                        }else {
+                            layer.msg('成功退房!收费：'+d);
+                            table.reload('reloadTable', {
+                                url: base_url + '/foreground/getUserCheckInInfoList'
+                            })
+                        }
+
+                    }
+                })
             }
         });
 

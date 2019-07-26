@@ -44,4 +44,16 @@ public class ForegroundController {
         return "0";
 
     }
+
+    /**
+     * 退房
+     * @param orderId
+     * @return
+     */
+    @RequestMapping("checkOut")
+    @ResponseBody
+    public String checkOut(int orderId){
+
+        return foregroundService.checkOut(orderId);
+    }
 }
