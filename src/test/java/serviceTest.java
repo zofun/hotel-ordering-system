@@ -1,8 +1,5 @@
 import com.web.core.pojo.User;
-import com.web.core.service.HotelService;
-import com.web.core.service.RoleService;
-import com.web.core.service.RoomTypeService;
-import com.web.core.service.UserService;
+import com.web.core.service.*;
 import com.web.utils.EncryptUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +21,10 @@ public class serviceTest {
 
     @Autowired
     private UserService userService;
+
+
+    @Autowired
+    private ForegroundService foregroundService;
 
 
     @Autowired
@@ -65,5 +66,12 @@ public class serviceTest {
         System.out.println(json);
 
         roleService.addRole("小垃圾","小垃圾的介绍");
+    }
+
+
+    @Test
+    public void foregroundService(){
+        String json = foregroundService.getUserCheckInInfo(1,0,10);
+        System.out.println(json);
     }
 }

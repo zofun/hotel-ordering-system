@@ -54,28 +54,43 @@
 <script src="../../js/common.js"></script>
 <script>
     var table;
+    var subbranchId;
     layui.use('table', function() {
          table = layui.table;
         var $=layui.$;
 
-        table.render({
-            elem: '#table'
-            , url: base_url + '/testJson/checkInTableData.json'
-            , toolbar: '#toolbarDemo'
-            , title: '旅客表'
-            , cols: [[
-                {type: 'checkbox', fixed: 'left'}
-                , {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
-                , {field: 'user', title: '姓名', width: 120}
-                , {field: 'username', title: '用户名', width: 140}
-                , {field: 'roomNo', title: '房间号', width: 120, sort: true}
-                , {field: 'roomType', title: '房间类型', width: 120, sort: true}
-                , {field: 'status', title: '状态', width: 120, sort: true}
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 170}
-            ]]
-            , page: true
-            ,id:'reloadTable'
+        $.ajax({
+            type:'get',
+            url:base_url+'/user/getUserInfo',
+
+            success:function (data) {
+                subbranchId= data.hotel;
+                console.log(subbranchId);
+                table.render({
+                    elem: '#table'
+                    , url: base_url + '/foreground/getUserCheckInInfoList'
+                    , toolbar: '#toolbarDemo'
+                    , title: '旅客表'
+                    , cols: [[
+                        {type: 'checkbox', fixed: 'left'}
+                        , {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                        , {field: 'name', title: '姓名', width: 120}
+                        , {field: 'username', title: '用户名', width: 140}
+                        , {field: 'roomNo', title: '房间号', width: 120, sort: true}
+                        , {field: 'roomType', title: '房间类型', width: 120, sort: true}
+                        , {field: 'status', title: '状态', width: 120, sort: true}
+                        , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 170}
+                    ]]
+                    , page: true
+                    ,id:'reloadTable'
+                    , where:{
+                        subbranchId:subbranchId
+                    }
+                });
+            }
         });
+
+
 
         table.on('tool(test)', function(obj){
             var data = obj.data;
@@ -98,7 +113,8 @@
         console.log('点击');
         table.reload('reloadTable',{
             where: { //设定异步数据接口的额外参数，任意设
-                'user':$('#searchKey').val()
+                'name':$('#searchKey').val(),
+                subbranchId:subbranchId
             }
             ,page: {
                 curr: 1

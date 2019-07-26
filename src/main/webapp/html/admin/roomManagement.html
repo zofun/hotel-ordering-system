@@ -135,6 +135,43 @@
 
 
 
+    function addRoom() {
+        var roomNo=$('#roomId').val();
+        var roomTypeId=$('#selectBox').val();
+
+        if(roomNo===''||roomTypeId===''){
+            layer.msg('请确保表单的完整性');
+            return;
+        }
+
+        $.ajax({
+            type:"post",
+
+            url:base_url+'/room/addRoom',
+            data:{
+                'roomNo':roomNo,
+                'roomTypeId':roomTypeId
+
+            },
+            success:function (d) {
+                if(d=="1"){
+                    layer.msg('创建成功');
+                    table.reload('dataTable', {
+                        url: base_url + '/room/getRoomList'
+                    })
+                }else {
+                    layer.msg('创建失败')
+                }
+
+            }
+        })
+
+
+
+    }
+
+
+
 </script>
 <!--模板引擎代码-->
 <script>
@@ -175,38 +212,6 @@
 
     });
 
-    function addRoom() {
-        var roomNo=$('#roomId').val();
-        var roomTypeId=$('#selectBox').val();
-
-        if(roomNo===''||roomTypeId===''){
-            layer.msg('请确保表单的完整性');
-            return;
-        }
-
-        $.ajax({
-            type:"post",
-
-            url:base_url+'/room/addRoom',
-            data:{
-                'roomNo':roomNo,
-                'roomTypeId':roomTypeId
-
-            },
-            success:function (d) {
-                if(d=="1"){
-                    layer.msg('创建成功');
-
-                }else {
-                    layer.msg('创建失败')
-                }
-
-            }
-        })
-
-
-
-    }
 </script>
 
 </body>

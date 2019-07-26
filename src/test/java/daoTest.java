@@ -39,6 +39,10 @@ public class daoTest {
     private ServiceMapper serviceMapper;
 
 
+    @Autowired
+    private ForegroundMapper foregroundMapper;
+
+
 
     @Test
     public void testShiroDao(){
@@ -148,6 +152,17 @@ public class daoTest {
     @Test
     public void changeRole(){
         userMapper.updateRole(5,2);
+    }
+
+    @Test
+    public void foregroundDao(){
+        List<UserCheckInInfo> infos = foregroundMapper.searchByName(1, 0, 10, "测");
+        for (UserCheckInInfo info:infos){
+            System.out.println(info.toString());
+        }
+
+        int count=foregroundMapper.searchCount(1,"测");
+        System.out.println(count);
     }
 
 

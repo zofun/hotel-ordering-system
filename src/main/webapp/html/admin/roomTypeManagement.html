@@ -115,7 +115,7 @@
         //监听单元格编辑
         table.on('edit(test)', function(obj){
 
-            var data = obj.data //得到所在行所有键值
+            var data = obj.data;//得到所在行所有键值
 
 
             $.ajax({
@@ -216,37 +216,40 @@
 
     function  createRoomType() {
         var roomType=$('#roomType').val();
-       var subbranch=$('#selectBox').val();
-       var capacity=$('#numOfPeo').val();
-       var price=$('#price').val();
-       var desc=$('#desc').val();
+        var subbranch=$('#selectBox').val();
+        var capacity=$('#numOfPeo').val();
+        var price=$('#price').val();
+        var desc=$('#desc').val();
 
-       if (url===''){
-           layer.msg('请上传图片');
-       } else if(roomType===''||subbranch===''||capacity===''||price===''||desc===''){
-           layer.msg('请确保表单的完整性');
-       }else {
-           $.ajax({
-               type:"post",
+        if (url===''){
+            layer.msg('请上传图片');
+        } else if(roomType===''||subbranch===''||capacity===''||price===''||desc===''){
+            layer.msg('请确保表单的完整性');
+        }else {
+            $.ajax({
+                type:"post",
 
-               url:base_url+'/roomType/addRoomType',
-               data:{
-                   'roomType':roomType,
-                   'price':price,
-                   'desc':desc,
-                   'capacity':capacity,
-                   'descUrl':url,
-                   'hotelId':subbranch
+                url:base_url+'/roomType/addRoomType',
+                data:{
+                    'roomType':roomType,
+                    'price':price,
+                    'desc':desc,
+                    'capacity':capacity,
+                    'descUrl':url,
+                    'hotelId':subbranch
 
-               },
-               success:function (d) {
-                   if(d==="1"){
-                       layer.msg('创建成功')
-                   }
+                },
+                success:function (d) {
+                    if(d==="1"){
+                        layer.msg('创建成功');
+                        table.reload('dataTable', {
+                            url: base_url + '/roomType/gerRoomTypeList'
+                        })
+                    }
 
-               }
-           })
-       }
+                }
+            })
+        }
 
 
 
