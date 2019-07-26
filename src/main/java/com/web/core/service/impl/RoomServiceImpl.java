@@ -59,7 +59,7 @@ public class RoomServiceImpl implements RoomService {
         if("true".equals(status)){
             roomMapper.updateRoomStatus(id,"关闭");
         }else{
-            roomMapper.updateRoomStatus(id,"空闲");
+            roomMapper.updateRoomStatus(id,"正常使用");
         }
 
     }

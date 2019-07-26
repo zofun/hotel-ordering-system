@@ -119,7 +119,7 @@
             } else if(obj.event === 'putOff'){
                 layer.msg('延期')
             }else {
-                layer.msg('退房')
+              
                 $.ajax({
                     type:"post",
 
@@ -128,7 +128,7 @@
                         'orderId':obj.data.id
                     },
                     success:function (d) {
-                        if(d.status==='-1'){
+                        if(d==='-1'){
                             layer.msg('退房失败');
                         }else {
                             layer.msg('成功退房!收费：'+d);

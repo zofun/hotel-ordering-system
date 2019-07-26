@@ -56,12 +56,16 @@ public class ForegroundServiceImpl implements ForegroundService {
     public boolean checkIn(int orderId) {
 
         Order order = orderMapper.queryOrderByOrderId(orderId);
+
+        if("已入住".equals(order.getStatus())||"已退房".equals(order.getStatus())){
+            return false;
+        }
         String now= TimeUtils.getNowTime("yyyy-MM-dd");
         System.out.println("now"+now);
         System.out.println(TimeUtils.convertTime(order.getTime(),"yyyy-MM-dd"));
         if (now.equals(TimeUtils.convertTime(order.getTime(),"yyyy-MM-dd"))){
             orderMapper.updateOrderInfoByOrderId(orderId,"已入住");
-            roomMapper.updateRoomStatus(order.getRoomId(),"已入住");
+            orderMapper.updateCheckInTime(orderId);
             return true;
         }
 
@@ -73,7 +77,7 @@ public class ForegroundServiceImpl implements ForegroundService {
 
         Order order = orderMapper.queryOrderByOrderId(orderId);
 
-        if(order==null){
+        if("已退房".equals(order.getStatus())||"空闲".equals(order.getStatus())){
             return "-1";
         }
         //结账
@@ -87,11 +91,9 @@ public class ForegroundServiceImpl implements ForegroundService {
             result =prices;
         }
 
-        //修改房间状态
-
-        roomMapper.updateRoomStatus(order.getRoomId(),"空闲");
         //更改订单状态
         orderMapper.updateOrderInfoByOrderId(orderId,"已退房");
+        orderMapper.updateCheckOutTime(orderId);
         return String.valueOf(result);
 
     }

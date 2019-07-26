@@ -49,5 +49,13 @@
         delete from `order` where id=#{0}
     </delete>
 
+    <update id="updateCheckInTime" parameterType="int">
+       update `order` set check_in_time =now() where id=#{0}
+    </update>
+
+    <update id="updateCheckOutTime" parameterType="int">
+         update `order` set check_out_time =now() where id=#{0}
+    </update>
+
 
 </mapper>

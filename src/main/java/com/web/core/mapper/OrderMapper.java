@@ -3,6 +3,7 @@ package com.web.core.mapper;
 import com.web.core.pojo.Order;
 import com.web.core.pojo.OrderInfo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -79,6 +80,18 @@ public interface OrderMapper {
      * @param orderId
      */
     void delOrderByOrderId(int orderId);
+
+    /**
+     * 更新入住时间
+     * @param orderId
+     */
+    void updateCheckInTime(int orderId);
+
+    /**
+     * 更新退房时间
+     * @param orderId
+     */
+    void updateCheckOutTime(int orderId);
 
 
 
