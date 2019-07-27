@@ -2,6 +2,7 @@ import com.web.core.mapper.*;
 import com.web.core.pojo.*;
 import com.web.core.service.ShiroService;
 import com.web.utils.EncryptUtils;
+import com.web.utils.TimeUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 
@@ -41,6 +44,9 @@ public class daoTest {
 
     @Autowired
     private ForegroundMapper foregroundMapper;
+
+    @Autowired
+    private OrderMapper orderMapper;
 
 
 
@@ -178,6 +184,21 @@ public class daoTest {
             System.out.println(info);
         }
 
+    }
+
+    @Test
+    public void orderDao() throws ParseException {
+
+        int i = orderMapper.queryCountByRoomIdAndTime(1,"2019-7-27");
+        System.out.println("count-->"+i);
+
+       /* Order order=new Order();
+        order.setRoomId(1);
+        Date date = TimeUtils.convertStringToDate("2019-07-27", "yyyy-MM-dd");
+        System.out.println(date.getTime());
+        order.setTime(date);
+        order.setUserId(5);
+        orderMapper.insertOrder(order);*/
     }
 
 

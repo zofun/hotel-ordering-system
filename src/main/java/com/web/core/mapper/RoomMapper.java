@@ -54,4 +54,12 @@ public interface RoomMapper {
      * @return
      */
     Room qurryRoomByRoomNo(String roomNo);
+
+
+    /**
+     * 根据房间类型查询所有的房间
+     * @param roomTypeId
+     * @return
+     */
+    List<Room> querytRoomByType(int roomTypeId);
 }

@@ -57,5 +57,15 @@
          update `order` set check_out_time =now() where id=#{0}
     </update>
 
+    <select id="queryCountByRoomIdAndTime" resultType="int">
+         select COUNT(*) from `order`
+         where room_id=#{0} and time=STR_TO_DATE(#{1},'%Y-%m-%d') and status!='已退房'
+    </select>
+
+    <insert id="insertOrder" parameterType="order">
+        insert into `order` (user_id, status, order_time, `time`, room_id)
+        values (#{userId},'待入住',now(),date_format(#{time},'%Y-%m-%d'),#{roomId})
+    </insert>
+
 
 </mapper>

@@ -37,5 +37,14 @@ public interface OrderSerive {
      * @param username
      */
     void delete(String username);
+
+    /**
+     * 用户下订单
+     * @param userId
+     * @param roomTypeId
+     * @param time
+     * @return
+     */
+    boolean MakeOrder(int userId,int roomTypeId,String time);
 }
 

@@ -20,7 +20,7 @@
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn">立即订购</button>
+                    <button class="layui-btn" onclick="makeOrder()">立即订购</button>
 
                 </div>
             </div>
@@ -44,5 +44,37 @@
             elem: '#test1' //指定元素
         });
     })
+
+
+
+    function makeOrder() {
+
+        var time=$('#test1').val();
+        var roomTypeId=GetPar('hoteTypteId');
+        console.log(time+" "+roomTypeId);
+        if(time===''){
+            layer.msg('请确保表单的完整性');
+        }
+
+        $.ajax({
+            type:'post',
+            url:base_url+'/makeOrder',
+            data:{
+                'roomTypeId':roomTypeId,
+                'time':time
+
+            },
+            success:function (data) {
+                if(data=='1'){
+                    layer.msg('预定成功')
+                }else if(data=='2'){
+                    layer.msg('请先登录');
+                }else {
+                    layer.msg('约定失败');
+                }
+            }
+        })
+
+    }
 </script>
 </html>

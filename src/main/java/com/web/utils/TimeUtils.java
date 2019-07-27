@@ -1,5 +1,6 @@
 package com.web.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,6 +27,19 @@ public class TimeUtils {
     public static String convertTime(Date time,String pattern){
         SimpleDateFormat df = new SimpleDateFormat(pattern);
         return df.format(time);
+    }
+
+    /**
+     *将字符串转换为date类型
+     * @param time
+     * @param pattern
+     * @return
+     */
+    public static Date convertStringToDate(String time,String pattern) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        Date date = sdf.parse(time);
+        return date;
+
     }
 
     /**

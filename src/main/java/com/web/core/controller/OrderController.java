@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -34,5 +35,26 @@ public class OrderController {
         User user = (User) session.getAttribute("User");
         String json = orderSerive.getUserOrder(user.getId());
         return json;
+    }
+
+    /**
+     * 下订单
+     * @param session
+     * @param roomTypeId
+     * @param time
+     * @return
+     */
+    @RequestMapping(value = "makeOrder",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String MakeOrder(HttpSession session,int roomTypeId,String time){
+        User user=(User)session.getAttribute("User");
+        if(user==null){
+            return "2";
+        }
+        if(orderSerive.MakeOrder(user.getId(),roomTypeId,time)){
+            return "1";
+        }
+
+        return "0";
     }
 }

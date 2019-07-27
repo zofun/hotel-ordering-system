@@ -2,6 +2,7 @@ package com.web.core.mapper;
 
 import com.web.core.pojo.Order;
 import com.web.core.pojo.OrderInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -92,6 +93,20 @@ public interface OrderMapper {
      * @param orderId
      */
     void updateCheckOutTime(int orderId);
+
+    /**
+     * 根据指定的条件查询
+     * @param roomId
+     * @param time
+     * @return
+     */
+    int queryCountByRoomIdAndTime(int roomId,String time);
+
+    /**
+     * 插入订单
+     * @param order
+     */
+    void insertOrder(Order order);
 
 
 

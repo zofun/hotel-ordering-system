@@ -28,4 +28,8 @@
     <select id="qurryRoomByRoomNo" parameterType="string" resultType="room">
         select * from `room` where room_no = #{0}
     </select>
+
+    <select id="querytRoomByType" resultType="room">
+        select * from room where room_type_id=#{0}
+    </select>
 </mapper>
