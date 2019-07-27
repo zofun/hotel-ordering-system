@@ -28,16 +28,16 @@
                             <div class="layui-form" lay-filter="">
 
                                 <div class="layui-form-item">
-                                    <label class="layui-form-label">账号</label>
+                                    <label class="layui-form-label">ID</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="username" value="账号" readonly="" class="layui-input">
+                                        <input type="text" name="username" value="1" id="id" readonly="" class="layui-input">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
                                 </div>
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">用户名</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="nickname" value="用户名" lay-verify="nickname" autocomplete="off" placeholder="请输入昵称" class="layui-input">
+                                        <input type="text" name="nickname" id="username" value="用户名" lay-verify="nickname" autocomplete="off" placeholder="请输入昵称" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -57,7 +57,7 @@
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit="" lay-filter="setmyinfo">确认修改</button>
+                                        <button class="layui-btn" lay-submit="" id="setmyinfo" lay-filter="setmyinfo">确认修改</button>
                                         <button type="reset" class="layui-btn layui-btn-primary">重新填写</button>
                                     </div>
                                 </div>
@@ -81,6 +81,10 @@
         var form=layui.form;
 
     });
+</script>
+
+<script>
+    layui.config({base:'/js/'}).use('changeusername')
 </script>
 </body>
 </html>

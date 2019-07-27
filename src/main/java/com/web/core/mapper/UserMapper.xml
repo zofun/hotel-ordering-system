@@ -37,4 +37,12 @@
     <update id="changePwd">
         update user set password = #{1},salt = #{2}  where username = #{0}
     </update>
+
+    <update id="changeUserNmae">
+        update user set username = #{1} where id = #{0}
+    </update>
+
+    <select id="selectUserById" parameterType="int" resultType="user">
+        select * from user where id = #{0}
+    </select>
 </mapper>

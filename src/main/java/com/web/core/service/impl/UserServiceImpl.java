@@ -81,4 +81,15 @@ public class UserServiceImpl implements UserService {
         String salt = result[1];
         userMapper.changePwd(username,password,salt);
     }
+
+    @Override
+    public String changeUserName(int id, String username) {
+        User user = userMapper.selectUserByUsername(username);
+        if(user==null){
+            userMapper.changeUserNmae(id,username);
+            return "1";
+        }else{
+            return "0";
+        }
+    }
 }

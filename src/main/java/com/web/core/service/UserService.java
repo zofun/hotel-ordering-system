@@ -29,4 +29,12 @@ public interface UserService{
      */
     void changePwd(User user,String password);
 
+    /**
+     * 修改用户信息
+     * @param id
+     * @param username
+     * @return
+     */
+    String changeUserName(int id,String username);
+
 }
