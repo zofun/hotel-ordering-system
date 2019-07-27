@@ -1,7 +1,9 @@
 package com.web.core.mapper;
 
+import com.web.core.pojo.Room;
 import com.web.core.pojo.RoomType;
 import com.web.core.pojo.RoomTypeInfo;
+import com.web.core.pojo.TipInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -50,6 +52,13 @@ public interface RoomTypeMapper {
      * @return
      */
     List<RoomType> queryByHotelId(int hotelId);
+
+
+    /**
+     * 获取所有处于推荐状态的房子
+     * @return
+     */
+    List<TipInfo> queryByRecommendStatus();
 
 
 }

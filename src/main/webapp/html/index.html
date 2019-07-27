@@ -13,6 +13,7 @@
     <link href="../css/linearicons.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="../lib/layui/css/layui.css">
 </head>
 
 <body>
@@ -72,19 +73,10 @@
 <!--                        </div>-->
                         <div class="collapse navbar-collapse" id="menu-id">
                             <ul class="nav navbar-nav">
-                                <li class="active dropdown"><a href="index.html" class="dropdown-toggle p-l-0" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">首页</a>
-                                </li>
-                                <li class="dropdown"><a href="ShowPage.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">详情页</a>
-                                </li>
-                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Blog page 1</a></li>
-                                        <li><a href="#">Blog page 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">合作品牌</a></li>
-                                <li><a href="#">关于我们</a></li>
-                                <li><a href="#">合作联系</a></li>
+
+                                <li><a href="#">首页</a></li>
+                                <li><a href="#">全部房型</a></li>
+                                <li><a href="#">地图找店</a></li>
                             </ul>
                             <div class="nav-search">
                                 <form class="navbar-form navbar-right" role="search">
@@ -161,51 +153,7 @@
     </div>
 </section>
 
-<!-- Ad one -->
-<section class="ad-1">
-    <div class="container">
-        <div class="ad-1">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="ad-box-1">
-                        <img src="../images/house1.jpg" alt="bag" />
-                        <div class="overlay">
-                            <small>New House</small>
-                            <h3>cast a glance</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="ad-box-1">
-                        <img src="../images/house2.jpg" alt="bag" />
-                        <div class="overlay">
-                            <small>New House</small>
-                            <h3>cast a glance</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="ad-box-1">
-                        <img src="../images/house4.jpg" alt="bag" />
-                        <div class="overlay">
-                            <small>New House</small>
-                            <h3>cast a glance</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="ad-box-1">
-                        <img src="../images/house8.jpg" alt="bag" />
-                        <div class="overlay">
-                            <small>New House</small>
-                            <h3>cast a glance</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <!-- Feature Product -->
 <section class="feature-product">
@@ -219,10 +167,14 @@
                 </div>
             </div>
             <div class="row">
+
+
+                <!--推荐内容-->
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="single-grid">
                         <div class="grid-img">
-                            <img class="img-resposive" src="../images/house1.jpg" alt="women" />
+                            <img class="img-resposive" src="../images/house2.jpg" alt="women" />
+                            <strong class="new">HOT</strong>
                             <div class="grid-overlay">
                                 <ul>
                                     <li><i class="lnr lnr-heart"></i></li>
@@ -231,10 +183,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <h3>MituHome<span>￥199</span></h3>
-                        <p>紧靠春熙路，交通便利, 设施齐全，环境优美。</p>
+                        <h3>火烈鸟双人房  <span>￥159</span></h3>
+                        <p>紧靠太古里，交通便利, 设施齐全，环境优美。</p>
                     </div>
                 </div>
+
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="single-grid">
                         <div class="grid-img">
@@ -289,143 +242,7 @@
     </div>
 </section>
 
-<!-- Fashion box -->
-<section class="fashion-box">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-7 p-0 text-center">
-                <div id="f-b" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <div class="fashion-content">
-                                <small>这个夏天</small>
-                                <h2>最最最火房型</h2>
-                                <p>生命爱意并捆绑，数不尽世相。</p>
-                                <ul class="list-inline">
-                                    <li><i class="lnr lnr-star"></i></li>
-                                    <li><i class="lnr lnr-star"></i></li>
-                                    <li><i class="lnr lnr-star"></i></li>
-                                    <li><i class="lnr lnr-star"></i></li>
-                                    <li><i class="lnr lnr-star"></i></li>
-                                </ul>
-                                <div><a class="btn btn-default">抢先预定</a></div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="fashion-content">
-                                <small>特色静谧</small>
-                                <h2>仅仅仅此一间</h2>
-                                <p>年代没耐心相待，推拖到未来。</p>
-                                <ul class="list-inline">
-                                    <li><i class="lnr lnr-star"></i></li>
-                                    <li><i class="lnr lnr-star"></i></li>
-                                    <li><i class="lnr lnr-star"></i></li>
-                                    <li><i class="lnr lnr-star"></i></li>
-                                    <li><i class="lnr lnr-star"></i></li>
-                                </ul>
-                                <div><a class="btn btn-default">抢先预定</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="left carousel-control" href="#f-b" role="button" data-slide="prev"><i class="lnr lnr-chevron-left"></i></a>
-                    <a class="right carousel-control" href="#f-b" role="button" data-slide="next"><i class="lnr lnr-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="col-md-5 p-0">
-                <div class="counter">
-                    <div class="counter-content">
-                        <small>Benefits for you</small>
-                        <h2 class="save-offer">优惠券专区</h2>
-                        <div><a class="btn btn-default">抢！</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- News Trends -->
-<section class="news-trends">
-    <div class="grid-product">
-        <div class="container">
-            <div class="row">
-                <div class="section-title col-md-offset-3 col-md-6 col-xs-12 text-center">
-                    <h2>新屋上市</h2>
-                    <small>人生无非就图个新鲜/Life is nothing but a novelty</small>
-                    <div class="section-border"><span class="dash"></span></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="single-grid">
-                        <div class="grid-img">
-                            <img class="img-resposive" src="../images/house1.jpg" alt="women" />
-                            <strong class="new">HOT</strong>
-                            <div class="grid-overlay">
-                                <ul>
-                                    <li><i class="lnr lnr-heart"></i></li>
-                                    <li><i class="lnr lnr-camera"></i></li>
-                                    <li><i class="lnr lnr-cart"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h3>大床房  <span>￥99</span></h3>
-                        <p>紧靠杜甫草堂，交通便利, 设施齐全，环境优美。</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="single-grid">
-                        <div class="grid-img">
-                            <img class="img-resposive" src="../images/house2.jpg" alt="women" />
-                            <div class="grid-overlay">
-                                <ul>
-                                    <li><i class="lnr lnr-heart"></i></li>
-                                    <li><i class="lnr lnr-camera"></i></li>
-                                    <li><i class="lnr lnr-cart"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h3>小床房  <span>￥9.9</span></h3>
-                        <p>紧靠西南石油大学，交通便利, 设施齐全，环境优美。</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="single-grid">
-                        <div class="grid-img">
-                            <img class="img-resposive" src="../images/house4.jpg" alt="women" />
-                            <strong>25%</strong>
-                            <div class="grid-overlay">
-                                <ul>
-                                    <li><i class="lnr lnr-heart"></i></li>
-                                    <li><i class="lnr lnr-camera"></i></li>
-                                    <li><i class="lnr lnr-cart"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h3>小黑屋  <span>￥33</span></h3>
-                        <p>紧靠花果山，交通便利, 设施齐全，环境优美。</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="single-grid">
-                        <div class="grid-img">
-                            <img class="img-resposive" src="../images/house9.jpg" alt="women" />
-                            <div class="grid-overlay">
-                                <ul>
-                                    <li><i class="lnr lnr-heart"></i></li>
-                                    <li><i class="lnr lnr-camera"></i></li>
-                                    <li><i class="lnr lnr-cart"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h3>大黑屋  <span>￥999</span></h3>
-                        <p>紧靠撒哈拉，交通便利, 设施齐全，环境优美。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- add Two -->
 <section class="ad-2">
     <div class="over-color">
@@ -452,10 +269,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8 col-xs-12 text-center">
-                <div class="input-group subscribe-form input-group-lg">
-                    <input type="text" class="form-control" placeholder="您的意见" aria-describedby="sizing-addon1">
-                    <span class="input-group-addon subscribe-btn" id="sizing-addon1">提交 <i class="fa fa-send hidden-xs"></i></span>
-                </div>
                 <div>
                     <a class="site-title" href="index.html">安<span>宁</span></a>
                     <p class="m-f-p">这里。就是家。就是我们。在这上面有你曾经听说过的每一个人  曾经活着的  曾经死去的每一个人</p>
@@ -484,8 +297,36 @@
     </div>
 </footer>
 
+</body>
+
 <!--======== All Javascript =========-->
 <script src="../js/jquery-2.1.1.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-</body>
+<script src="../lib/layui/layui.js">  </script>
+
+<!--模板-->
+<script type="text/html">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="single-grid">
+            <div class="grid-img">
+                <!--背景图片-->
+                <img class="img-resposive" src="../images/house1.jpg" alt="women" />
+                <div class="grid-overlay">
+                    <ul>
+                        <li><i class="lnr lnr-heart"></i></li>
+                        <li><i class="lnr lnr-camera"></i></li>
+                        <li><i class="lnr lnr-cart"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <h3><i id="roomType">MituHome</i><span id="price">￥199</span></h3>
+            <p id="roomMsg">紧靠春熙路，交通便利, 设施齐全，环境优美。</p>
+        </div>
+    </div>
+</script>
+
+<!--脚本-->
+<script>
+
+</script>
 </html>

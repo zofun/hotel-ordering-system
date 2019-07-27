@@ -30,4 +30,9 @@ from room_type as r inner join hotel as h where r.hotel_id=h.id ORDER BY  r.id  
         select * from room_type where hotel_id=#{0}
     </select>
 
+    <select id="queryByRecommendStatus" resultType="tipInfo">
+        select t.* ,h.hotel_name from room as r inner join room_type as t inner join hotel as h
+        where r.room_type_id=t.id and  t.hotel_id=h.id and  t.isrecommend=1
+    </select>
+
 </mapper>
