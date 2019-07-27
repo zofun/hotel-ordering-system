@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>我的服务</title>
+
+    <link rel="stylesheet" href="../../lib/layui/css/layui.css">
+
+    <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+<div class="layui-layout-body" style="background-color: #f2f2f2">
+
+    <div class="layui-card admin-header">
+
+        <div class="layui-breadcrumb" lay-fiter="breadcrumb" style="visibility: visible">
+
+            <a href="#">主页</a>
+            <span lay-separator="-"></span>
+
+            <a href="#">服务</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="layui-form layui-form-pane lau-sign-form layui-col-lg6 layui-col-lg-offset3" >
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i> 房间号</label>
+            <div class="layui-input-block">
+                <input type="text" id="roomNo" placeholder="请输入房间号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i>服务类型</label>
+            <div class="layui-input-block">
+                <input type="text" id="serviceMsg" placeholder="您想要的服务" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <button type="button" href="#" class="layui-btn layui-btn-fluid" id="callService" lay-submit lay-filter="callService">呼 叫</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="../../lib/layui/layui.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
+<script src="../../js/common.js"></script>
+<script>
+    layui.config({base: '/js/'}).use('callservice');
+</script>
+
+</body>
+</html>

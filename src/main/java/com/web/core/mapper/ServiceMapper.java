@@ -27,4 +27,11 @@ public interface ServiceMapper {
      * @param status
      */
     void updateServiceStatus(int id,String status);
+
+    /**
+     * 用户呼叫服务
+     * @param roomId
+     * @param serviceType
+     */
+    void addService(int roomId,String serviceType);
 }

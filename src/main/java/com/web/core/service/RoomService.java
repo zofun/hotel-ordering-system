@@ -28,4 +28,11 @@ public interface RoomService {
      * @return
      */
     void closeOrOpenRoom(int id,String status);
+
+    /**
+     * 根据传来的roomNO查询room的id
+     * @param roomNo
+     * @return
+     */
+    int qurryRoomByRoomNo(String roomNo);
 }

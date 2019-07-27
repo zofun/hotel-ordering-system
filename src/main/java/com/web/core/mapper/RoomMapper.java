@@ -47,4 +47,11 @@ public interface RoomMapper {
      * @param status
      */
     void updateRoomStatus(int id,String status);
+
+    /**
+     * 根据roomNO查询该room
+     * @param roomNo
+     * @return
+     */
+    Room qurryRoomByRoomNo(String roomNo);
 }

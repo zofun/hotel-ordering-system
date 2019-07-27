@@ -24,4 +24,8 @@
     <update id="updateRoomStatus">
         update room set status=#{1} where id=#{0}
     </update>
+
+    <select id="qurryRoomByRoomNo" parameterType="string" resultType="room">
+        select * from `room` where room_no = #{0}
+    </select>
 </mapper>

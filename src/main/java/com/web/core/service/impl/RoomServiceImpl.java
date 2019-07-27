@@ -63,4 +63,11 @@ public class RoomServiceImpl implements RoomService {
         }
 
     }
+
+    @Override
+    public int qurryRoomByRoomNo(String roomNo) {
+        Room room = roomMapper.qurryRoomByRoomNo(roomNo);
+        int roomid = room.getId();
+        return roomid;
+    }
 }

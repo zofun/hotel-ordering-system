@@ -37,9 +37,9 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i> 验证码</label>
                                 <div class="layui-input-block lau-sign-code">
-                                    <input type="text" name="captcha" id="input" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                                    <input type="text" style="width: 202px" name="captcha" id="input" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                                     <!--<input type="text"  id="captcha" name="captcha"  placeholder="请输入图形验证码" autocomplete="off"  class="lau-sign-captcha">-->
-                                    <img src = "/vccode"  name = "captcha" autocomplete="off"  class="lau-sign-captcha" id="imgVerify"  alt="更换验证码"/><a href="#" onclick="getVerify();" rel ="nofollow">看不清，换一张</a>
+                                    <img src = "/vccode"  name = "captcha" onclick="getVerify();" autocomplete="off"  class="lau-sign-captcha" id="imgVerify"  alt="更换验证码"/><a href="#" onclick="getVerify();" rel ="nofollow">看不清，换一张</a>
 
                                     <!--<input type="button" value="验证"  onclick = "validate()" autocomplete="off" class="layui-input">-->
                                 </div>

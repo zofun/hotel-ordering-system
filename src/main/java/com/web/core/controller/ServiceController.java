@@ -1,6 +1,8 @@
 package com.web.core.controller;
 
 
+import com.web.core.mapper.ServiceMapper;
+import com.web.core.service.RoomService;
 import com.web.core.service.ServiceManService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,11 @@ public class ServiceController {
     @Autowired
     private ServiceManService serviceManService;
 
+    @Autowired
+    private RoomService roomService;
+
+    @Autowired
+    private ServiceMapper serviceMapper;
 
     @RequestMapping(value = "getServiceInfoList",produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -29,5 +36,16 @@ public class ServiceController {
         return "1";
     }
 
+    @RequestMapping(value = "addservice",produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String addService(String roomNo,String serviceMsg){
+
+        int roomid = roomService.qurryRoomByRoomNo(roomNo);
+        if(roomid!=0){
+            serviceMapper.addService(roomid,serviceMsg);
+            return "1";
+        }
+        return "0";
+    }
 
 }
