@@ -127,4 +127,19 @@ public class UserController {
             return "2";
         }
     }
+
+    @RequestMapping(value = "changeUserName")
+    @ResponseBody
+    public String changeUserName(int id,String username){
+        if(id == 0){
+            return "0";
+        }else{
+            String str = userService.changeUserName(id,username);
+            if(str == "0"){
+                return "2";
+            }else{
+                return "1";
+            }
+        }
+    }
 }

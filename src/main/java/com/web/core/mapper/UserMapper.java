@@ -17,6 +17,13 @@ public interface UserMapper {
     User selectUserByUsername(String username);
 
     /**
+     * 根据id查询用户
+     * @param id
+     * @return
+     */
+    User selectUserById(int id);
+
+    /**
      * 插入用户
      * @param user
      */
@@ -63,4 +70,11 @@ public interface UserMapper {
      * @param salt
      */
     void changePwd(String username,String password,String salt);
+
+    /**
+     * 修改用户的名字
+     * @param id
+     * @param username
+     */
+    void changeUserNmae(int id,String username);
 }
