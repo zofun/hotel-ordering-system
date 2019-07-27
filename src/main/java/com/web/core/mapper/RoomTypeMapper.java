@@ -60,5 +60,20 @@ public interface RoomTypeMapper {
      */
     List<TipInfo> queryByRecommendStatus();
 
+    /**
+     * 分页查询所有的房间信息
+     * @param begin
+     * @param limit
+     * @return
+     */
+    List<TipInfo> queryAllHote(int begin,int limit);
+
+
+    /**
+     * 查询房型数量
+     * @return
+     */
+    int queryCount();
+
 
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>安宁</title>
+    <title>选房</title>
 
     <!--======== All Stylesheet =========-->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,6 @@
             <div class="col-md-12 col-xs-12">
                 <nav class="navbar navbar-default">
                     <div class="container">
-
                         <div class="collapse navbar-collapse" id="menu-id">
                             <ul class="nav navbar-nav">
 
@@ -78,65 +77,9 @@
     </div>
 </header>
 
-<!-- home -->
-<section class="home">
-    <div class="intro">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-xs-12">
-                    <h2>2019</h2>
-                    <h1>酒店辅助订购系统</h1>
-                    <small>有些地方住过一次，就会是一辈子的记忆。/Some places once lived, will be a lifetime memory.</small>
-                    <div><a class="btn btn-default see-collection">了解</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- feature box -->
-<section class="feature-box">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="f-s-b">
-                    <div class="well well-sm">
-                        <i class="lnr lnr-heart"></i>
-                        <h3>安全</h3>
-                        <small>safe </small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="f-s-b">
-                    <div class="well well-sm">
-                        <i class="lnr lnr-user"></i>
-                        <h3>卫生</h3>
-                        <small>hygiene </small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="f-s-b">
-                    <div class="well well-sm">
-                        <i class="lnr lnr-camera-video"></i>
-                        <h3>方便</h3>
-                        <small>convenient </small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="f-s-b">
-                    <div class="well well-sm">
-                        <i class="lnr lnr-camera"></i>
-                        <h3>舒适</h3>
-                        <small>comfortable </small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+
 
 
 
@@ -146,17 +89,49 @@
         <div class="container">
             <div class="row">
                 <div class="section-title col-md-offset-3 col-md-6 col-xs-12 text-center">
-                    <h2>为您推荐</h2>
+                    <h2>全部房型</h2>
                     <small>使您满意是我们的最大追求/Your satisfaction is our greatest pursuit</small>
                     <div class="section-border"><span class="dash"></span></div>
                 </div>
             </div>
+            <div class="layui-row">
+                <div class="layui-form-item layui-row">
+                    <div class="layui-inline layui-col-lg5">
+                        <label class="layui-form-label" style="width: 100px">价格范围</label>
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid">-</div>
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-lg4 ">
+                        <label class="layui-form-label" style="width: 100px">入住人数</label>
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <input type="password" name="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-lg2 ">
+                        <button class="layui-btn layui-btn-normal">查找</button>
+                    </div>
+
+
+
+                </div>
+            </div>
             <div class="row" id="view">
-                <!--推荐内容-->
+                <!--所有房间-->
                 <!--使用模板引擎添加-->
 
 
             </div>
+
+            <div class="layui-row">
+                <div id="test1" class="layui-col-lg6 layui-col-lg-offset4"></div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -227,6 +202,7 @@
 <!--模板-->
 <script type="text/html" id="tipTpl">
 
+
     {{#  layui.each(d.tipList, function(index, item){ }}
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="single-grid">
@@ -250,31 +226,54 @@
 <!--脚本-->
 <script>
 
-    layui.use(['laytpl','form'],function () {
+    layui.use(['laytpl','form','laypage'],function () {
 
         var form=layui.form;
         laytpl=layui.laytpl;
+        var laypage = layui.laypage;
 
         $.ajax({
             type:'get',
-            url:base_url+'/view/getTipsList',
+            url:base_url+'/view/getRoomTypeCount',
             success:function (data) {
-                var getTpl=tipTpl.innerHTML;
-                var view = document.getElementById('view');
-                laytpl(getTpl).render(data, function(html){
+                laypage.render({
+                    elem: 'test1'
+                    ,count: data
+                    ,jump: function(obj, first){
 
-                    view.innerHTML = html;
+                            $.ajax({
+                                type:'get',
+                                data:{
+                                    page:obj.curr,
+                                    limit:12
+                                },
+                                url:base_url+'/view/getAllRoomType',
+                                success:function (data) {
+                                    var getTpl=tipTpl.innerHTML;
+                                    var view = document.getElementById('view');
+                                    laytpl(getTpl).render(data, function(html){
+                                        console.log(html);
+                                        view.innerHTML = html;
+
+                                    });
+
+                                }
+                            })
+                        }
+
 
                 });
-
             }
-        })
+        });
+
+
+
 
 
     });
-    
-    
-    
+
+
+
     function getInfo(hotelName,desc,capacity) {
         layer.open({
             title:'房间信息',

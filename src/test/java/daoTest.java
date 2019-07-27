@@ -165,5 +165,20 @@ public class daoTest {
         System.out.println(count);
     }
 
+    @Test
+    public  void  tipDao(){
+        List<TipInfo> infos = roomTypeMapper.queryByRecommendStatus();
+
+        for (TipInfo info:infos){
+            System.out.println(info);
+        }
+
+        infos=roomTypeMapper.queryAllHote(0,5);
+        for (TipInfo info:infos){
+            System.out.println(info);
+        }
+
+    }
+
 
 }
