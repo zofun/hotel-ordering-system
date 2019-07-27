@@ -68,18 +68,17 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 实现修改密码，将s传来的密码利用盐值加密，存入数据库中
+     * 实现修改用户密码，将s传来的密码利用盐值加密，存入数据库中
      * @param user
      * @return
      */
     @Override
     public void changePwd(User user,String newpassword) {
 
-        //计算加密后的密码
-        String[] ciphertext=EncryptUtils.encryptPassword(newpassword);
-        user.setPassword(ciphertext[0]);
-        user.setSalt(ciphertext[1]);
-        Subject subject = SecurityUtils.getSubject();
-        userMapper.changePwd(user,user.getPassword());
+        String[] result = EncryptUtils.encryptPassword(newpassword);
+        String username = user.getUsername();
+        String password = result[0];
+        String salt = result[1];
+        userMapper.changePwd(username,password,salt);
     }
 }

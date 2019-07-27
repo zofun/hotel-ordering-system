@@ -30,16 +30,16 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">用户名</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="username" value="账号" readonly="" class="layui-input">
+                                    <input type="text" name="username" id = "username" value="666666" readonly="" class="layui-input">
                                 </div>
                                 <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i> 验证码</label>
                                 <div class="layui-input-block lau-sign-code">
-                                    <input type="text" name="captcha" id="input" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                                    <input type="text" style="width: 202px" name="captcha" id="captcha" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                                     <!--<input type="text"  id="captcha" name="captcha"  placeholder="请输入图形验证码" autocomplete="off"  class="lau-sign-captcha">-->
-                                    <img src = "/vccode"  name = "captcha" autocomplete="off"  class="lau-sign-captcha" id="imgVerify"  alt="更换验证码"/><a href="#" onclick="getVerify();" rel ="nofollow">看不清，换一张</a>
+                                    <img src = "/vccode"  name = "captcha" onclick="getVerify();" autocomplete="off"  class="lau-sign-captcha" /><a href="#" onclick="getVerify();" rel ="nofollow">看不清，换一张</a>
 
                                     <!--<input type="button" value="验证"  onclick = "validate()" autocomplete="off" class="layui-input">-->
                                 </div>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
-                                    <button class="layui-btn" lay-submit="" lay-filter="setmyinfo">确认修改</button>
+                                    <button class="layui-btn" lay-submit="" lay-filter="setmyinfo" id = "setmyinfo">确认修改</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重新填写</button>
                                 </div>
                             </div>
@@ -82,6 +82,8 @@
     });
 </script>
 
-
+<script>
+    layui.config({base: '/js/'}).use('userchangepwd');
+</script>
 </body>
 </html>

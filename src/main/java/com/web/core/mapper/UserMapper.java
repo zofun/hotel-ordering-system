@@ -38,13 +38,6 @@ public interface UserMapper {
     int selectCountByUsername(String username);
 
     /**
-     * 改变密码
-     * @param user
-     * @param passward
-     */
-    void changePwd(User user, String passward);
-
-    /**
      * 查询UserRoleInfo列表
      * @param begin
      * @param limit
@@ -62,4 +55,12 @@ public interface UserMapper {
      * 更改角色
      */
     void updateRole(int usedId,int roleId);
+
+    /**
+     * 更改密码
+     * @param username
+     * @param password
+     * @param salt
+     */
+    void changePwd(String username,String password,String salt);
 }
