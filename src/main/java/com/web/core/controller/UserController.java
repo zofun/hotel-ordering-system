@@ -1,6 +1,7 @@
 package com.web.core.controller;
 
 
+import com.web.core.mapper.UserMapper;
 import com.web.core.pojo.User;
 import com.web.core.service.UserService;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -20,6 +21,9 @@ public class UserController {
     private UserService userService;
 
 
+    @Autowired
+    private UserMapper userMapper;
+
     /**
      * 用户注册功能
      * @param user
@@ -38,7 +42,7 @@ public class UserController {
                 System.out.println("可以进行注册！！！");
                 return "1";
             }else{
-                return "0";
+                return "2";
             }
         }else{
             return "0";
@@ -93,5 +97,34 @@ public class UserController {
             return "1";
         }
         return "0";
+    }
+
+    @RequestMapping(value = "changePwd")
+    @ResponseBody
+    public String changePwd(String username,String password){
+        User user = userMapper.selectUserByUsername(username);
+        if(user == null){
+            return "0";
+        }else{
+           userService.changePwd(user,password);
+           return "1";
+        }
+    }
+
+    @RequestMapping(value = "changeUserPwd")
+    @ResponseBody
+    public String changeUserPwd(String username,String password,String captcha, HttpSession session){
+        String str = session.getAttribute("vcode").toString();
+        User user = userMapper.selectUserByUsername(username);
+        if(str.equals(captcha)){
+            if(user!=null){
+                userService.changePwd(user,password);
+                return "1";
+            }else{
+                return "0";
+            }
+        }else{
+            return "2";
+        }
     }
 }

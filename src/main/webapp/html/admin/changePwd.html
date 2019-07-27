@@ -29,20 +29,20 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">用户名</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="username" value="账号" readonly="" class="layui-input">
+                                    <input type="text" name="username" id = "username" value="超级管理员"  readonly="" class="layui-input">
                                 </div>
                                 <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">密码</label>
                                 <div class="layui-input-inline">
-                                    <input type="password" name="password" value="用户名" lay-verify="nickname" autocomplete="off"  class="layui-input">
+                                    <input type="password" id = "password" value="密码" lay-verify="nickname" autocomplete="off"  class="layui-input">
                                 </div>
                             </div>
 
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
-                                    <button class="layui-btn" lay-submit="" lay-filter="setmyinfo">确认修改</button>
+                                    <button class="layui-btn" id="setmyinfo" lay-filter="setmyinfo">确认修改</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重新填写</button>
                                 </div>
                             </div>
@@ -58,13 +58,7 @@
 <script src="../../lib/layui/layui.js"></script>
 <script src="../../js/common.js"></script>
 <script>
-    layui.use(['element','form'], function(){
-        var element = layui.element;
-        var form=layui.form;
-
-    });
+    layui.config({base: '/js/'}).use('changepwd');
 </script>
-
-
 </body>
 </html>

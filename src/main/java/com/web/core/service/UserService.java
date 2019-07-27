@@ -27,6 +27,6 @@ public interface UserService{
      * @param user
      * @return
      */
-    void changePwd(User user,String newpassword);
+    void changePwd(User user,String password);
 
 }
