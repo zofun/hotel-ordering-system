@@ -41,9 +41,11 @@
             , layedit = layui.layedit
             , laydate = layui.laydate;
         laydate.render({
-            elem: '#test1' //指定元素
+            elem: '#test1',
+            min:0,
+            max:30
         });
-    })
+    });
 
 
 

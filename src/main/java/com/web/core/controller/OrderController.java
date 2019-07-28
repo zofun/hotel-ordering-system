@@ -3,6 +3,7 @@ package com.web.core.controller;
 import com.web.core.pojo.User;
 import com.web.core.service.OrderSerive;
 import com.web.core.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,8 @@ public class OrderController {
     @Autowired
     private OrderSerive orderSerive;
 
+
+    @RequiresAuthentication
     @RequestMapping(value = "getAllOrder",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getAllOrder(){
@@ -29,6 +32,8 @@ public class OrderController {
         return json;
     }
 
+
+    @RequiresAuthentication
     @RequestMapping(value = "getUserOrder",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getUserOrder(HttpSession session){

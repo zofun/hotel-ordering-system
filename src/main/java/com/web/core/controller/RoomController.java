@@ -5,6 +5,8 @@ import com.web.core.pojo.Room;
 //import com.web.core.service.HotelService;
 import com.web.core.service.RoomService;
 //import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ public class RoomController {
     @Autowired
     private RoomService roomService;
 
+    @RequiresAuthentication
+    @RequiresPermissions("readRoom")
     @RequestMapping("getRoomList")
     @ResponseBody
     public String getRoomList(int page,int limit,int subbranchId){
@@ -36,6 +40,8 @@ public class RoomController {
      * @param room
      * @return
      */
+    @RequiresAuthentication
+    @RequiresPermissions("manRoom")
     @RequestMapping(value = "addRoom",produces = "application/json;charset=utf-8")
     @ResponseBody
     public  String addRoom(Room room){
@@ -53,6 +59,8 @@ public class RoomController {
      * @param status
      * @return
      */
+    @RequiresAuthentication
+    @RequiresPermissions("manRoom")
     @RequestMapping("changeRoomStatus")
     @ResponseBody
     public String changeRoomStatus(int id,String status){

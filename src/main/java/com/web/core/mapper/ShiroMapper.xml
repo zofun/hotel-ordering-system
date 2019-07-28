@@ -8,10 +8,8 @@
     </select>
 
     <select id="getUserRoleByUserId" resultType="com.web.core.pojo.Role">
-        select
-        *
-        FROM role
-        where user_id = #{0}
+       select r.* from role as r inner join user as u
+       where u.isadmin=r.id and u.id=#{0}
     </select>
 
     <select id="getPermissionsByRoleId" resultType="com.web.core.pojo.Permission">

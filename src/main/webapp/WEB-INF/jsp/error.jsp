@@ -9,6 +9,10 @@
 <html>
 <head>
     <title>Title</title>
+    <%
+        //每秒刷新一次
+        response.setHeader("type","error");
+    %>
 </head>
 <body>
 
