@@ -1,161 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+Created by IntelliJ IDEA.
+User: Administrator
+Date: 2017/10/11
+Time: 11:56
+To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
+    <title>Title</title>
     <meta charset="UTF-8">
-    <title>lqyui练习</title>
-    <link rel="stylesheet" href="./lib/layui/css/layui.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css">
+    <%
+    //每秒刷新一次
+    response.setHeader("type","error");
+    %>
 </head>
-<body>
+<body style="background-color: #f2f2f2">
 
+<div class="container">
 
-
-<!--导航栏-->
-<div class="layui-row">
-    <ul class="layui-nav layui-bg-cyan layui-nav-title">
-        <li class="layui-nav-item"><a href="">首页</a></li>
-        <li class="layui-nav-item"><a href="">另一页</a></li>
-        <li class="layui-nav-item">
-            <a href="">含有二级菜单</a>
-            <dl class="layui-nav-child">
-                <dd><a href="">二级01</a></dd>
-                <dd><a href="">二级01</a></dd>
-            </dl>
-        </li>
-    </ul>
-</div>
-
-<!--轮播图-->
-<div class="layui-row" >
-    <div class="layui-col-lg-offset2 layui-col-lg8">
-        <div class="layui-carousel " id="test01">
-            <div  carousel-item>
-                <div style="background-color: cyan">条目1</div>
-                <div style="background-color: darkgoldenrod">条目2</div>
-                <div style="background-color:rebeccapurple">条目3</div>
-            </div>
+   <div class="row">
+       <div class="col-md-8 col-md-offset-1">
+           <img src="/images/error.jpg" alt="" style="width:928px;height: 500px ">
+       </div>
+   </div>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <p style="font-size: 45px;letter-spacing: 18px;text-align: center">你没有权限</p>
         </div>
     </div>
 
-</div>
-
-<!--数据表格-->
-<div class="layui-row">
-
-    <div class="layui-col-lg-offset2 layui-col-lg8">
-        <table class="layui-table" lay-data="{url:'/getdate', id:'test3',page:'true',toolbar:'true',totalRow: true}" lay-filter="test3" >
-            <thead>
-            <tr>
-                <th lay-data="{type:'checkbox'}">ID</th>
-                <th lay-data="{field:'id', width:80, sort: true}">ID</th>
-                <th lay-data="{field:'username', width:120, sort: true, edit: 'text'}">用户名</th>
-                <th lay-data="{field:'password', edit: 'text', minWidth: 150,totalRow: true}">密码</th>
-                <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}"></th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-
-</div>
-
-<!--图片懒加载-->
-<img lay-src="./images/001.jpg" alt="" style="width:100px; height:100px">
-<br/>
-<img lay-src="./images/002.jpg" alt="" style="width:100px; height:100px">
-<br/>
-<img lay-src="./images/003.jpg" alt="" style="width:100px; height:100px">
-<br/>
-<img lay-src="./images/004.jpg" alt="" style="width:100px; height:100px">
-<br/>
-<img lay-src="./images/005.jpg" alt="" style="width:100px; height:100px">
-<br/>
-<img lay-src="./images/006.jpg" alt="" style="width:100px; height:100px">
-<br/>
-<img lay-src="./images/007.jpg" alt="" style="width:100px; height:100px">
-<br/>
-
-<!--模板引擎-->
-<div id="view"></div>
 
 </body>
-<script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-</script>
-
-<script type="text/html" id="demo01">
-    <h3>{{ d.title }}</h3>
-    <ul>
-        {{#  layui.each(d.list, function(index, item){ }}
-        <li>
-            <span>{{ item.modname }}</span>
-            <span>{{ item.alias }}：</span>
-            <span>{{ item.site || '' }}</span>
-        </li>
-        {{#  }); }}
-        {{#  if(d.list.length === 0){ }}
-        无数据
-        {{#  } }}
-    </ul>
-</script>
-
-<script src="./lib/layui/layui.js"></script>
-
-<script src="./lib/jquery/jquery.js"></script>
-<script>
-
-    layui.use('table', function(){
-        var table = layui.table;
-
-        table.render({
-            elem:'#test3',
-
-            loading:'true'
-
-        });
-        //监听单元格编辑
-        table.on('edit(test3)', function(obj){
-            var value = obj.value //得到修改后的值
-                ,data = obj.data //得到所在行所有键值
-                ,field = obj.field; //得到字段
-            layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
-        });
-    });
-
-    layui.use('carousel',function () {
-       var carousel=layui.carousel;
-       carousel.render({
-           elem:'#test01',
-           width:'100%',
-           arrow:'hover',
-           autoplay:'true',
-           interval:'3000',
-           anim:'fade'
-       });
-    });
-    
-    layui.use('element',function () {
-        var element=layui.element;
-    });
-
-    layui.use('flow',function () {
-       var flow=layui.flow;
-       flow.lazyimg();
-    });
-
-    layui.use('laytpl',function () {
-        var laytpl=layui.laytpl;
-        var data = { //数据
-            "title":"Layui常用模块"
-            ,"list":[{"modname":"弹层","alias":"layer","site":"layer.layui.com"},{"modname":"表单","alias":"form"}]
-        }
-        var getTpl = demo01.innerHTML
-            ,view = document.getElementById('view');
-        laytpl(getTpl).render(data, function(html){
-            view.innerHTML = html;
-        });
-    })
-
-</script>
-
+<script src="/lib/jquery/jquery.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
 </html>

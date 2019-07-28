@@ -4,6 +4,7 @@ package com.web.core.controller;
 import com.web.core.mapper.UserMapper;
 import com.web.core.pojo.User;
 import com.web.core.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,6 +69,7 @@ public class UserController {
     }
 
 
+    @RequiresAuthentication
     @RequestMapping(value = "getUserInfo",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getUserInfo(HttpSession session){
