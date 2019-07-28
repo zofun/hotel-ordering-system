@@ -5,6 +5,7 @@ import com.web.core.mapper.UserMapper;
 import com.web.core.pojo.User;
 import com.web.core.service.UserService;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.mgt.SecurityManager;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -101,6 +102,7 @@ public class UserController {
         return "0";
     }
 
+    @RequiresAuthentication
     @RequestMapping(value = "changePwd")
     @ResponseBody
     public String changePwd(String username,String password){
@@ -113,6 +115,7 @@ public class UserController {
         }
     }
 
+    @RequiresAuthentication
     @RequestMapping(value = "changeUserPwd")
     @ResponseBody
     public String changeUserPwd(String username,String password,String captcha, HttpSession session){
@@ -130,6 +133,7 @@ public class UserController {
         }
     }
 
+    @RequiresAuthentication
     @RequestMapping(value = "changeUserName")
     @ResponseBody
     public String changeUserName(int id,String username){
@@ -144,4 +148,7 @@ public class UserController {
             }
         }
     }
+
+
+
 }

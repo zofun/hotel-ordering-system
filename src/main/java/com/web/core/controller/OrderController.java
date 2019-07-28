@@ -1,5 +1,6 @@
 package com.web.core.controller;
 
+import com.web.core.mapper.OrderMapper;
 import com.web.core.pojo.Order;
 import com.web.core.pojo.User;
 import com.web.core.service.OrderSerive;
@@ -72,6 +73,8 @@ public class OrderController {
     public String delOrderByOrderId(int id){
         Order order = orderSerive.queryOrderByOrderId(id);
         if(order!=null){
+            //删除订单
+            orderSerive.delOrderByOrderId(order.getId());
             return "1";
         }
         return "0";
