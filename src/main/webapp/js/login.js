@@ -26,8 +26,6 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
         var password = $('#password').val();
         var captcha = $('#captcha').val();
 
-        //登陆中
-        tips.loading('登陆中...', 0, -1);
 
         if (!/^[a-zA-Z0-9_]{1,16}$/.test(username)) {
             tips.warning('用户名必须为1-16位数字/字母/下划线组成');
@@ -62,5 +60,5 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
         )
 
     });
-
+    exports('login', {});
 });

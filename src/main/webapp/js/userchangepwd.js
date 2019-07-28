@@ -52,5 +52,5 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
         )
 
     });
-
+    exports('userchangepwd',{})
 });

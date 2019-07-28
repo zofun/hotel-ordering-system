@@ -79,16 +79,7 @@ public class OrderServiceImpl implements OrderSerive {
         }
     }
 
-    @Override
-    public String addUserOrder(Integer userid) {
-        return null;
-    }
 
-    @Override
-    public void delete(String username) {
-        User user = userMapper.selectUserByUsername(username);
-
-    }
 
     @Override
     public boolean MakeOrder(int userId, int roomTypeId, String time) {
@@ -113,5 +104,19 @@ public class OrderServiceImpl implements OrderSerive {
 
 
         return false;
+    }
+
+    @Override
+    public void delOrderByOrderId(int orderId) {
+        orderMapper.delOrderByOrderId(orderId);
+    }
+
+    @Override
+    public Order queryOrderByOrderId(int orderId) {
+        Order order = orderMapper.queryOrderByOrderId(orderId);
+        if(order!=null){
+            return order;
+        }
+        return null;
     }
 }

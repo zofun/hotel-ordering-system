@@ -1,5 +1,6 @@
 package com.web.core.controller;
 
+import com.web.core.pojo.Order;
 import com.web.core.pojo.User;
 import com.web.core.service.OrderSerive;
 import com.web.core.service.UserService;
@@ -21,6 +22,9 @@ import javax.servlet.http.HttpSession;
 public class OrderController {
     @Autowired
     private OrderSerive orderSerive;
+
+    @Autowired
+
 
     @RequestMapping(value = "getAllOrder",produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -55,6 +59,16 @@ public class OrderController {
             return "1";
         }
 
+        return "0";
+    }
+
+    @RequestMapping(value = "delorderbyorderId")
+    @ResponseBody
+    public String delOrderByOrderId(int id){
+        Order order = orderSerive.queryOrderByOrderId(id);
+        if(order!=null){
+            return "1";
+        }
         return "0";
     }
 }

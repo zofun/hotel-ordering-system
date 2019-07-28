@@ -5,13 +5,13 @@
 <mapper namespace="com.web.core.mapper.OrderMapper">
 
     <select id="getUserOrder" parameterType="Integer" resultType="OrderInfo">
-        select o.id ,r.room_no, r.status, t.room_type ,o.order_time,o.time,o.check_in_time,o.check_out_time from room as r inner join room_type as t inner join `order` as o inner join `user` as u
+        select o.id ,r.room_no, o.status, t.room_type ,o.order_time,o.time,o.check_in_time,o.check_out_time from room as r inner join room_type as t inner join `order` as o inner join `user` as u
         where r.room_type_id=t.id and o.room_id=r.id  and o.user_id = u.id and u.id = #{0}
     </select>
 
 
     <select id="getAllOrder"  resultType="OrderInfo">
-       select o.id ,r.room_no, r.status, t.room_type ,o.order_time,o.time,o.check_in_time,o.check_out_time from room as r inner join room_type as t inner join `order` as o
+       select o.id ,r.room_no, o.status, t.room_type ,o.order_time,o.time,o.check_in_time,o.check_out_time from room as r inner join room_type as t inner join `order` as o
         where r.room_type_id=t.id and o.room_id=r.id
     </select>
 
@@ -28,10 +28,6 @@
     <insert id="addUserOrder" parameterType="int">
         insert * from `order` where user_id = #{0}
     </insert>
-
-    <delete id="deleteOrder" parameterType="Integer">
-       delete from `order` where user_id = #{0}
-    </delete>
 
     <select id="queryOrderByOrderId" resultType="order">
         select * from `order` where id=#{0}

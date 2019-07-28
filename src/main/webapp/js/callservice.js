@@ -18,8 +18,6 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
         var roomNo = $('#roomNo').val();
         var serviceMsg = $('#serviceMsg').val();
 
-        //提交中
-        tips.loading('提交服务中...', 0, -1);
 
         if (roomNo===''){
             tips.warning('请输入房间号码');
@@ -49,5 +47,5 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
         )
 
     });
-
+    exports('callservice',{})
 });

@@ -33,13 +33,12 @@
     </div>
 
 </div>
-
-<script type="text/html" id="checkboxTpl">
-    <input type="checkbox" name="lock" value="{{d.id}}" title="退房" lay-filter="lockDemo" {{ d.recommend == 'true' ? 'checked' : '' }} }}>
-</script>
 <script src="../../lib/layui/layui.js"></script>
 <script src="../../lib/jquery/jquery.js"></script>
 <script src="../../js/common.js"></script>
+<script type="text/html" id="checkboxTpl">
+    <input type="checkbox" name="lock" value="{{d.id}}" title="退订单" id = "lockDemo" lay-filter="lockDemo" {{ d.status == '已入住' ? 'checked' : '' }} }}>
+</script>
 
 <script>
     var table;
@@ -64,7 +63,7 @@
                 , {field: 'time', title: '拟入住时间', width: 120, sort: true}
                 , {field: 'checkInTime', title:'入住时间', width:110,sort:true}
                 , {field: 'checkOutTime', title:'入住时间', width:110,sort:true}
-                , {field: 'check-out', title:'退房', width:110, templet: '#checkboxTpl', unresize: true}
+                , {field: 'check-out', title:'退单', width:110, templet: '#checkboxTpl', unresize: true}
             ]]
             , page: true
             ,id:'orderTable'
@@ -88,6 +87,8 @@
 
 
 </script>
-
+<script>
+    layui.config({base:'/js/'}).use('delorder');
+</script>
 </body>
 </html>

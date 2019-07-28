@@ -30,20 +30,19 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">用户名</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="username" id = "username" value="666666" readonly="" class="layui-input">
+                                    <input type="text" name="username" id = "username"   class="layui-input">
                                 </div>
                                 <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label"><i class="layui-icon layui-icon-vercode"></i> 验证码</label>
                                 <div class="layui-input-block lau-sign-code">
-                                    <input type="text" style="width: 202px" name="captcha" id="captcha" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                                    <input type="text" name="captcha" id="captcha" style="width: 202px" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                                     <!--<input type="text"  id="captcha" name="captcha"  placeholder="请输入图形验证码" autocomplete="off"  class="lau-sign-captcha">-->
-                                    <img src = "/vccode"  name = "captcha" onclick="getVerify();" autocomplete="off"  class="lau-sign-captcha" /><a href="#" onclick="getVerify();" rel ="nofollow">看不清，换一张</a>
+                                    <img src = "/vccode"  name = "captcha" autocomplete="off"  class="lau-sign-captcha" id="imgVerify"  /><a href="#" onclick="getVerify();" rel ="nofollow">看不清，换一张</a>
 
                                     <!--<input type="button" value="验证"  onclick = "validate()" autocomplete="off" class="layui-input">-->
                                 </div>
-                                <div class="layui-form-mid layui-word-aux layui-inline" ></div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">密码</label>
@@ -71,9 +70,9 @@
     </div>
 
 </div>
-
 <script src="../../lib/layui/layui.js"></script>
 <script src="../../js/common.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
 <script>
     layui.use(['element','form'], function(){
         var element = layui.element;
@@ -81,9 +80,31 @@
 
     });
 </script>
-
 <script>
     layui.config({base: '/js/'}).use('userchangepwd');
+</script>
+<script>
+    layui.config({base: '/js/'}).use('getuserinfo');
+</script>
+<script>
+
+    $(document).ready(function () {
+        console.log('sss')
+        getUsername();
+    })
+    function getUsername(){
+        $.ajax({
+            type:"get",
+            url:"/user/getUserInfo",
+
+            success:function (d) {
+                username = d.username;
+                $('#username').val(username);
+
+            }
+        });
+    }
+
 </script>
 </body>
 </html>

@@ -25,18 +25,6 @@ public interface OrderSerive {
      */
     String getAllOrder();
 
-    /**
-     * 用户创建订单
-     * @param userid
-     * @return
-     */
-    String addUserOrder(Integer userid);
-
-    /**
-     * 删除订单
-     * @param username
-     */
-    void delete(String username);
 
     /**
      * 用户下订单
@@ -46,5 +34,18 @@ public interface OrderSerive {
      * @return
      */
     boolean MakeOrder(int userId,int roomTypeId,String time);
+
+    /**
+     * 根据订单id删除订单
+     * @param orderId
+     */
+    void delOrderByOrderId(int orderId);
+
+    /**
+     * 根据订单id查询订单
+     * @param orderId
+     * @return
+     */
+    Order queryOrderByOrderId(int orderId);
 }
 

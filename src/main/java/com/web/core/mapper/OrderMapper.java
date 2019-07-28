@@ -51,8 +51,6 @@ public interface OrderMapper {
      */
     void addUserOrder(Integer userid);
 
-    void deleteOrder(Integer userid);
-
 
     /**
      * 根据订单的id查询订单
