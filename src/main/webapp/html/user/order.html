@@ -37,7 +37,7 @@
 <script src="../../lib/jquery/jquery.js"></script>
 <script src="../../js/common.js"></script>
 <script type="text/html" id="checkboxTpl">
-    <input type="checkbox" name="lock" value="{{d.id}}" title="退订单" id = "lockDemo" lay-filter="lockDemo" {{ d.status == '已入住' ? 'checked' : '' }} }}>
+    <input type="checkbox" name="lock" value="{{d.id}}" title="退订单" id = "lockDemo" lay-filter="lockDemo"  {{ d.status == '待入住' ? '' : 'disabled' }}>
 </script>
 
 <script>
@@ -58,7 +58,7 @@
                 , {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
                 , {field: 'roomNo', title: '房间号', width: 120, sort: true}
                 , {field: 'roomType', title: '分店类型', width: 120, sort: true}
-                , {field: 'status', title: '状态', width: 120}
+                , {field: 'status', title: '状态', width: 130}
                 , {field: 'orderTime', title: '下单时间', width: 120, sort: true}
                 , {field: 'time', title: '拟入住时间', width: 120, sort: true}
                 , {field: 'checkInTime', title:'入住时间', width:110,sort:true}
@@ -78,7 +78,25 @@
         });
         //处理点击事件
         form.on('checkbox(lockDemo)', function(obj){
-            layer.msg(this.value+':'+obj.elem.checked);
+            $.ajax({
+                type:"post",
+
+                url:base_url+'/delorderbyorderId',
+                data:{
+                    'id':this.value
+                },
+                success:function (d) {
+                    if(d==="0") {
+                        layer.msg('服务器出现了一点错误，请稍后再试')
+                    }else{
+                        layer.msg('已删除该订单')
+                        table.reload('orderTable', {
+                            url: base_url + '/getUserOrder'
+                        })
+                    }
+                }
+            })
+
         });
 
 

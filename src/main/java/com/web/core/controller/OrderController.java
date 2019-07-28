@@ -1,9 +1,11 @@
 package com.web.core.controller;
 
+import com.web.core.mapper.OrderMapper;
 import com.web.core.pojo.Order;
 import com.web.core.pojo.User;
 import com.web.core.service.OrderSerive;
 import com.web.core.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,6 +73,8 @@ public class OrderController {
     public String delOrderByOrderId(int id){
         Order order = orderSerive.queryOrderByOrderId(id);
         if(order!=null){
+            //删除订单
+            orderSerive.delOrderByOrderId(order.getId());
             return "1";
         }
         return "0";

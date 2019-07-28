@@ -21,6 +21,7 @@
                 /user/readName = authc, perms[/readName]  &lt;!&ndash; perms 表示需要该权限才能访问的页面 &ndash;&gt;
                 /user/readData = authc, perms[/readData]
                 /user/* = authc &lt;!&ndash; authc 表示需要认证才能访问的页面 &ndash;&gt;-->
+                /logout = logout
             </value>
         </property>
     </bean>

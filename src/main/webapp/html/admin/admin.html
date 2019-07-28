@@ -22,7 +22,7 @@
                     <dd><a href="javascript:;" onclick="changeIframeUrl('/html/admin/changePwd.html')">修改密码</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" onclick="logout()">退出</a></li>
         </ul>
     </div>
 
@@ -95,6 +95,16 @@
     }
 
 
+
+    function logout() {
+        $.ajax({
+            type:'get',
+            url:base_url+'/logout',
+            success:function () {
+                window.location.href=base_url+'/html/login.html'
+            }
+        })
+    }
 
 </script>
 

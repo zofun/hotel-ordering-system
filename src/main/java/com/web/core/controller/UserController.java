@@ -5,6 +5,7 @@ import com.web.core.mapper.UserMapper;
 import com.web.core.pojo.User;
 import com.web.core.service.UserService;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.mgt.SecurityManager;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -144,4 +145,7 @@ public class UserController {
             }
         }
     }
+
+
+
 }
