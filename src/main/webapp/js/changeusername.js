@@ -27,7 +27,7 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
             $.ajax({
                 type:"post",
 
-                url:'/user/changeUserName',
+                url:base_url+'/user/changeUserName',
                 data:{
                     'id':id,
                     'username':username,
@@ -35,7 +35,8 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
                 },
                 success:function (d) {
                     if(d==="1") {
-                        layer.msg('修改成功');
+                        layer.msg('修改完成,请重新登陆');
+                        window.location.href=base_url+'/html/login.html';
                     }else if(d ==="2"){
                         layer.msg('该用户已存在');
                     }else{

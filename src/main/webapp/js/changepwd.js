@@ -39,7 +39,8 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
                     if(d==="0") {
                         layer.msg('服务器出现了一点错误，请稍后再试')
                     }else{
-                        layer.msg('修改完成')
+                        layer.msg('修改完成,请重新登陆')
+                        window.location.href='/html/login.html'
                     }
                 }
             })

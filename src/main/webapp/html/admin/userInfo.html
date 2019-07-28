@@ -30,7 +30,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">ID</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="username" value="1" id="id" readonly="" class="layui-input">
+                                        <input type="text" name="username" value="1" readonly="" class="layui-input">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
                                 </div>
@@ -50,7 +50,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">我的角色</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" class="layui-input" readonly value="超级管理员">
+                                        <input type="text" class="layui-input" readonly >
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">不可修改</div>
                                 </div>
@@ -70,11 +70,9 @@
 
 </div>
 
-
+<script src="../../js/common.js"></script>
 <script src="../../lib/layui/layui.js"></script>
-
-
-
+<script src="../../lib/jquery/jquery.js"></script>
 <script>
     layui.use(['element','form'], function(){
         var element = layui.element;
@@ -85,6 +83,28 @@
 
 <script>
     layui.config({base:'/js/'}).use('changeusername')
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        getUsername();
+    })
+    function getUsername(){
+        $.ajax({
+            type:"get",
+            url:"/user/getUserInfo",
+
+            success:function (d) {
+                id = d.id;
+                username = d.username;
+                $('#id').val(id);
+                $('#username').val(username);
+
+            }
+        });
+    }
+
 </script>
 </body>
 </html>

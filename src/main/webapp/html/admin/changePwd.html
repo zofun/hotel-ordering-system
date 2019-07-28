@@ -57,8 +57,28 @@
 
 <script src="../../lib/layui/layui.js"></script>
 <script src="../../js/common.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
 <script>
     layui.config({base: '/js/'}).use('changepwd');
+</script>
+<script>
+
+    $(document).ready(function () {
+        getUsername();
+    })
+    function getUsername(){
+        $.ajax({
+            type:"get",
+            url:"/user/getUserInfo",
+
+            success:function (d) {
+                username = d.username;
+                $('#username').val(username);
+
+            }
+        });
+    }
+
 </script>
 </body>
 </html>

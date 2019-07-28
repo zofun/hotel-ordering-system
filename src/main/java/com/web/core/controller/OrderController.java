@@ -4,6 +4,7 @@ import com.web.core.pojo.Order;
 import com.web.core.pojo.User;
 import com.web.core.service.OrderSerive;
 import com.web.core.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ public class OrderController {
     @Autowired
     private OrderSerive orderSerive;
 
-    @Autowired
+
 
 
 
