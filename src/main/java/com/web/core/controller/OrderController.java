@@ -26,6 +26,8 @@ public class OrderController {
     @Autowired
 
 
+
+    @RequiresAuthentication
     @RequestMapping(value = "getAllOrder",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getAllOrder(){
@@ -33,6 +35,8 @@ public class OrderController {
         return json;
     }
 
+
+    @RequiresAuthentication
     @RequestMapping(value = "getUserOrder",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getUserOrder(HttpSession session){

@@ -2,6 +2,8 @@ package com.web.core.controller;
 
 
 import com.web.core.service.RoleService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    @RequiresAuthentication
     @RequestMapping(value = "getRoleInfo",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getRoleInfo(int page,int limit){
@@ -31,6 +34,8 @@ public class RoleController {
      * @param status
      * @return
      */
+    @RequiresAuthentication
+    @RequiresPermissions("manRole")
     @RequestMapping("changeRolesPermission")
     @ResponseBody
     public String changeRolesPermission(int roleId,String permission,String status){
@@ -40,6 +45,8 @@ public class RoleController {
     }
 
 
+    @RequiresAuthentication
+    @RequiresPermissions("manRole")
     @RequestMapping(value = "addRole",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String addRole(String roleName,String roleMsg){
@@ -48,6 +55,7 @@ public class RoleController {
     }
 
 
+    @RequiresAuthentication
     @RequestMapping(value = "getUserRoleList",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getUserRoleList(int page,int limit){
@@ -66,6 +74,9 @@ public class RoleController {
         return roleService.getAllRole();
     }
 
+
+    @RequiresAuthentication
+    @RequiresPermissions("roleAllo")
     @RequestMapping(value = "changeRole",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String changeRole(int userId,int roleId){

@@ -70,6 +70,7 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     @Override
     public void addRoomType(RoomType roomType) {
 
+        roomType.setDescUrl("../"+roomType.getDescUrl());
         roomTypeMapper.insertRoomType(roomType);
     }
 

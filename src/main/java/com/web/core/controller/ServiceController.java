@@ -4,6 +4,8 @@ package com.web.core.controller;
 import com.web.core.mapper.ServiceMapper;
 import com.web.core.service.RoomService;
 import com.web.core.service.ServiceManService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ public class ServiceController {
     @Autowired
     private ServiceMapper serviceMapper;
 
+    @RequiresAuthentication
+    @RequiresPermissions("readService")
     @RequestMapping(value = "getServiceInfoList",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getServiceInfo(int page,int limit,int subbranchId){
@@ -28,6 +32,8 @@ public class ServiceController {
         return json;
     }
 
+    @RequiresAuthentication
+    @RequiresPermissions("manService")
     @RequestMapping(value = "changeServiceStatus",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String changeServiceStatus(int id,String status){
@@ -36,6 +42,8 @@ public class ServiceController {
         return "1";
     }
 
+
+    @RequiresAuthentication
     @RequestMapping(value = "addservice",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String addService(String roomNo,String serviceMsg){

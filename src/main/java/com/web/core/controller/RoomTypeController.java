@@ -5,6 +5,8 @@ import com.web.core.pojo.RoomType;
 import com.web.core.pojo.RoomTypeInfo;
 import com.web.core.service.RoomTypeService;
 import org.apache.ibatis.annotations.ResultMap;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +27,8 @@ public class RoomTypeController {
      * @param limit
      * @return
      */
+    @RequiresAuthentication
+    @RequiresPermissions("readRoomType")
     @RequestMapping(value = "gerRoomTypeList",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getRoomTypeList(int page,int limit){
@@ -38,6 +42,8 @@ public class RoomTypeController {
      * @param info
      * @return
      */
+    @RequiresAuthentication
+    @RequiresPermissions("manRoomType")
     @RequestMapping(value = "changeRoomTypeInfo",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String changeRoomTypeInfo(@RequestBody RoomTypeInfo info){
@@ -53,6 +59,8 @@ public class RoomTypeController {
      * @param status
      * @return
      */
+    @RequiresAuthentication
+    @RequiresPermissions("manRoomType")
     @RequestMapping(value = "changeRecommendStatus",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String changeRecommendStatus(int id,String status){
@@ -67,6 +75,8 @@ public class RoomTypeController {
      * @param roomType
      * @return
      */
+    @RequiresAuthentication
+    @RequiresPermissions("manRoomType")
     @ResponseBody
     @RequestMapping("addRoomType")
     public String addRoomType(RoomType roomType){
@@ -79,6 +89,7 @@ public class RoomTypeController {
      * 获取指定分店的房型列表
      * @return
      */
+    @RequiresAuthentication
     @RequestMapping(value = "getRoomTypeOfSubbranch",produces = "application/json;charset=utf-8")
     @ResponseBody
     public String getRoomTypeOfSubbranch(int subbranchId){
