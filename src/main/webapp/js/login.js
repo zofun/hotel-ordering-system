@@ -40,7 +40,7 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
             $.ajax({
                 type:"post",
 
-                url:'/user/login',
+                url:base_url+'/user/login',
                 data:{
                     'username':username,
                     'password':password,
@@ -50,6 +50,7 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
                 success:function (d) {
                     if(d==="1") {
                         layer.msg('登陆成功')
+                        window.location.href = base_url+'/html/index.html'
                     }else if(d==="2"){
                         layer.msg('验证码错误')
                     }else{

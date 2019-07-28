@@ -30,15 +30,16 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">账号</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="username" id="id" value="1" readonly="" class="layui-input">
+                                    <input type="text" name="username" id="id"  readonly="" class="layui-input">
                                 </div>
                                 <div class="layui-form-mid layui-word-aux">不可修改。一般用于后台登入名</div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">用户名</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="nickname" id="username" value="用户名" lay-verify="nickname" autocomplete="off" placeholder="请输入昵称" class="layui-input">
+                                    <input type="text" name="nickname" id="username"  lay-verify="nickname" autocomplete="off"  class="layui-input">
                                 </div>
+                                <div class="layui-form-mid layui-word-aux">请输入想要修改的用户名</div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">性别</label>
@@ -70,11 +71,9 @@
 
 </div>
 
-
+<script src="../../js/common.js"></script>
 <script src="../../lib/layui/layui.js"></script>
-
-
-
+<script src="../../lib/jquery/jquery.js"></script>
 <script>
     layui.use(['element','form'], function(){
         var element = layui.element;
@@ -85,6 +84,28 @@
 
 <script>
     layui.config({base: '/js/'}).use('changeusername');
+</script>
+<script>
+
+    $(document).ready(function () {
+        console.log('sss')
+        getUsername();
+    })
+    function getUsername(){
+        $.ajax({
+            type:"get",
+            url:"/user/getUserInfo",
+
+            success:function (d) {
+                username = d.username;
+                id = d.id;
+                $('#id').val(id);
+                $('#username').val(username);
+
+            }
+        });
+    }
+
 </script>
 </body>
 </html>

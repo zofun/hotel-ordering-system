@@ -6,7 +6,7 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
 
     $.ajax({
         type:"get",
-        url:"/user/getUserInfo",
+        url:base_url+"/user/getUserInfo",
 
         success:function (d) {
             var user = '<%=session.getAttribute("User")%>'

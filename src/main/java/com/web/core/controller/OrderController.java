@@ -25,7 +25,7 @@ public class OrderController {
     @Autowired
     private OrderSerive orderSerive;
 
-    @Autowired
+
 
 
 

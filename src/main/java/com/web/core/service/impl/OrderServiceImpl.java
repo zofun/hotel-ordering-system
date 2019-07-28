@@ -12,11 +12,13 @@ import com.web.core.service.UserService;
 import com.web.utils.TimeUtils;
 import org.aspectj.weaver.ast.Or;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.SerializationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +51,10 @@ public class OrderServiceImpl implements OrderSerive {
         map.put("count",count);
         map.put("data",orders);
         ObjectMapper mapper=new ObjectMapper();
+        //更改时间解析方式
+        mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false);
+        SimpleDateFormat myDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        mapper.getSerializationConfig().setDateFormat(myDateFormat);
         try {
             String json=mapper.writeValueAsString(map);
             return json;
@@ -70,6 +76,10 @@ public class OrderServiceImpl implements OrderSerive {
         map.put("data",orders);
 
         ObjectMapper mapper=new ObjectMapper();
+        //更改时间解析方式
+        mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false);
+        SimpleDateFormat myDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        mapper.getSerializationConfig().setDateFormat(myDateFormat);
         try {
             String json=mapper.writeValueAsString(map);
             return json;

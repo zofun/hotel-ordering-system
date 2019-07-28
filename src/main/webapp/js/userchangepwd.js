@@ -41,7 +41,8 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
                 },
                 success:function (d) {
                     if(d==="1") {
-                        layer.msg('修改成功');
+                        layer.msg('修改完成,请重新登陆')
+                        window.location.href=base_url+'/html/login.html'
                     }else if(d ==="2"){
                         layer.msg('验证码错误');
                     }else{
