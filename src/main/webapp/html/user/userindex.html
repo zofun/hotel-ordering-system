@@ -15,10 +15,15 @@
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                     <!--用户名-->
-                    贤心
+                    <span id = "username"/>
                 </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;" onclick="changeIframeUrl('/html/user/userInforma.html')">基本资料</a></dd>
+                    <dd><a href="javascript:;" onclick="changeIframeUrl('/html/user/userchangepwd.html')">修改密码</a></dd>
+                </dl>
             </li>
             <li class="layui-nav-item"><a href="../index.html">主页</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" onclick="logout()">退出</a></li>
 
         </ul>
     </div>
@@ -92,8 +97,40 @@
         });
     }
 
+    /**
+     * 退出登陆
+     */
+    function logout() {
+        $.ajax({
+            type:'get',
+            url:base_url+'/logout',
+            success:function () {
+                window.location.href=base_url+'/html/login.html'
+            }
+        })
+    }
+
 
 
 </script>
+<script>
 
+    $(document).ready(function () {
+        console.log('sss');
+        getUsername();
+    });
+    function getUsername(){
+        $.ajax({
+            type:"get",
+            url:"/user/getUserInfo",
+
+            success:function (d) {
+                username = d.username;
+                $('#username').text(username);
+
+            }
+        });
+    }
+
+</script>
 </body>
