@@ -53,7 +53,7 @@ public class OrderServiceImpl implements OrderSerive {
         ObjectMapper mapper=new ObjectMapper();
         //更改时间解析方式
         mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false);
-        SimpleDateFormat myDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat myDateFormat=new SimpleDateFormat("yyyy-MM-dd-HH:mm");
         mapper.getSerializationConfig().setDateFormat(myDateFormat);
         try {
             String json=mapper.writeValueAsString(map);
@@ -78,7 +78,7 @@ public class OrderServiceImpl implements OrderSerive {
         ObjectMapper mapper=new ObjectMapper();
         //更改时间解析方式
         mapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false);
-        SimpleDateFormat myDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat myDateFormat=new SimpleDateFormat("yyyy-MM-dd-HH:mm");
         mapper.getSerializationConfig().setDateFormat(myDateFormat);
         try {
             String json=mapper.writeValueAsString(map);
