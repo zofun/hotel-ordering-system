@@ -18,7 +18,7 @@
     </select>
 
     <insert id="insertRoom" parameterType="room">
-        insert into room (room_no, status, room_type_id) values (#{roomNo},'空闲',#{roomTypeId})
+        insert into room (room_no, status, room_type_id) values (#{roomNo},'正常使用',#{roomTypeId})
     </insert>
 
     <update id="updateRoomStatus">
