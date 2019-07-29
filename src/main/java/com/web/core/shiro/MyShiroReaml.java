@@ -1,6 +1,7 @@
 package com.web.core.shiro;
 
 import com.web.core.pojo.Permission;
+import com.web.core.pojo.Role;
 import com.web.core.pojo.User;
 import com.web.core.service.ShiroService;
 import org.apache.shiro.authc.*;
@@ -32,8 +33,11 @@ public class MyShiroReaml extends AuthorizingRealm {
         User user = (User) pc.getPrimaryPrincipal();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         if (user != null) {
-            //添加角色角色信息
-            info.addRole(shiroService.getRoleByUserId(user.getId()).getRoleName());
+            Role role = shiroService.getRoleByUserId(user.getId());
+            if(role!=null){
+                //添加角色角色信息
+                info.addRole(role.getRoleName());
+            }
             List<Permission> permissionsByUser = shiroService.getPermissionsByUser(user);
             if (permissionsByUser.size() != 0) {
                 for (Permission p : permissionsByUser) {

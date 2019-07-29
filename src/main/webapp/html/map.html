@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>安宁</title>
+    <title>地图找房</title>
 
     <!--======== All Stylesheet =========-->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 
                                 <li><a href="/html/index.html">首页</a></li>
                                 <li><a href="/html/hotel.html">全部房型</a></li>
-                                <li><a href="/html/map.html">地图找店</a></li>
+                                <li><a href="#">地图找店</a></li>
                             </ul>
                             <div class="nav-search">
                                 <form class="navbar-form navbar-right" role="search">
@@ -78,88 +78,18 @@
     </div>
 </header>
 
-<!-- home -->
-<section class="home">
-    <div class="intro">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-xs-12">
-                    <h2>2019</h2>
-                    <h1>酒店辅助订购系统</h1>
-                    <small>有些地方住过一次，就会是一辈子的记忆。/Some places once lived, will be a lifetime memory.</small>
-                    <div><a class="btn btn-default see-collection">了解</a></div>
-                </div>
-            </div>
-        </div>
+
+
+<div class="row" style="height: 600px">
+    <div class="col-md-8 col-md-offset-2" id="mapView" style="background-color: cornflowerblue;height: 500px">
+
     </div>
-</section>
 
-<!-- feature box -->
-<section class="feature-box">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="f-s-b">
-                    <div class="well well-sm">
-                        <i class="lnr lnr-heart"></i>
-                        <h3>安全</h3>
-                        <small>safe </small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="f-s-b">
-                    <div class="well well-sm">
-                        <i class="lnr lnr-user"></i>
-                        <h3>卫生</h3>
-                        <small>hygiene </small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="f-s-b">
-                    <div class="well well-sm">
-                        <i class="lnr lnr-camera-video"></i>
-                        <h3>方便</h3>
-                        <small>convenient </small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="f-s-b">
-                    <div class="well well-sm">
-                        <i class="lnr lnr-camera"></i>
-                        <h3>舒适</h3>
-                        <small>comfortable </small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+</div>
 
 
 
-<!-- Feature Product -->
-<section class="feature-product">
-    <div class="grid-product">
-        <div class="container">
-            <div class="row">
-                <div class="section-title col-md-offset-3 col-md-6 col-xs-12 text-center">
-                    <h2>为您推荐</h2>
-                    <small>使您满意是我们的最大追求/Your satisfaction is our greatest pursuit</small>
-                    <div class="section-border"><span class="dash"></span></div>
-                </div>
-            </div>
-            <div class="row" id="view">
-                <!--推荐内容-->
-                <!--使用模板引擎添加-->
 
-
-            </div>
-        </div>
-    </div>
-</section>
 
 
 <!-- add Two -->
@@ -224,77 +154,64 @@
 <script src="../js/bootstrap.min.js"></script>
 <script src="../lib/layui/layui.js">  </script>
 <script src="../js/common.js"></script>
-
-<!--模板-->
-<script type="text/html" id="tipTpl">
-
-    {{#  layui.each(d.tipList, function(index, item){ }}
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="single-grid">
-            <div class="grid-img">
-                <!--背景图片-->
-                <img class="img-resposive" src="{{item.descUrl}}" alt="women" />
-                <div class="grid-overlay">
-                    <ul>
-                        <li onclick="getInfo('{{item.hotelName}}','{{item.desc}}','{{item.capacity}}')"><i class="lnr lnr-book"></i></li>
-                        <li onclick="makeOrder({{item.id}})"><i class="lnr lnr-cart"></i></li>
-                    </ul>
-                </div>
-            </div>
-            <h3><i id="roomType">{{item.roomType}}</i><span id="price">{{item.price}}</span></h3>
-            <p id="roomMsg">{{item.desc}}</p>
-        </div>
-    </div>
-    {{#  }); }}
-</script>
+<script  src="https://webapi.amap.com/maps?v=1.4.15&key=2cafb4f6239afd8ab08f9409f65042cd"></script>
 
 <!--脚本-->
 <script>
 
-    layui.use(['laytpl','form'],function () {
+    var map = new AMap.Map('mapView', {
+        zoom:11,//级别
+        resizeEnable: true, //启动时自动地位到当前城市
+        viewMode:'3D',//使用3D视图
+        mapStyle: 'amap://styles/macaron' //设置地图的样式
+    });
 
-        var form=layui.form;
-        laytpl=layui.laytpl;
+    AMap.plugin([
+        'AMap.ToolBar',
+        'AMap.Scale',
+        'AMap.OverView'
 
-        $.ajax({
-            type:'get',
-            url:base_url+'/view/getTipsList',
-            success:function (data) {
-                var getTpl=tipTpl.innerHTML;
-                var view = document.getElementById('view');
-                laytpl(getTpl).render(data, function(html){
+    ], function(){
+        // 在图面添加工具条控件，工具条控件集成了缩放、平移、定位等功能按钮在内的组合控件
+        map.addControl(new AMap.ToolBar());
 
-                    view.innerHTML = html;
+        // 在图面添加比例尺控件，展示地图在当前层级和纬度下的比例尺
+        map.addControl(new AMap.Scale());
 
-                });
-
-            }
-        })
-
+        // 在图面添加鹰眼控件，在地图右下角显示地图的缩略图
+        map.addControl(new AMap.OverView({isOpen:true}));
 
     });
-    
-    
-    
-    function getInfo(hotelName,desc,capacity) {
-        layer.open({
-            title:'房间信息',
-            type: 1,
-            area: ['500px', '300px'],
-            content: '所属分店:'+hotelName+'<br/>'+'房间信息:'+desc+'<br/>'+'可入住人数:'+capacity
 
-        });
-    }
+    // 创建一个 Marker 实例：
+    var marker01 = new AMap.Marker({
+        position: new AMap.LngLat(104.00943,30.664384),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+        title: '成都一分店'
+    });
+    // 创建一个 Marker 实例：
+    var marker02 = new AMap.Marker({
+        position: new AMap.LngLat(104.175598,30.68092),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+        title: '成都二分店'
+    });
+    // 创建一个 Marker 实例：
+    var marker03 = new AMap.Marker({
+        position: new AMap.LngLat(103.894074,30.545003),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+        title: '成都三分店'
+    });
+    // 创建一个 Marker 实例：
+    var marker04 = new AMap.Marker({
+        position: new AMap.LngLat(121.458723,31.243612),   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+        title: '上海四分店'
+    });
 
-    function makeOrder(hoteTypeId) {
-        layer.open({
-            title:'订购时间',
-            type: 2,
-            area: ['500px', '600px'],
-            content: base_url+'/html/order.html?hoteTypteId='+hoteTypeId
+    // 将创建的点标记添加到已有的地图实例：
+    map.add(marker01);
+    map.add(marker02);
+    map.add(marker03);
+    map.add(marker04);
 
-        });
-    }
+
+
 
 </script>
 </html>

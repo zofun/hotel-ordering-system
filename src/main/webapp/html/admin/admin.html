@@ -9,7 +9,10 @@
 
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">酒店辅助订购系统</div>
+        <a href="/html/index.html">
+            <div class="layui-logo">酒店辅助订购系统</div>
+        </a>
+
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
@@ -33,13 +36,9 @@
                 <li class="layui-nav-item layui-nav-itemed" onclick="changeIframeUrl('/html/admin/overview.html')">
                     <a class="" href="javascript:;">系统概览</a>
                 </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">前台管理</a>
-                    <dl class="layui-nav-child">
-                        <dd onclick="changeIframeUrl('/html/admin/checkIn.html')"><a href="javascript:;">入住管理</a></dd>
-                        <dd><a href="javascript:;">订单管理</a></dd>
-                    </dl>
-                </li>
+
+                <li class="layui-nav-item" onclick="changeIframeUrl('/html/admin/checkIn.html')"><a href="javascript:;">入住管理</a></li>
+
                 <li class="layui-nav-item">
                     <a href="javascript:;">客房管理</a>
                     <dl class="layui-nav-child">

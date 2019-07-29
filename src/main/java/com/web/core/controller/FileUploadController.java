@@ -2,6 +2,7 @@ package com.web.core.controller;
 
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +21,14 @@ import java.util.Map;
 public class FileUploadController {
 
 
+    @Value("${baseDir}")
+    private String baseDir;
+
     @RequestMapping("uploader")
     @ResponseBody
     public String uploader(@RequestParam("file") MultipartFile multipartFile, HttpSession session) throws IOException {
+
+        System.out.println("baseDir-->"+baseDir);
 
 
         Map<String,String> result=new HashMap<>();
@@ -34,7 +40,7 @@ public class FileUploadController {
             if (filename.endsWith("jpg")||filename.endsWith("png")){
 
                 String path="image/"+System.currentTimeMillis()+"."+suffix;
-                String realPath = session.getServletContext().getRealPath("/")+"image/"+System.currentTimeMillis()+"."+suffix;
+                String realPath = baseDir+"/image/"+System.currentTimeMillis()+"."+suffix;
                 System.out.println("realPath--->"+realPath);
                 File newfile = new File(realPath);
                 try {
