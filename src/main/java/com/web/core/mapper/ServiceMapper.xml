@@ -16,7 +16,7 @@
         update service set status=#{1} where id=#{0}
     </update>
     <insert id="addService" >
-        insert into `service` (room_id,service_msg) values (#{0},#{1})
+        insert into `service` (room_id,user_id,service_msg,status,time) values (#{0},#{1},#{2},'未受理',now())
     </insert>
 
 </mapper>

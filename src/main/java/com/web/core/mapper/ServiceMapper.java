@@ -33,5 +33,5 @@ public interface ServiceMapper {
      * @param roomId
      * @param serviceType
      */
-    void addService(int roomId,String serviceType);
+    void addService(int roomId,int userid,String serviceType);
 }

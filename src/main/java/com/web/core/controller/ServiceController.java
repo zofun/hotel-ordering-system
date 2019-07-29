@@ -46,11 +46,11 @@ public class ServiceController {
     @RequiresAuthentication
     @RequestMapping(value = "addservice",produces = "application/json;charset=utf-8")
     @ResponseBody
-    public String addService(String roomNo,String serviceMsg){
+    public String addService(String roomNo,int userid,String serviceMsg){
 
         int roomid = roomService.qurryRoomByRoomNo(roomNo);
         if(roomid!=0){
-            serviceMapper.addService(roomid,serviceMsg);
+            serviceMapper.addService(roomid,userid,serviceMsg);
             return "1";
         }
         return "0";

@@ -28,6 +28,9 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
         var repassword = $('#repassword').val();
         var captcha = $('#captcha').val();
 
+        //注册中
+        tips.loading('注册中...', 0, -1);
+
         if (!/^1\d{10}$/.test(phone)) {
             return tips.warning('请输入正确的手机号码');
             return false;
