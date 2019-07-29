@@ -15,9 +15,9 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
 
     //提交
     $('#callService').click(function () {
+        var userid = $('#id').val();
         var roomNo = $('#roomNo').val();
         var serviceMsg = $('#serviceMsg').val();
-
         //登陆中
         tips.loading('呼叫服务中...', 0, -1);
 
@@ -33,9 +33,9 @@ layui.define(['layer', 'form', 'tips'], function(exports) {
 
                 url:base_url+'/service/addservice',
                 data:{
+                    'userid':userid,
                     'roomNo':roomNo,
                     'serviceMsg':serviceMsg,
-
 
                 },
                 success:function (d) {

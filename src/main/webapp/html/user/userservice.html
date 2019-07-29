@@ -30,6 +30,12 @@
 
     <div class="layui-form layui-form-pane lau-sign-form layui-col-lg6 layui-col-lg-offset3" >
         <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon layui-icon-id"></i> 订单号</label>
+            <div class="layui-input-block">
+                <input type="text" id="id" readonly=""  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i> 房间号</label>
             <div class="layui-input-block">
                 <input type="text" id="roomNo" placeholder="请输入房间号" autocomplete="off" class="layui-input">
@@ -53,8 +59,26 @@
 <script src="../../js/common.js"></script>
 <script src="../../js/tips.js"></script>
 <script>
+    $(document).ready(function () {
+        console.log('sss');
+        getUsername();
+    });
+    function getUsername(){
+        $.ajax({
+            type:"get",
+            url:"/user/getUserInfo",
+
+            success:function (d) {
+                username = d.username;
+                id = d.id;
+                $('#id').val(id);
+
+            }
+        });
+    }
+</script>
+<script>
     layui.config({base: '/js/'}).use('callservice');
 </script>
-
 </body>
 </html>
